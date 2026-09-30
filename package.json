@@ -1,0 +1,27 @@
+{
+  "name": "gemini-notes-summarizer",
+  "version": "1.0.0",
+  "description": "AI Notes Summarizer web application powered by Google Gemini API",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js",
+    "test": "node test/test-app.js"
+  },
+  "keywords": [
+    "gemini",
+    "ai",
+    "notes-summarizer",
+    "summarizer"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mammoth": "^1.8.0",
+    "multer": "^1.4.5-lts.1",
+    "pdf-parse": "^1.1.1"
+  }
+}

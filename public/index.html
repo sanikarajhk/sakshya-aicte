@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Study Assistant | Summarizer, Quiz &amp; Doubts</title>
+  <meta name="description" content="AI Study Assistant powered by Google Gemini: Summarize notes, take custom quizzes, and clarify doubts.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <div class="app-layout">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-container">
+        <div class="brand">
+          <div class="brand-icon">🎓</div>
+          <div>
+            <h1 class="brand-title">AI Study Assistant</h1>
+            <p class="brand-subtitle">Summarizer • Quiz Session • Doubt Clarification with Google Gemini AI</p>
+          </div>
+        </div>
+        <div class="header-status">
+          <div id="api-status-badge" class="status-badge checking">
+            <span class="status-dot"></span>
+            <span id="api-status-text">Checking API...</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Study Modes Tab Navigation -->
+    <div class="tabs-wrapper">
+      <div class="header-container">
+        <nav class="mode-tabs" role="tablist" aria-label="Study modes navigation">
+          <button type="button" class="mode-tab active" id="tab-summarize" data-mode="summarize" role="tab" aria-selected="true" aria-controls="view-summarize">
+            <span class="tab-icon">📝</span>
+            <span class="tab-label">Summarize</span>
+          </button>
+          <button type="button" class="mode-tab" id="tab-quiz" data-mode="quiz" role="tab" aria-selected="false" aria-controls="view-quiz">
+            <span class="tab-icon">🎯</span>
+            <span class="tab-label">Quiz Session</span>
+          </button>
+          <button type="button" class="mode-tab" id="tab-doubt" data-mode="doubt" role="tab" aria-selected="false" aria-controls="view-doubt">
+            <span class="tab-icon">💬</span>
+            <span class="tab-label">Doubt Clarification</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+
+    <main class="main-content">
+      <!-- Error Alert Banner -->
+      <div id="error-banner" class="alert-banner alert-error hidden" role="alert">
+        <div class="alert-icon">⚠️</div>
+        <div class="alert-body">
+          <h4 class="alert-title">Notice</h4>
+          <p id="error-message" class="alert-text"></p>
+        </div>
+        <button id="close-error-btn" class="alert-close" aria-label="Dismiss message">&times;</button>
+      </div>
+
+      <!-- ===================================================================
+           MODE 1: SUMMARIZE VIEW
+           =================================================================== -->
+      <div id="view-summarize" class="mode-view active-view" role="tabpanel" aria-labelledby="tab-summarize">
+        <!-- Main Input Card -->
+        <section class="card input-card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Study Notes Source</h2>
+              <p class="card-description">Paste notes below or upload a supported document (.txt, .md, .pdf, .docx, .json, .csv). These notes power Summarization, Quiz Sessions, and Doubt Clarification.</p>
+            </div>
+            <div class="sample-actions">
+              <button type="button" id="sample-btn" class="btn btn-ghost btn-sm">
+                💡 Load Sample Notes
+              </button>
+            </div>
+          </div>
+
+          <!-- File Upload Dropzone -->
+          <div class="upload-section">
+            <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Upload document file">
+              <input 
+                type="file" 
+                id="file-input" 
+                class="file-input-hidden" 
+                accept=".txt,.text,.md,.markdown,.pdf,.docx,.json,.csv"
+              />
+              <div class="dropzone-content">
+                <div class="dropzone-icon">📁</div>
+                <div class="dropzone-text">
+                  <span class="dropzone-prompt"><strong>Click to upload</strong> or drag and drop</span>
+                  <span class="dropzone-sub">Supported: PDF, Word (.docx), Markdown (.md), Plain Text (.txt, .json, .csv) up to 10MB</span>
+                </div>
+              </div>
+              <div id="upload-spinner" class="upload-spinner hidden">
+                <div class="spinner-small"></div>
+                <span>Extracting document text...</span>
+              </div>
+            </div>
+
+            <!-- Uploaded File Badge -->
+            <div id="file-info-badge" class="file-badge hidden">
+              <span class="file-badge-icon">📄</span>
+              <div class="file-badge-details">
+                <span id="file-badge-name" class="file-badge-name"></span>
+                <span id="file-badge-size" class="file-badge-size"></span>
+              </div>
+              <button type="button" id="remove-file-btn" class="file-badge-remove" title="Remove file">&times;</button>
+            </div>
+          </div>
+
+          <!-- Text Area Section -->
+          <div class="textarea-section">
+            <label for="notes-input" class="sr-only">Notes input text area</label>
+            <textarea
+              id="notes-input"
+              class="notes-textarea"
+              placeholder="Type or paste your notes, lecture transcript, research paper excerpt, or study materials here..."
+              rows="10"
+            ></textarea>
+
+            <div class="textarea-footer">
+              <div class="text-counts">
+                <span id="word-count">0 words</span>
+                <span class="count-divider">•</span>
+                <span id="char-count">0 characters</span>
+              </div>
+              <div class="textarea-hints">
+                <span>Tip: Once notes are entered, you can Summarize, launch a Quiz Session, or Ask Doubts anytime!</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Controls -->
+          <div class="card-actions">
+            <button type="button" id="clear-btn" class="btn btn-secondary">
+              🗑️ Clear Notes
+            </button>
+            <button type="button" id="summarize-btn" class="btn btn-primary">
+              <span class="btn-spinner hidden" id="summarize-spinner"></span>
+              <span class="btn-icon" id="summarize-icon">✨</span>
+              <span id="summarize-btn-text">Summarize Notes</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Loading State Card -->
+        <section id="loading-card" class="card loading-card hidden" aria-live="polite">
+          <div class="loading-container">
+            <div class="pulse-ring">
+              <div class="spinner-large"></div>
+            </div>
+            <h3 class="loading-title">Summarizing Notes with Gemini AI...</h3>
+            <p id="loading-subtext" class="loading-subtext">Extracting key points, concepts, and review questions</p>
+            <div class="loading-progress-bar">
+              <div class="progress-bar-fill"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Summary Results Section -->
+        <section id="results-card" class="card results-card hidden" aria-live="polite">
+          <!-- Results Header Bar with Action Buttons -->
+          <div class="results-header">
+            <div class="results-title-group">
+              <span class="badge-accent">AI Summary</span>
+              <h2 class="results-title">Summary &amp; Key Insights</h2>
+            </div>
+            <div class="results-action-buttons">
+              <button type="button" id="copy-btn" class="btn btn-outline" title="Copy summary to clipboard">
+                <span id="copy-icon">📋</span>
+                <span id="copy-text">Copy Summary</span>
+              </button>
+              <button type="button" id="download-btn" class="btn btn-outline" title="Download summary as markdown">
+                <span>📥</span>
+                <span>Download (.md)</span>
+              </button>
+              <button type="button" id="clear-results-btn" class="btn btn-ghost" title="Clear this summary">
+                <span>✕</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Section 1: Short Summary -->
+          <div class="summary-block highlight-block">
+            <div class="block-header">
+              <span class="block-icon">⚡</span>
+              <h3 class="block-title">Short Summary</h3>
+            </div>
+            <p id="short-summary-content" class="short-summary-text"></p>
+          </div>
+
+          <!-- Section 2: Detailed Summary -->
+          <div class="summary-block">
+            <div class="block-header">
+              <span class="block-icon">📖</span>
+              <h3 class="block-title">Detailed Summary</h3>
+            </div>
+            <div id="detailed-summary-content" class="detailed-summary-text"></div>
+          </div>
+
+          <!-- Section 3: Key Points -->
+          <div class="summary-block">
+            <div class="block-header">
+              <span class="block-icon">🎯</span>
+              <h3 class="block-title">Key Points</h3>
+            </div>
+            <ul id="key-points-list" class="key-points-list"></ul>
+          </div>
+
+          <!-- Section 4: Important Terms / Concepts -->
+          <div class="summary-block">
+            <div class="block-header">
+              <span class="block-icon">💡</span>
+              <h3 class="block-title">Important Terms &amp; Concepts</h3>
+            </div>
+            <div id="terms-grid" class="terms-grid"></div>
+          </div>
+
+          <!-- Section 5: 5 Questions Generated from Notes -->
+          <div class="summary-block">
+            <div class="block-header">
+              <span class="block-icon">❓</span>
+              <h3 class="block-title">5 Review Questions</h3>
+              <span class="block-subtitle">Self-study &amp; comprehension check</span>
+            </div>
+            <div id="questions-list" class="questions-list"></div>
+          </div>
+
+          <!-- Bottom Action Bar -->
+          <div class="results-footer">
+            <p class="results-footer-note">Generated using Google Gemini API • Structured summary &amp; active recall questions</p>
+            <div class="footer-actions">
+              <button type="button" id="copy-btn-bottom" class="btn btn-outline btn-sm">
+                📋 Copy Summary
+              </button>
+              <button type="button" id="download-btn-bottom" class="btn btn-outline btn-sm">
+                📥 Download Summary
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ===================================================================
+           MODE 2: QUIZ SESSION VIEW
+           =================================================================== -->
+      <div id="view-quiz" class="mode-view hidden" role="tabpanel" aria-labelledby="tab-quiz">
+        <!-- Notes Context Bar -->
+        <div id="quiz-notes-context-bar" class="notes-context-bar hidden">
+          <div class="context-info">
+            <span class="context-icon">📄</span>
+            <span>Source Notes: <strong id="quiz-notes-wordcount">0 words</strong> loaded</span>
+          </div>
+          <button type="button" class="btn btn-ghost btn-sm goto-notes-btn">✏️ View/Edit Notes</button>
+        </div>
+
+        <!-- Empty State for Quiz -->
+        <div id="quiz-empty-state" class="card empty-state-card">
+          <div class="empty-state-icon">🎯</div>
+          <h3 class="empty-state-title">No Notes Available for Quiz</h3>
+          <p class="empty-state-text">Please enter or upload your study notes first. The Quiz Session will generate a custom quiz based strictly on your source material.</p>
+          <div class="empty-state-actions">
+            <button type="button" class="btn btn-primary goto-notes-btn">📝 Go to Notes / Input Notes</button>
+            <button type="button" class="btn btn-secondary load-sample-quiz-btn">💡 Load Sample Notes</button>
+          </div>
+        </div>
+
+        <!-- Quiz Setup Card -->
+        <section id="quiz-setup-card" class="card quiz-setup-card hidden">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">🎯 Quiz Configuration</h2>
+              <p class="card-description">Generate an interactive quiz based strictly on your loaded notes. Questions will test both multiple-choice and True/False comprehension.</p>
+            </div>
+          </div>
+
+          <div class="quiz-config-grid">
+            <!-- Question Count -->
+            <div class="config-group">
+              <label class="config-label">Number of Questions:</label>
+              <div class="pill-group" id="quiz-count-group">
+                <button type="button" class="pill-btn active" data-count="5">5 Questions</button>
+                <button type="button" class="pill-btn" data-count="10">10 Questions</button>
+                <button type="button" class="pill-btn" data-count="15">15 Questions</button>
+              </div>
+            </div>
+
+            <!-- Difficulty Level -->
+            <div class="config-group">
+              <label class="config-label">Difficulty Level:</label>
+              <div class="pill-group" id="quiz-diff-group">
+                <button type="button" class="pill-btn" data-diff="Easy">🟢 Easy (Recall &amp; Terms)</button>
+                <button type="button" class="pill-btn active" data-diff="Medium">🟡 Medium (Conceptual)</button>
+                <button type="button" class="pill-btn" data-diff="Hard">🔴 Hard (Deep Synthesis)</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <button type="button" id="start-quiz-btn" class="btn btn-primary btn-lg">
+              <span class="btn-icon">🚀</span>
+              <span>Generate &amp; Start Quiz</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Quiz Loading Card -->
+        <section id="quiz-loading-card" class="card loading-card hidden" aria-live="polite">
+          <div class="loading-container">
+            <div class="pulse-ring">
+              <div class="spinner-large"></div>
+            </div>
+            <h3 class="loading-title">Generating Custom Quiz with Gemini AI...</h3>
+            <p id="quiz-loading-subtext" class="loading-subtext">Creating questions based strictly on your source notes...</p>
+            <div class="loading-progress-bar">
+              <div class="progress-bar-fill"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Active Quiz Question Card -->
+        <section id="quiz-active-card" class="card quiz-card hidden" aria-live="polite">
+          <div class="quiz-topbar">
+            <div class="quiz-meta-left">
+              <span id="quiz-topic-badge" class="badge-accent">Quiz Topic</span>
+              <span id="quiz-difficulty-badge" class="badge-subtle">Medium</span>
+              <span id="quiz-type-badge" class="badge-type">Multiple Choice</span>
+            </div>
+            <div class="quiz-counter">
+              Question <strong id="quiz-current-num">1</strong> of <span id="quiz-total-num">5</span>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="quiz-progress-track">
+            <div id="quiz-progress-bar" class="quiz-progress-fill" style="width: 20%;"></div>
+          </div>
+
+          <!-- Question Text -->
+          <div class="quiz-question-container">
+            <h3 id="quiz-question-text" class="quiz-question-heading">Question text will load here...</h3>
+          </div>
+
+          <!-- Options Container -->
+          <div id="quiz-options-container" class="quiz-options-list">
+            <!-- Dynamic option cards -->
+          </div>
+
+          <!-- Quiz Action Footer -->
+          <div class="quiz-footer">
+            <button type="button" id="quit-quiz-btn" class="btn btn-ghost btn-sm">Quit Quiz</button>
+            <button type="button" id="next-question-btn" class="btn btn-primary" disabled>
+              <span>Next Question</span>
+              <span>→</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Quiz Results Card -->
+        <section id="quiz-results-card" class="card quiz-results-card hidden" aria-live="polite">
+          <div class="results-score-hero">
+            <div class="score-circle-wrapper">
+              <div id="score-percentage-circle" class="score-circle">
+                <span id="score-percentage-text">80%</span>
+              </div>
+            </div>
+            <div class="score-details">
+              <span class="badge-accent">Quiz Complete</span>
+              <h2 id="score-title" class="score-headline">Great Job!</h2>
+              <p id="score-fraction" class="score-subtitle">You scored 4 out of 5 questions correctly.</p>
+              <div class="score-tags">
+                <span class="score-tag tag-correct">✓ <strong id="stat-correct">4</strong> Correct</span>
+                <span class="score-tag tag-incorrect">✕ <strong id="stat-incorrect">1</strong> Incorrect</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review Controls & Breakdown -->
+          <div class="review-section">
+            <div class="review-header">
+              <h3 class="review-title">Detailed Answers &amp; Explanations</h3>
+              <div class="review-filters" id="review-filter-group">
+                <button type="button" class="btn btn-sm btn-outline active" data-filter="all">All Questions</button>
+                <button type="button" class="btn btn-sm btn-outline" data-filter="incorrect">Incorrect Only</button>
+                <button type="button" class="btn btn-sm btn-outline" data-filter="correct">Correct Only</button>
+              </div>
+            </div>
+
+            <!-- List of review cards -->
+            <div id="quiz-review-list" class="quiz-review-list"></div>
+          </div>
+
+          <!-- Results Actions -->
+          <div class="results-action-row">
+            <button type="button" id="retry-quiz-btn" class="btn btn-secondary">
+              🔄 Retry This Quiz
+            </button>
+            <button type="button" id="new-quiz-btn" class="btn btn-primary">
+              ✨ Generate New Quiz
+            </button>
+            <button type="button" class="btn btn-ghost goto-notes-btn">
+              📝 Review Source Notes
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- ===================================================================
+           MODE 3: DOUBT CLARIFICATION VIEW
+           =================================================================== -->
+      <div id="view-doubt" class="mode-view hidden" role="tabpanel" aria-labelledby="tab-doubt">
+        <!-- Notes Context Bar -->
+        <div id="doubt-notes-context-bar" class="notes-context-bar hidden">
+          <div class="context-info">
+            <span class="context-icon">📄</span>
+            <span>Primary Context: <strong id="doubt-notes-wordcount">0 words</strong> loaded from your notes</span>
+          </div>
+          <button type="button" class="btn btn-ghost btn-sm goto-notes-btn">✏️ View/Edit Notes</button>
+        </div>
+
+        <!-- Empty State for Doubt -->
+        <div id="doubt-empty-state" class="card empty-state-card">
+          <div class="empty-state-icon">💬</div>
+          <h3 class="empty-state-title">No Notes Available for Doubt Clarification</h3>
+          <p class="empty-state-text">Please enter or upload study notes first so your AI tutor can explain concepts and clarify doubts using your notes as the primary context.</p>
+          <div class="empty-state-actions">
+            <button type="button" class="btn btn-primary goto-notes-btn">📝 Go to Notes / Input Notes</button>
+            <button type="button" class="btn btn-secondary load-sample-doubt-btn">💡 Load Sample Notes</button>
+          </div>
+        </div>
+
+        <!-- Doubt Chat Card -->
+        <section id="doubt-chat-card" class="card doubt-chat-card hidden">
+          <div class="chat-header">
+            <div>
+              <h2 class="card-title">💬 AI Study Tutor</h2>
+              <p class="card-description">Ask any doubt about your notes. Answers are explained in student-friendly terms with examples and step-by-step logic.</p>
+            </div>
+            <button type="button" id="clear-chat-btn" class="btn btn-ghost btn-sm" title="Clear conversation history">
+              🗑️ Clear Chat
+            </button>
+          </div>
+
+          <!-- Quick Suggestion Chips -->
+          <div class="suggestion-chips-container">
+            <span class="chips-label">Quick prompts:</span>
+            <div class="chips-scroll">
+              <button type="button" class="suggestion-chip">💡 Explain the core concept in simple terms</button>
+              <button type="button" class="suggestion-chip">🔍 Give me a real-world example</button>
+              <button type="button" class="suggestion-chip">📋 Break down this concept step-by-step</button>
+              <button type="button" class="suggestion-chip">⚠️ What are common mistakes to avoid?</button>
+            </div>
+          </div>
+
+          <!-- Chat Messages Area -->
+          <div id="doubt-messages-container" class="doubt-messages-container" aria-live="polite">
+            <!-- Messages will be rendered here -->
+          </div>
+
+          <!-- Doubt Input Form -->
+          <form id="doubt-form" class="doubt-input-form">
+            <div class="doubt-input-wrap">
+              <textarea
+                id="doubt-input"
+                class="doubt-textarea"
+                placeholder="Ask any question about your notes... (e.g., 'I don't understand what normalization means')"
+                rows="2"
+              ></textarea>
+            </div>
+            <button type="submit" id="send-doubt-btn" class="btn btn-primary doubt-send-btn">
+              <span id="doubt-send-spinner" class="btn-spinner hidden"></span>
+              <span id="doubt-send-icon">Ask Doubt ✨</span>
+            </button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div class="footer-container">
+        <p>AI Study Assistant • Summarizer • Interactive Quizzes • Doubt Clarification</p>
+        <p class="footer-api-info">Secure server-side Gemini integration. API key is never exposed to the client.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
