@@ -28,6 +28,7 @@ from sakshya.core.models import ApplicationDB, FindingDB, AuditLogDB
 from sakshya.core.security import DEMO_USERS, get_current_user
 from sakshya.core.audit import verify_audit_chain
 from sakshya.dashboard.responsive import inject_responsive_css
+from sakshya.dashboard.upload_ui import render_upload_and_validation_ui
 
 # Page setup - MUST be first Streamlit command
 st.set_page_config(
@@ -80,6 +81,35 @@ st.markdown(f"""
     </div>
 </div>
 """, unsafe_allow_html=True)
+
+# =============================================================================
+# Prominent Document Upload & Targeted Validation Section
+# =============================================================================
+st.markdown("""
+<div style="background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%); color: white; padding: clamp(16px, 3vw, 22px); border-radius: 12px; margin: 18px 0 15px 0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+    <div class="responsive-flex">
+        <div style="flex: 1 1 300px;">
+            <h2 style="margin: 0; color: white; font-size: clamp(18px, 3.8vw, 22px);">📤 Upload & Validate Institutional Document</h2>
+            <p style="margin: 6px 0 0 0; color: #E0E7FF; font-size: clamp(13px, 2.5vw, 14.5px); line-height: 1.45;">
+                Upload an institutional document to check it against the college's existing records, identify compliance issues, and verify regulatory norms in real time.
+            </p>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+col_cta_btn, col_cta_toggle = st.columns([1, 1])
+with col_cta_btn:
+    if st.button("🚀 Open Dedicated Upload & Scrutiny Page", type="primary", use_container_width=True, key="landing_upload_cta_btn"):
+        st.switch_page("pages/1_Application_Review.py")
+with col_cta_toggle:
+    show_direct_upload = st.toggle("⚡ Direct Verification: Upload & Validate on this Landing Page", value=True, key="landing_upload_toggle")
+
+if show_direct_upload:
+    with st.container():
+        render_upload_and_validation_ui(key_prefix="landing_", show_header=False)
+
+st.markdown("---")
 
 # Fetch stats from SQLite safely within active session
 with get_db_context() as db:

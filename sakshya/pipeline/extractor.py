@@ -86,6 +86,19 @@ class FieldExtractor:
                 extraction_method="layout_context"
             ))
 
+        # 6. Sponsoring Society / Trust Name
+        trust_m = re.search(r"sponsoring\s+body\s+([^\n,]+?),?\s*for\s+the\s+establishment", text, re.IGNORECASE)
+        if not trust_m:
+            trust_m = re.search(r"(?:Sponsoring\s*Society|Trust|Sponsoring\s*Body)\s*[:\-]?\s*([^\n,]+)", text, re.IGNORECASE)
+        if trust_m:
+            fields.append(ExtractedField(
+                field_name="society_trust_name",
+                field_value=trust_m.group(1).strip(),
+                confidence=0.92,
+                source_document=filename,
+                extraction_method="layout_context"
+            ))
+
         return fields
 
     def extract_from_building_plan(self, text: str, filename: str) -> List[ExtractedField]:

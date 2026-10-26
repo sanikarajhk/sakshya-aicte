@@ -5,7 +5,7 @@ readiness evaluation, ring detection, and audit verification.
 """
 
 from typing import List, Dict, Any, Optional
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, UploadFile, File, Form
 from sqlalchemy.orm import Session
 import json
 
@@ -19,6 +19,7 @@ from sakshya.pipeline.pipeline_runner import PipelineRunner
 from sakshya.pipeline.mock_issuer import MockAuthorityVerifier
 from sakshya.pipeline.ring_detector import RingDetector
 from sakshya.pipeline.readiness import ReadinessEvaluator
+from sakshya.pipeline.single_doc_validator import SingleDocValidator, CollegeIdentificationResult, IdentificationStatus
 from sakshya.data_generator.ground_truth import load_ground_truth
 
 router = APIRouter()
@@ -26,6 +27,7 @@ runner = PipelineRunner()
 mock_verifier = MockAuthorityVerifier()
 ring_detector = RingDetector()
 readiness_evaluator = ReadinessEvaluator()
+doc_validator = SingleDocValidator()
 
 
 @router.get("/health")
@@ -275,3 +277,77 @@ def get_audit_logs(limit: int = 50, db: Session = Depends(get_db)):
         }
         for l in logs
     ]
+
+
+@router.post("/documents/validate-upload")
+async def upload_and_validate_document(
+    file: UploadFile = File(...),
+    target_college_id: Optional[str] = Form(None),
+    db: Session = Depends(get_db)
+):
+    """
+    Upload an institutional PDF document and validate it against the
+    identified or explicitly specified registered college.
+    """
+    file_bytes = await file.read()
+    if not file_bytes:
+        raise HTTPException(status_code=400, detail="Uploaded file is empty (0 bytes).")
+
+    is_valid, err_msg, metadata = doc_validator.validate_pdf_bytes(file_bytes, file.filename)
+    if not is_valid:
+        raise HTTPException(status_code=400, detail=err_msg)
+
+    # Identify college if not explicitly provided
+    if target_college_id:
+        college_id = target_college_id
+        if college_id not in doc_validator.gt:
+            raise HTTPException(status_code=404, detail=f"Target college '{college_id}' not found in database.")
+        ident = CollegeIdentificationResult(
+            status=IdentificationStatus.EXACT_MATCH,
+            identified_app_id=college_id,
+            identified_name=doc_validator.gt[college_id]["institution_name"],
+            confidence=1.0,
+            method="Explicit Client Request"
+        )
+    else:
+        ident = doc_validator.identify_college(metadata["full_text"], metadata["filename"], metadata.get("qr_content"))
+        if ident.status == IdentificationStatus.UNKNOWN_COLLEGE:
+            return {
+                "identification": ident.dict(),
+                "validation": None,
+                "detail": "Document does not belong to any of the 30 registered AICTE colleges."
+            }
+        elif ident.status == IdentificationStatus.AMBIGUOUS_MATCH:
+            return {
+                "identification": ident.dict(),
+                "validation": None,
+                "detail": "Multiple candidate colleges matched. Please specify target_college_id to confirm."
+            }
+        college_id = ident.identified_app_id
+
+    doc_type = doc_validator.infer_document_type(metadata["full_text"], metadata["filename"])
+    res = doc_validator.validate_document_against_college(college_id, doc_type, file.filename, metadata)
+
+    # Log audit event
+    log_event(
+        db=db,
+        actor_id="API_CLIENT",
+        actor_role="institution_applicant",
+        action="DOCUMENT_UPLOAD_AND_VALIDATE",
+        entity_type="application",
+        entity_id=college_id,
+        details={
+            "filename": file.filename,
+            "doc_type": doc_type.value,
+            "overall_status": res.overall_status,
+            "confidence": res.calibrated_confidence,
+            "passed_checks": len(res.passed_checks),
+            "mismatches": len(res.mismatches)
+        }
+    )
+
+    return {
+        "identification": ident.dict(),
+        "validation": res.dict()
+    }
+

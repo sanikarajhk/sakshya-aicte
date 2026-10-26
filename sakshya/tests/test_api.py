@@ -73,3 +73,25 @@ def test_audit_verify_endpoint(client):
     assert resp.status_code == 200
     data = resp.json()
     assert data["valid"] is True
+
+
+def test_upload_and_validate_document_api(client):
+    """Test upload and targeted validation endpoint via REST API."""
+    from pathlib import Path
+    from sakshya.data_generator.ground_truth import load_ground_truth
+    gt = load_ground_truth()
+    doc_path = Path(gt["APP-001"]["documents"][0]["file_path"])
+
+    with open(doc_path, "rb") as f:
+        file_bytes = f.read()
+
+    files = {"file": (doc_path.name, file_bytes, "application/pdf")}
+    data = {"target_college_id": "APP-001"}
+    resp = client.post("/api/documents/validate-upload", files=files, data=data)
+    assert resp.status_code == 200
+    res_data = resp.json()
+    assert "identification" in res_data
+    assert "validation" in res_data
+    assert res_data["validation"]["college_id"] == "APP-001"
+    assert res_data["validation"]["overall_status"] == "VERIFIED_AUTO"
+
