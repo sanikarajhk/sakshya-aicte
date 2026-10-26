@@ -42,12 +42,26 @@ st.set_page_config(
 inject_responsive_css()
 
 # Self-healing database check for cloud environments
-with get_db_context() as db:
-    init_db()
-    if db.query(ApplicationDB).count() == 0:
-        from sakshya.pipeline.pipeline_runner import PipelineRunner
-        runner = PipelineRunner()
-        runner.process_all_historical_applications()
+@st.cache_resource(show_spinner="Verifying regulatory database integrity...")
+def ensure_database_initialized() -> bool:
+    """Ensure database and reference records exist without blocking on every rerun."""
+    try:
+        init_db()
+        with get_db_context() as db:
+            count = db.query(ApplicationDB).count()
+        if count == 0:
+            from sakshya.pipeline.pipeline_runner import PipelineRunner
+            runner = PipelineRunner()
+            runner.process_all_historical_applications()
+        return True
+    except Exception as e:
+        import logging
+        logging.exception(f"Regulatory database initialization warning: {e}")
+        return False
+
+db_ready = ensure_database_initialized()
+if not db_ready:
+    st.warning("⚠️ Regulatory database initialization encountered an issue. Defaulting to safe fallback mode.")
 
 # Sidebar: User Role Selection & Official System Identity
 st.sidebar.markdown("""
@@ -126,42 +140,63 @@ if show_direct_upload:
 st.markdown("<hr style='margin: 16px 0; border: none; border-top: 1px solid #E2E8F0;'>", unsafe_allow_html=True)
 
 # Fetch stats from SQLite safely within active session
-with get_db_context() as db:
-    apps_raw = db.query(ApplicationDB).all()
-    apps_data = [
-        {
-            "id": a.id,
-            "institution_name": a.institution_name,
-            "institution_type": a.institution_type,
-            "state": a.state,
-            "district": a.district,
-            "applied_intake": a.applied_intake,
-            "status": a.status.value,
-            "overall_confidence": a.overall_confidence,
-            "readiness_score": a.readiness_score,
-            "flagged_ring": a.flagged_ring
-        }
-        for a in apps_raw
-    ]
-    total_apps = len(apps_data)
-    clean_count = sum(1 for a in apps_data if a["status"] == "VERIFIED_AUTO")
-    officer_count = sum(1 for a in apps_data if a["status"] == "NEEDS_OFFICER_REVIEW")
-    anomaly_count = sum(1 for a in apps_data if a["status"] == "FLAGGED_ANOMALY")
-    ring_count = sum(1 for a in apps_data if a["flagged_ring"])
-    audit_res = verify_audit_chain(db)
-    audit_valid = audit_res.get("valid", False)
-    audit_records = audit_res.get("total_records", 0)
+apps_data = []
+total_apps = 0
+clean_count = 0
+officer_count = 0
+anomaly_count = 0
+ring_count = 0
+audit_valid = False
+audit_records = 0
+
+try:
+    with get_db_context() as db:
+        apps_raw = db.query(ApplicationDB).all()
+        apps_data = [
+            {
+                "id": a.id,
+                "institution_name": a.institution_name,
+                "institution_type": a.institution_type,
+                "state": a.state,
+                "district": a.district,
+                "applied_intake": a.applied_intake or 0,
+                "status": a.status.value if hasattr(a.status, "value") else str(a.status),
+                "overall_confidence": a.overall_confidence if a.overall_confidence is not None else 1.0,
+                "readiness_score": a.readiness_score if a.readiness_score is not None else 0.0,
+                "flagged_ring": bool(a.flagged_ring)
+            }
+            for a in apps_raw
+        ]
+        total_apps = len(apps_data)
+        clean_count = sum(1 for a in apps_data if a["status"] == "VERIFIED_AUTO")
+        officer_count = sum(1 for a in apps_data if a["status"] == "NEEDS_OFFICER_REVIEW")
+        anomaly_count = sum(1 for a in apps_data if a["status"] == "FLAGGED_ANOMALY")
+        ring_count = sum(1 for a in apps_data if a["flagged_ring"])
+        try:
+            audit_res = verify_audit_chain(db)
+            audit_valid = audit_res.get("valid", False)
+            audit_records = audit_res.get("total_records", 0)
+        except Exception:
+            audit_valid = False
+            audit_records = 0
+except Exception as e:
+    st.error(f"⚠️ Unable to query application records: {e}")
+
+# KPI Percentage deltas protected against ZeroDivisionError
+clean_pct = f"{clean_count/total_apps*100:.0f}%" if total_apps > 0 else "0%"
+officer_pct = f"{officer_count/total_apps*100:.0f}%" if total_apps > 0 else "0%"
+anomaly_pct = f"{anomaly_count/total_apps*100:.0f}%" if total_apps > 0 else "0%"
 
 # Top KPI Metrics
 kpi1, kpi2, kpi3, kpi4, kpi5 = st.columns(5)
 with kpi1:
     st.metric("Total Applications", total_apps, help="Total synthetic institutional dossiers submitted")
 with kpi2:
-    st.metric("Auto-Verified (Clean)", clean_count, delta=f"{clean_count/total_apps*100:.0f}%", delta_color="normal")
+    st.metric("Auto-Verified (Clean)", clean_count, delta=clean_pct, delta_color="normal")
 with kpi3:
-    st.metric("Needs Officer Review", officer_count, delta=f"{officer_count/total_apps*100:.0f}%", delta_color="off")
+    st.metric("Needs Officer Review", officer_count, delta=officer_pct, delta_color="off")
 with kpi4:
-    st.metric("Flagged Anomaly / Ring", anomaly_count, delta=f"{anomaly_count/total_apps*100:.0f}%", delta_color="inverse")
+    st.metric("Flagged Anomaly / Ring", anomaly_count, delta=anomaly_pct, delta_color="inverse")
 with kpi5:
     st.metric("Audit Chain Integrity", "VERIFIED ✅" if audit_valid else "CORRUPTED ❌", f"{audit_records} blocks")
 
@@ -203,15 +238,18 @@ with col_chart1:
 
 with col_chart2:
     st.subheader("State-wise Intake & Anomaly Concentration")
-    state_records = [
-        {
-            "State": a["state"],
-            "Intake": a["applied_intake"],
-            "Anomaly": 1 if a["status"] == "FLAGGED_ANOMALY" else 0
-        }
-        for a in apps_data
-    ]
-    state_df = pd.DataFrame(state_records).groupby("State").agg({"Intake": "sum", "Anomaly": "sum"}).reset_index()
+    if apps_data:
+        state_records = [
+            {
+                "State": a["state"],
+                "Intake": a["applied_intake"],
+                "Anomaly": 1 if a["status"] == "FLAGGED_ANOMALY" else 0
+            }
+            for a in apps_data
+        ]
+        state_df = pd.DataFrame(state_records).groupby("State").agg({"Intake": "sum", "Anomaly": "sum"}).reset_index()
+    else:
+        state_df = pd.DataFrame(columns=["State", "Intake", "Anomaly"])
 
     # Desktop Chart (Screens > 768px): Vertical bars with horizontal bottom colorbar & clean top margin
     fig_bar = px.bar(
@@ -320,8 +358,8 @@ app_rows = [
         "Category": a["institution_type"],
         "State / City": f"{a['state']} ({a['district']})",
         "Status": a["status"],
-        "Calibrated Confidence": f"{a['overall_confidence']:.1%}",
-        "Readiness Checklist": f"{a['readiness_score']:.1f}%",
+        "Calibrated Confidence": f"{a['overall_confidence']:.1%}" if isinstance(a.get("overall_confidence"), (int, float)) else "100%",
+        "Readiness Checklist": f"{a['readiness_score']:.1f}%" if isinstance(a.get("readiness_score"), (int, float)) else "0.0%",
         "Collusion Ring": "Cluster Member" if a["flagged_ring"] else "Clear"
     }
     for a in apps_data

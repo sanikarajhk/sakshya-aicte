@@ -19,7 +19,9 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, expire_on_commit=
 
 
 def init_db():
-    """Create all database tables."""
+    """Create all database tables and ensure storage directory exists."""
+    from sakshya.core.config import DATA_DIR
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
     Base.metadata.create_all(bind=engine)
 
 
