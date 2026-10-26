@@ -20,8 +20,10 @@ import json
 from sakshya.core.database import get_db_context
 from sakshya.core.models import AuditLogDB
 from sakshya.core.audit import verify_audit_chain
+from sakshya.dashboard.responsive import inject_responsive_css
 
 st.set_page_config(page_title="Audit Trail | Sakshya", page_icon="🔒", layout="wide")
+inject_responsive_css()
 
 st.title("🔒 Cryptographic Hash-Chained Audit Trail")
 st.caption("Tamper-evident regulatory record ensuring non-repudiation of all document uploads, AI findings, and officer overrides.")

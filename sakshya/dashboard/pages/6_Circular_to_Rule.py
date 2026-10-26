@@ -19,8 +19,10 @@ import streamlit as st
 import yaml
 from sakshya.core.security import get_current_user, can_approve_rules
 from sakshya.circular_to_rule.engine import CircularToRuleEngine
+from sakshya.dashboard.responsive import inject_responsive_css
 
 st.set_page_config(page_title="Circular-to-Rule | Sakshya", page_icon="📜", layout="wide")
+inject_responsive_css()
 
 st.title("📜 AICTE Circular-to-Rule Translation & Replay Sandbox")
 st.caption("Converts unstructured policy circulars into executable YAML rules with historical impact simulation.")
@@ -70,7 +72,7 @@ st.markdown("""
 to evaluate systemic impact and identify newly qualifying or disqualified colleges.*
 """)
 
-if st.button("🚀 Execute Historical Batch Replay (30 Applications)"):
+if st.button("🚀 Execute Historical Batch Replay (30 Applications)", use_container_width=True):
     with st.spinner("Replaying amended rule against all historical dossiers..."):
         replay_res = engine.replay_against_historical_applications(proposal["proposed_yaml"])
 
@@ -94,7 +96,7 @@ if st.button("🚀 Execute Historical Batch Replay (30 Applications)"):
         st.warning("🔒 RULE ACTIVATION LOCKED: Only AICTE Administrators can approve and activate new regulatory rules.")
     else:
         st.success(f"Administrator verified: **{current_user.full_name}** (`{current_user.user_id}`).")
-        if st.button("✅ Approve & Activate Amended Rule into Active Production Engine"):
+        if st.button("✅ Approve & Activate Amended Rule into Active Production Engine", use_container_width=True):
             engine.activate_proposed_rule(proposal["proposed_yaml"], current_user.user_id)
             st.success("Rule successfully activated and committed to circular_rules.yaml!")
             st.balloons()

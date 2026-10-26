@@ -22,8 +22,10 @@ import pandas as pd
 from sakshya.core.config import DATA_DIR
 from sakshya.pipeline.ring_detector import RingDetector
 from sakshya.data_generator.ground_truth import load_ground_truth
+from sakshya.dashboard.responsive import inject_responsive_css
 
 st.set_page_config(page_title="Ring Detection | Sakshya", page_icon="🔗", layout="wide")
+inject_responsive_css()
 
 st.title("🔗 Cross-Institution Collusion & Ring Detection")
 st.caption("Graph analytics detecting multi-institution coordination via shared stamps, lease templates, and document fingerprints.")
@@ -53,19 +55,21 @@ detector.to_pyvis_network(str(network_html_file))
 
 # Legend
 st.markdown("""
-<div style="display: flex; gap: 15px; background-color: #0F172A; padding: 10px 16px; border-radius: 8px; color: white; font-size: 13px; margin-bottom: 15px;">
-    <span><span style="color: #EF4444;">●</span> <b>Flagged Ring Institution</b></span>
-    <span><span style="color: #3B82F6;">●</span> Independent Institution</span>
-    <span><span style="color: #DC2626; font-weight: bold;">━</span> High-Risk Edge (Multi-Asset Overlap)</span>
-    <span><span style="color: #F59E0B;">━</span> Moderate Shared Signal</span>
-    <span><span style="color: #475569;">━</span> Benign Attribute (Bank / Region)</span>
+<div class="responsive-legend">
+    <span><span style="color: #EF4444; margin-right: 5px;">●</span> <b>Flagged Ring Institution</b></span>
+    <span><span style="color: #3B82F6; margin-right: 5px;">●</span> Independent Institution</span>
+    <span><span style="color: #DC2626; font-weight: bold; margin-right: 5px;">━</span> High-Risk Edge</span>
+    <span><span style="color: #F59E0B; margin-right: 5px;">━</span> Moderate Shared Signal</span>
+    <span><span style="color: #475569; margin-right: 5px;">━</span> Benign Attribute</span>
 </div>
 """, unsafe_allow_html=True)
+
+st.caption("📱 *Touch tip: On mobile devices, swipe using two fingers or touch outside the graph box to scroll the page.*")
 
 if network_html_file.exists():
     with open(network_html_file, "r", encoding="utf-8") as f:
         html_code = f.read()
-    components.html(html_code, height=650, scrolling=False)
+    components.html(html_code, height=600, scrolling=True)
 
 # Cluster Deep Dive Section
 st.markdown("---")

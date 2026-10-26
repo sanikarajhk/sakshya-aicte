@@ -27,6 +27,7 @@ from sakshya.core.database import get_db_context, init_db
 from sakshya.core.models import ApplicationDB, FindingDB, AuditLogDB
 from sakshya.core.security import DEMO_USERS, get_current_user
 from sakshya.core.audit import verify_audit_chain
+from sakshya.dashboard.responsive import inject_responsive_css
 
 # Page setup - MUST be first Streamlit command
 st.set_page_config(
@@ -36,6 +37,9 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Universal responsive UI styling
+inject_responsive_css()
+
 # Self-healing database check for cloud environments
 with get_db_context() as db:
     init_db()
@@ -43,38 +47,6 @@ with get_db_context() as db:
         from sakshya.pipeline.pipeline_runner import PipelineRunner
         runner = PipelineRunner()
         runner.process_all_historical_applications()
-
-# Custom CSS for polished government portal aesthetic
-st.markdown("""
-<style>
-    .main-header {
-        background: linear-gradient(135deg, #1E3A8A 0%, #0F172A 100%);
-        padding: 24px;
-        border-radius: 12px;
-        color: white;
-        margin-bottom: 24px;
-        border-left: 6px solid #F59E0B;
-    }
-    .metric-card {
-        background-color: #F8FAFC;
-        border: 1px solid #E2E8F0;
-        border-radius: 8px;
-        padding: 16px;
-        text-align: center;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-    .status-badge {
-        display: inline-block;
-        padding: 4px 10px;
-        border-radius: 12px;
-        font-size: 12px;
-        font-weight: 600;
-    }
-    .badge-clean { background-color: #DEF7EC; color: #03543F; }
-    .badge-review { background-color: #FEF08A; color: #713F12; }
-    .badge-anomaly { background-color: #FDE8E8; color: #9B1C1C; }
-</style>
-""", unsafe_allow_html=True)
 
 # Sidebar: User Role Selection & Portal Info
 st.sidebar.image("https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/All_India_Council_for_Technical_Education_logo.png/220px-All_India_Council_for_Technical_Education_logo.png", width=110)
@@ -173,7 +145,12 @@ with col_chart1:
         },
         hole=0.45
     )
-    fig_donut.update_layout(margin=dict(t=20, b=20, l=20, r=20), height=300)
+    fig_donut.update_layout(
+        margin=dict(t=25, b=25, l=15, r=15),
+        height=320,
+        autosize=True,
+        legend=dict(orientation="h", yanchor="bottom", y=-0.35, xanchor="center", x=0.5)
+    )
     st.plotly_chart(fig_donut, use_container_width=True)
 
 with col_chart2:
@@ -196,7 +173,12 @@ with col_chart2:
         labels={"Intake": "Applied Student Seats", "Anomaly": "Flagged Dossiers"},
         title="Approved Intake vs Anomaly Concentration"
     )
-    fig_bar.update_layout(margin=dict(t=20, b=20, l=20, r=20), height=300)
+    fig_bar.update_layout(
+        margin=dict(t=25, b=25, l=15, r=15),
+        height=320,
+        autosize=True,
+        legend=dict(orientation="h", yanchor="bottom", y=-0.35, xanchor="center", x=0.5)
+    )
     st.plotly_chart(fig_bar, use_container_width=True)
 
 # Overview Applications Table

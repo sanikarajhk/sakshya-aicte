@@ -22,8 +22,10 @@ from sakshya.core.database import get_db_context
 from sakshya.core.models import ApplicationDB, DocumentDB, FindingDB
 from sakshya.pipeline.pipeline_runner import PipelineRunner
 from sakshya.data_generator.ground_truth import load_ground_truth
+from sakshya.dashboard.responsive import inject_responsive_css
 
 st.set_page_config(page_title="Claim-Evidence Graph | Sakshya", page_icon="🕸️", layout="wide")
+inject_responsive_css()
 
 st.title("🕸️ Claim-Evidence Provenance & Contradiction Graph")
 st.caption("Visualizes evidentiary linkages between extracted claims, source documents, regulatory rules, and authority checks.")
@@ -89,21 +91,23 @@ runner.graph_builder.to_pyvis_network(G, str(graph_html_file))
 
 # Legend
 st.markdown("""
-<div style="display: flex; gap: 15px; background-color: #1E293B; padding: 10px 16px; border-radius: 8px; color: white; font-size: 13px; margin-bottom: 15px;">
-    <span><span style="color: #2B6CB0;">●</span> Application Node</span>
-    <span><span style="color: #4A5568;">●</span> Document Node</span>
-    <span><span style="color: #3182CE;">●</span> Claim Node</span>
-    <span><span style="color: #805AD5;">●</span> Regulatory Rule</span>
-    <span><span style="color: #38A169;">●</span> Verified Authority</span>
-    <span><span style="color: #E53E3E;">●</span> <b>Contradiction / Conflict</b></span>
+<div class="responsive-legend">
+    <span><span style="color: #2B6CB0; margin-right: 5px;">●</span> Application Node</span>
+    <span><span style="color: #4A5568; margin-right: 5px;">●</span> Document Node</span>
+    <span><span style="color: #3182CE; margin-right: 5px;">●</span> Claim Node</span>
+    <span><span style="color: #805AD5; margin-right: 5px;">●</span> Regulatory Rule</span>
+    <span><span style="color: #38A169; margin-right: 5px;">●</span> Verified Authority</span>
+    <span><span style="color: #E53E3E; margin-right: 5px;">●</span> <b>Contradiction / Conflict</b></span>
 </div>
 """, unsafe_allow_html=True)
+
+st.caption("📱 *Touch tip: On mobile devices, swipe using two fingers or touch outside the graph box to scroll the page.*")
 
 # Render Pyvis HTML inside Streamlit iframe
 if graph_html_file.exists():
     with open(graph_html_file, "r", encoding="utf-8") as f:
         html_content = f.read()
-    components.html(html_content, height=650, scrolling=False)
+    components.html(html_content, height=600, scrolling=True)
 else:
     st.error("Graph visualization could not be generated.")
 

@@ -21,8 +21,10 @@ from sakshya.core.database import get_db_context
 from sakshya.core.models import ApplicationDB, DocumentDB, FindingDB
 from sakshya.pipeline.readiness import ReadinessEvaluator
 from sakshya.data_generator.ground_truth import load_ground_truth
+from sakshya.dashboard.responsive import inject_responsive_css
 
 st.set_page_config(page_title="Readiness Check | Sakshya", page_icon="📋", layout="wide")
+inject_responsive_css()
 
 st.title("📋 Institutional Pre-Submission Readiness Checklist")
 st.caption("Self-audit tool for applicant institutions to diagnose missing documents, lapsed certificates, and data conflicts.")
@@ -85,7 +87,9 @@ st.markdown("---")
 
 # Formula Breakdown Card
 st.subheader("📐 Explicit Mathematical Checklist Formula")
+st.markdown('<div style="overflow-x: auto; max-width: 100%; padding: 6px 0;">', unsafe_allow_html=True)
 st.latex(r"\text{Readiness Score} = \left( \frac{\sum_{i=1}^{N} (w_i \times \text{Pass}_i)}{\sum_{i=1}^{N} w_i} \right) \times 100")
+st.markdown('</div>', unsafe_allow_html=True)
 
 # Detailed Checklist Table
 st.subheader("Audit Checklist Breakdown")

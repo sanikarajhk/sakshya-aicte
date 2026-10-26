@@ -20,8 +20,10 @@ import json
 from sakshya.core.database import get_db_context
 from sakshya.core.models import ApplicationDB, DocumentDB, FindingDB, ExtractedFieldDB
 from sakshya.data_generator.ground_truth import load_ground_truth
+from sakshya.dashboard.responsive import inject_responsive_css
 
 st.set_page_config(page_title="Application Review | Sakshya", page_icon="📄", layout="wide")
+inject_responsive_css()
 
 st.title("📄 Institutional Application Dossier Review")
 st.caption("Deep-dive inspection of extracted claims, document fingerprints, and statutory rule findings.")
@@ -94,17 +96,17 @@ status_color = {
 }.get(app_db["status"], "#6B7280")
 
 st.markdown(f"""
-<div style="background-color: #F8FAFC; border-left: 6px solid {status_color}; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div>
-            <h2 style="margin: 0; color: #1E293B;">{app_db['institution_name']} ({app_db['id']})</h2>
-            <p style="margin: 4px 0 0 0; color: #64748B;">Category: <b>{app_db['institution_type']}</b> • Location: <b>{app_db['district']}, {app_db['state']}</b> • Applied Intake: <b>{app_db['applied_intake']} Seats</b></p>
+<div style="background-color: #F8FAFC; border-left: 6px solid {status_color}; padding: clamp(12px, 3vw, 18px); border-radius: 10px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+    <div class="responsive-flex">
+        <div style="flex: 1 1 280px;">
+            <h2 style="margin: 0; color: #1E293B; font-size: clamp(17px, 3.8vw, 22px);">{app_db['institution_name']} ({app_db['id']})</h2>
+            <p style="margin: 6px 0 0 0; color: #64748B; font-size: clamp(12px, 2.5vw, 13.5px); line-height: 1.4;">Category: <b>{app_db['institution_type']}</b> • Location: <b>{app_db['district']}, {app_db['state']}</b> • Applied Intake: <b>{app_db['applied_intake']} Seats</b></p>
         </div>
-        <div style="text-align: right;">
-            <span style="background-color: {status_color}; color: white; padding: 6px 14px; border-radius: 16px; font-weight: bold; font-size: 14px;">
+        <div style="flex: 0 0 auto; text-align: right;">
+            <span style="background-color: {status_color}; color: white; padding: 6px 14px; border-radius: 16px; font-weight: bold; font-size: clamp(12px, 2.5vw, 13.5px); display: inline-block;">
                 {app_db['status']}
             </span>
-            <div style="margin-top: 6px; font-size: 13px; color: #475569;">Calibrated Confidence: <b>{app_db['overall_confidence']:.1%}</b></div>
+            <div style="margin-top: 6px; font-size: clamp(11.5px, 2.2vw, 13px); color: #475569;">Calibrated Confidence: <b>{app_db['overall_confidence']:.1%}</b></div>
         </div>
     </div>
 </div>
@@ -134,19 +136,19 @@ with tab_findings:
             claims_list = f["evidence_claims"]
 
             st.markdown(f"""
-            <div style="background-color: white; border: 1px solid #E2E8F0; border-radius: 8px; padding: 14px; margin-bottom: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <b style="font-size: 15px; color: #0F172A;">{f['title']}</b>
-                    <span style="{sev_badge} padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold;">
+            <div style="background-color: white; border: 1px solid #E2E8F0; border-radius: 8px; padding: clamp(10px, 2.5vw, 16px); margin-bottom: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); word-break: break-word;">
+                <div class="responsive-flex">
+                    <b style="font-size: clamp(14px, 3vw, 16px); color: #0F172A; flex: 1 1 200px;">{f['title']}</b>
+                    <span style="{sev_badge} padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: bold; white-space: nowrap;">
                         {f['severity']}
                     </span>
                 </div>
-                <p style="margin: 8px 0; color: #334155; font-size: 13.5px;">{f['description']}</p>
-                <div style="font-size: 12px; color: #64748B;">
+                <p style="margin: 8px 0; color: #334155; font-size: clamp(12.5px, 2.5vw, 14px); line-height: 1.45;">{f['description']}</p>
+                <div style="font-size: 12px; color: #64748B; line-height: 1.5; word-break: break-word;">
                     <b>Rule Ref:</b> <code>{f['rule_id'] or 'SYSTEM_CHECK'}</code> • <b>Document:</b> <code>{f['document_id'] or 'Application Master'}</code>
                 </div>
-                {"<div style='margin-top: 6px; padding: 6px 10px; background-color: #F8FAFC; border-radius: 4px; font-size: 12px;'><b>Evidentiary Claims:</b> " + " | ".join(claims_list) + "</div>" if claims_list else ""}
-                <div style="margin-top: 8px; font-size: 12.5px; color: #0369A1;">
+                {"<div style='margin-top: 6px; padding: 6px 10px; background-color: #F8FAFC; border-radius: 4px; font-size: 12px; line-height: 1.4; word-break: break-word;'><b>Evidentiary Claims:</b> " + " | ".join(claims_list) + "</div>" if claims_list else ""}
+                <div style="margin-top: 8px; font-size: 12.5px; color: #0369A1; line-height: 1.4;">
                     <b>Recommended Action:</b> {f['recommended_action']}
                 </div>
             </div>
@@ -175,7 +177,8 @@ with tab_docs:
                     data=f_bytes.read(),
                     file_name=d["filename"],
                     mime="application/pdf" if d["filename"].endswith(".pdf") else "image/png",
-                    key=f"dl_{d['id']}"
+                    key=f"dl_{d['id']}",
+                    use_container_width=True
                 )
         st.markdown("---")
 

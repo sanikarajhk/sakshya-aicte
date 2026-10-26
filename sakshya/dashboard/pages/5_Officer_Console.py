@@ -23,8 +23,10 @@ from sakshya.core.models import ApplicationDB, FindingDB, OfficerActionDB
 from sakshya.core.security import get_current_user, can_override_decision
 from sakshya.core.audit import log_event
 from sakshya.data_generator.ground_truth import load_ground_truth
+from sakshya.dashboard.responsive import inject_responsive_css
 
 st.set_page_config(page_title="Officer Console | Sakshya", page_icon="⚖️", layout="wide")
+inject_responsive_css()
 
 st.title("⚖️ AICTE Scrutiny Officer Adjudication Console")
 st.caption("Official regulatory decision portal for reviewing dossiers, confirming findings, or recording justified overrides.")
@@ -136,7 +138,7 @@ with col_right:
             value=False
         )
 
-        submitted = st.form_submit_button("⚖️ Commit Regulatory Decision to Audit Chain")
+        submitted = st.form_submit_button("⚖️ Commit Regulatory Decision to Audit Chain", use_container_width=True)
 
         if submitted:
             if not override_confirm:
