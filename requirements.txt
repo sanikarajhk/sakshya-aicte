@@ -24,7 +24,7 @@ reportlab>=4.2.0
 
 # OCR & Computer Vision
 pytesseract>=0.3.10
-opencv-python>=4.9.0
+opencv-python-headless>=4.9.0
 pillow>=10.3.0
 pyzbar>=0.1.9
 

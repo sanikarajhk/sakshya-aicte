@@ -7,9 +7,15 @@ and Tesseract OCR for English & Hindi with graceful fallback.
 import os
 from pathlib import Path
 from typing import Dict, Any, List, Optional
-import cv2
 import numpy as np
 from PIL import Image
+
+try:
+    import cv2
+    cv2_available = True
+except Exception:
+    cv2 = None
+    cv2_available = False
 
 try:
     import pdfplumber
@@ -43,6 +49,7 @@ class DocumentReader:
         self.lang = lang
         self.pytesseract_available = pytesseract_available
         self.pyzbar_available = pyzbar_available
+        self.cv2_available = cv2_available
 
     def preprocess_image_cv2(self, image_path: Path) -> np.ndarray:
         """
@@ -51,10 +58,21 @@ class DocumentReader:
         - Bilateral filtering / denoising
         - Otsu adaptive thresholding
         - Deskewing / morphological cleanup
+        Falls back to PIL grayscale conversion if OpenCV is unavailable.
         """
+        if not image_path.exists():
+            raise FileNotFoundError(f"Cannot read image at {image_path}")
+
+        if not self.cv2_available or cv2 is None:
+            with Image.open(image_path) as im:
+                gray = im.convert("L")
+                return np.array(gray)
+
         img = cv2.imread(str(image_path))
         if img is None:
-            raise FileNotFoundError(f"Cannot read image at {image_path}")
+            with Image.open(image_path) as im:
+                gray = im.convert("L")
+                return np.array(gray)
 
         # Grayscale
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
