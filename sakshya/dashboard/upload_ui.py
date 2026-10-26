@@ -26,24 +26,24 @@ def render_upload_and_validation_ui(key_prefix: str = "", show_header: bool = Tr
     validator = SingleDocValidator(ground_truth=gt)
 
     if show_header:
-        st.subheader("📤 Upload & Validate Institutional Document")
+        st.subheader("Upload & Validate Institutional Document")
         st.markdown(
-            "Upload an institutional document (PDF) to check it against the college's existing records, "
-            "identify compliance issues, and verify regulatory norms in real time."
+            "Upload an institutional regulatory document (PDF) to scrutinize compliance against reference college records, "
+            "statutory requirements, and AICTE approval norms."
         )
 
     # 1. File Uploader Widget
     uploaded_file = st.file_uploader(
-        "Choose an Institutional PDF Document to Authenticate",
+        "Select Institutional PDF Document for Scrutiny",
         type=["pdf"],
         key=f"{key_prefix}pdf_uploader",
         help="Upload a digital or scanned regulatory PDF. Processing occurs securely in memory without modifying the synthetic dataset."
     )
 
     # 2. Quick sample document selector for instant testing
-    with st.expander("💡 Or test instantly using a sample document from the synthetic repository"):
+    with st.expander("Administrative Test Repository — Pre-generated Institutional Samples"):
         sample_options = [
-            "-- Select a pre-generated sample --",
+            "-- Select an institutional sample document --",
             "APP-001: Land Title Deed (Clean / Valid)",
             "APP-001: Building Plan Approval Order",
             "APP-001: Fire Safety Certificate",
@@ -67,7 +67,7 @@ def render_upload_and_validation_ui(key_prefix: str = "", show_header: bool = Tr
     if uploaded_file is not None:
         file_bytes = uploaded_file.read()
         filename = uploaded_file.name
-    elif sample_choice != "-- Select a pre-generated sample --":
+    elif sample_choice != "-- Select an institutional sample document --":
         sample_app_id = sample_choice.split(":")[0].strip()
         doc_keyword = sample_choice.split(":")[1].lower()
         if sample_app_id in gt:
@@ -88,16 +88,16 @@ def render_upload_and_validation_ui(key_prefix: str = "", show_header: bool = Tr
                         break
 
     if file_bytes is None:
-        st.info("👆 Please upload a PDF file from your computer or choose a sample document above to begin verification.")
+        st.info("Select or upload an institutional PDF document above to initiate regulatory verification.")
         return
 
-    st.markdown("---")
+    st.markdown("<hr style='margin: 14px 0; border: none; border-top: 1px solid #E2E8F0;'>", unsafe_allow_html=True)
     # Step 1: Validate PDF Format and Read in Memory
     with st.spinner("Validating PDF integrity and parsing document content..."):
         is_valid, err_msg, metadata = validator.validate_pdf_bytes(file_bytes, filename)
 
     if not is_valid:
-        st.error(f"❌ **Invalid Document:** {err_msg}")
+        st.error(f"Invalid Document: {err_msg}")
         return
 
     # Display File Metadata Bar
@@ -120,32 +120,47 @@ def render_upload_and_validation_ui(key_prefix: str = "", show_header: bool = Tr
 
     if ident.status == IdentificationStatus.EXACT_MATCH:
         target_app_id = ident.identified_app_id
-        st.success(f"""
-        🎯 **Target Institution Identified:** **{ident.identified_name}** (`{target_app_id}`)  
-        • **Confidence:** `100% (Exact Match)`  
-        • **Method:** {ident.method}  
-        • **Detail:** {ident.explanation}
-        """)
+        st.markdown(f"""
+        <div style="background-color: #F0FDF4; border: 1px solid #BBF7D0; border-left: 4px solid #166534; padding: 12px 16px; border-radius: 4px; margin: 10px 0;">
+            <div class="responsive-flex">
+                <div style="font-weight: 700; color: #166534; font-size: 14px;">Target Institution Identified: {ident.identified_name} ({target_app_id})</div>
+                <span class="gov-badge gov-badge-verified">Exact Match (100%)</span>
+            </div>
+            <div style="font-size: 12.5px; color: #334155; margin-top: 5px;">
+                <b>Method:</b> {ident.method} • <b>Details:</b> {ident.explanation}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
     elif ident.status == IdentificationStatus.HIGH_CONFIDENCE_FUZZY:
         target_app_id = ident.identified_app_id
-        st.info(f"""
-        🔍 **Target Institution Identified:** **{ident.identified_name}** (`{target_app_id}`)  
-        • **Confidence:** `{ident.confidence:.1%}`  
-        • **Method:** {ident.method}  
-        • **Detail:** {ident.explanation}
-        """)
+        st.markdown(f"""
+        <div style="background-color: #EFF6FF; border: 1px solid #BFDBFE; border-left: 4px solid #1D4ED8; padding: 12px 16px; border-radius: 4px; margin: 10px 0;">
+            <div class="responsive-flex">
+                <div style="font-weight: 700; color: #1E40AF; font-size: 14px;">Target Institution Identified: {ident.identified_name} ({target_app_id})</div>
+                <span class="gov-badge gov-badge-info">Fuzzy Match ({ident.confidence:.1%})</span>
+            </div>
+            <div style="font-size: 12.5px; color: #334155; margin-top: 5px;">
+                <b>Method:</b> {ident.method} • <b>Details:</b> {ident.explanation}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
     elif ident.status == IdentificationStatus.AMBIGUOUS_MATCH:
         is_identification_uncertain = True
-        st.warning(f"""
-        ⚠️ **Ambiguous Institutional Match Detected** (Confidence: {ident.confidence:.1%})  
-        {ident.explanation}
-        """)
-        st.markdown("**Top Candidate Matches:**")
+        st.markdown(f"""
+        <div style="background-color: #FFFBEB; border: 1px solid #FDE68A; border-left: 4px solid #D97706; padding: 12px 16px; border-radius: 4px; margin: 10px 0;">
+            <div class="responsive-flex">
+                <div style="font-weight: 700; color: #92400E; font-size: 14px;">Ambiguous Institutional Match (Confidence: {ident.confidence:.1%})</div>
+                <span class="gov-badge gov-badge-review">Officer Discretion Required</span>
+            </div>
+            <div style="font-size: 12.5px; color: #334155; margin-top: 5px;">{ident.explanation}</div>
+        </div>
+        """, unsafe_allow_html=True)
+        st.markdown("**Candidate Matches:**")
         cand_df = pd.DataFrame([c.dict() for c in ident.top_candidates])
         st.table(cand_df)
 
         target_app_id = st.selectbox(
-            "👉 Select the intended college to validate this document against:",
+            "Select the intended registered institution to validate this document against:",
             options=app_ids,
             index=app_ids.index(ident.top_candidates[0].application_id) if ident.top_candidates else 0,
             format_func=lambda x: f"{x} — {gt[x]['institution_name']} ({gt[x]['district']}, {gt[x]['state']})",
@@ -153,14 +168,19 @@ def render_upload_and_validation_ui(key_prefix: str = "", show_header: bool = Tr
         )
     elif ident.status == IdentificationStatus.UNKNOWN_COLLEGE:
         is_identification_uncertain = True
-        st.error(f"""
-        🚫 **Unregistered Institution Detected**  
-        {ident.explanation}
-        """)
-        st.caption("Sakshya adheres strictly to regulatory boundaries: unlisted colleges cannot be silently attributed to an arbitrary institution.")
+        st.markdown(f"""
+        <div style="background-color: #FEF2F2; border: 1px solid #FECACA; border-left: 4px solid #B91C1C; padding: 12px 16px; border-radius: 4px; margin: 10px 0;">
+            <div class="responsive-flex">
+                <div style="font-weight: 700; color: #991B1B; font-size: 14px;">Unregistered Institution Detected</div>
+                <span class="gov-badge gov-badge-flagged">Unlisted Entity</span>
+            </div>
+            <div style="font-size: 12.5px; color: #334155; margin-top: 5px;">{ident.explanation}</div>
+        </div>
+        """, unsafe_allow_html=True)
+        st.caption("Regulatory Boundary: Unlisted colleges cannot be attributed to an arbitrary registered institution without official declaration.")
 
         exp_compare = st.checkbox(
-            "⚙️ Select an existing college to run targeted comparison for audit/experimental scrutiny",
+            "Select an existing college to run targeted comparison for audit/experimental scrutiny",
             key=f"{key_prefix}exp_compare_chk"
         )
         if exp_compare:
@@ -207,26 +227,33 @@ def render_upload_and_validation_ui(key_prefix: str = "", show_header: bool = Tr
             )
 
         # Overall Result Banner
-        status_color = {
-            "VERIFIED_AUTO": "#10B981",
-            "NEEDS_OFFICER_REVIEW": "#F59E0B",
-            "FLAGGED_ANOMALY": "#EF4444"
-        }.get(res.overall_status, "#6B7280")
+        status_badge_class = {
+            "VERIFIED_AUTO": "gov-badge-verified",
+            "NEEDS_OFFICER_REVIEW": "gov-badge-review",
+            "FLAGGED_ANOMALY": "gov-badge-flagged"
+        }.get(res.overall_status, "gov-badge-neutral")
+
+        status_border_color = {
+            "VERIFIED_AUTO": "#166534",
+            "NEEDS_OFFICER_REVIEW": "#D97706",
+            "FLAGGED_ANOMALY": "#B91C1C"
+        }.get(res.overall_status, "#64748B")
 
         st.markdown(f"""
-        <div style="background-color: #F8FAFC; border-left: 6px solid {status_color}; padding: clamp(12px, 3vw, 18px); border-radius: 10px; margin: 15px 0 20px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+        <div class="gov-card" style="border-left: 5px solid {status_border_color}; margin: 12px 0 16px 0;">
             <div class="responsive-flex">
                 <div style="flex: 1 1 280px;">
-                    <h3 style="margin: 0; color: #1E293B; font-size: clamp(16px, 3.5vw, 20px);">{res.college_name} ({res.college_id})</h3>
-                    <p style="margin: 6px 0 0 0; color: #64748B; font-size: clamp(12px, 2.5vw, 13.5px);">
-                        Scrutiny Outcome: <b>{res.summary}</b>
+                    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #64748B; font-weight: 700;">Regulatory Scrutiny Outcome</div>
+                    <h3 style="margin: 2px 0 4px 0; color: #0B2545;">{res.college_name} ({res.college_id})</h3>
+                    <p style="margin: 0; color: #334155; font-size: 13px;">
+                        Scrutiny Finding: <b>{res.summary}</b>
                     </p>
                 </div>
                 <div style="flex: 0 0 auto; text-align: right;">
-                    <span style="background-color: {status_color}; color: white; padding: 6px 14px; border-radius: 16px; font-weight: bold; font-size: clamp(12px, 2.5vw, 13.5px); display: inline-block;">
+                    <span class="gov-badge {status_badge_class}" style="font-size: 12px; padding: 4px 12px;">
                         {res.overall_status}
                     </span>
-                    <div style="margin-top: 6px; font-size: clamp(11.5px, 2.2vw, 13px); color: #475569;">
+                    <div style="margin-top: 5px; font-size: 12px; color: #475569;">
                         Calibrated Confidence: <b>{res.calibrated_confidence:.1%}</b>
                     </div>
                 </div>
@@ -237,54 +264,54 @@ def render_upload_and_validation_ui(key_prefix: str = "", show_header: bool = Tr
         # Check breakdown metrics
         m_c1, m_c2, m_c3, m_c4 = st.columns(4)
         with m_c1:
-            st.metric("✅ Passed Checks", len(res.passed_checks))
+            st.metric("Passed Statutory Checks", len(res.passed_checks))
         with m_c2:
-            st.metric("⚠️ Mismatches", len(res.mismatches), delta=f"-{len(res.mismatches)}" if res.mismatches else None, delta_color="inverse")
+            st.metric("Discrepancies & Violations", len(res.mismatches), delta=f"-{len(res.mismatches)}" if res.mismatches else None, delta_color="inverse")
         with m_c3:
-            st.metric("❓ Missing Info", len(res.missing_info))
+            st.metric("Missing Regulatory Fields", len(res.missing_info))
         with m_c4:
-            st.metric("🔍 Unverified Checks", len(res.unverified))
+            st.metric("Unverified Claims", len(res.unverified))
 
         # Result Tabs: Mismatches, Passed, Missing, Extracted Fields, Authority Records
         res_tab_mismatch, res_tab_passed, res_tab_missing, res_tab_fields, res_tab_auth = st.tabs([
-            f"⚠️ Mismatches & Findings ({len(res.mismatches)})",
-            f"✅ Passed Statutory Checks ({len(res.passed_checks)})",
-            f"❓ Missing / Unverified ({len(res.missing_info) + len(res.unverified)})",
-            f"📑 Extracted Claims ({len(res.extracted_fields)})",
-            "🏛️ Issuing Authority Verification"
+            f"Discrepancies & Findings ({len(res.mismatches)})",
+            f"Passed Statutory Checks ({len(res.passed_checks)})",
+            f"Missing & Unverified ({len(res.missing_info) + len(res.unverified)})",
+            f"Extracted Regulatory Claims ({len(res.extracted_fields)})",
+            "Issuing Authority Verification"
         ])
 
         with res_tab_mismatch:
             st.subheader(f"Statutory Violations & Discrepancies ({len(res.mismatches)})")
             if not res.mismatches:
-                st.success("✅ Zero mismatches detected. All extracted claims align with institutional reference records.")
+                st.success("Zero statutory discrepancies detected. All extracted claims align with reference records.")
             else:
                 for m in res.mismatches:
                     sev_badge = {
-                        "CRITICAL": "background-color: #FEE2E2; color: #991B1B; border: 1px solid #F87171;",
+                        "CRITICAL": "background-color: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5;",
                         "HIGH": "background-color: #FEF3C7; color: #92400E; border: 1px solid #FCD34D;",
-                        "MEDIUM": "background-color: #E0E7FF; color: #3730A3; border: 1px solid #A5B4FC;",
+                        "MEDIUM": "background-color: #E0E7FF; color: #1E40AF; border: 1px solid #93C5FD;",
                         "INFO": "background-color: #F1F5F9; color: #475569; border: 1px solid #CBD5E1;"
                     }.get(m.severity.value, "")
 
                     claims_txt = " | ".join(m.evidence_claims) if m.evidence_claims else ""
 
                     st.markdown(f"""
-                    <div style="background-color: white; border: 1px solid #E2E8F0; border-radius: 8px; padding: 14px; margin-bottom: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                    <div class="gov-card" style="border-left: 4px solid #B91C1C; margin-bottom: 12px;">
                         <div class="responsive-flex">
-                            <b style="font-size: 15px; color: #0F172A;">{m.check_name}</b>
-                            <span style="{sev_badge} padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: bold;">
+                            <b style="font-size: 14.5px; color: #0B2545;">{m.check_name}</b>
+                            <span style="{sev_badge} padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 700;">
                                 {m.severity.value}
                             </span>
                         </div>
                         <p style="margin: 8px 0; color: #334155; font-size: 13.5px; line-height: 1.45;">{m.difference_details}</p>
-                        <div style="font-size: 12px; color: #64748B; line-height: 1.5;">
-                            <b>Expected Value:</b> <code>{m.expected_value}</code> • <b>Extracted Value:</b> <code>{m.extracted_value}</code>  
-                            <br><b>Rule Ref:</b> <code>{m.rule_id}</code> • <b>Statutory Clause:</b> <i>{m.statutory_clause}</i>
+                        <div style="font-size: 12px; color: #475569; line-height: 1.5; background: #F8FAFC; padding: 6px 10px; border-radius: 3px; border: 1px solid #E2E8F0;">
+                            <b>Expected Reference:</b> <code>{m.expected_value}</code> • <b>Extracted In Document:</b> <code>{m.extracted_value}</code>  
+                            <br><b>Rule Identifier:</b> <code>{m.rule_id}</code> • <b>Statutory Clause:</b> <i>{m.statutory_clause}</i>
                         </div>
-                        {"<div style='margin-top: 6px; padding: 6px 10px; background-color: #F8FAFC; border-radius: 4px; font-size: 12px;'><b>Evidentiary Claims:</b> " + claims_txt + "</div>" if claims_txt else ""}
-                        <div style="margin-top: 8px; font-size: 12.5px; color: #B91C1C;">
-                            <b>Recommended Officer Action:</b> {m.recommended_action}
+                        {"<div style='margin-top: 6px; padding: 6px 10px; background-color: #F8FAFC; border-radius: 3px; font-size: 12px; border: 1px solid #E2E8F0;'><b>Evidentiary Provenance:</b> " + claims_txt + "</div>" if claims_txt else ""}
+                        <div style="margin-top: 8px; font-size: 12.5px; color: #991B1B;">
+                            <b>Recommended Scrutiny Action:</b> {m.recommended_action}
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
@@ -296,23 +323,23 @@ def render_upload_and_validation_ui(key_prefix: str = "", show_header: bool = Tr
             else:
                 for p in res.passed_checks:
                     st.markdown(f"""
-                    <div style="background-color: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 8px; padding: 12px 14px; margin-bottom: 10px;">
+                    <div style="background-color: #FFFFFF; border: 1px solid #CBD5E1; border-left: 4px solid #166534; border-radius: 4px; padding: 10px 14px; margin-bottom: 8px;">
                         <div class="responsive-flex">
-                            <b style="color: #166534; font-size: 14px;">✅ {p.check_name}</b>
-                            <span style="color: #15803D; font-size: 11.5px; font-weight: bold;">PASSED</span>
+                            <b style="color: #166534; font-size: 13.5px;">{p.check_name}</b>
+                            <span class="gov-badge gov-badge-verified">PASSED</span>
                         </div>
-                        <p style="margin: 5px 0 0 0; color: #1E293B; font-size: 13px;">{p.difference_details}</p>
-                        <div style="margin-top: 4px; font-size: 11.5px; color: #475569;">
-                            <b>Statutory Citation:</b> <i>{p.statutory_clause or 'AICTE Verification Framework'}</i>
+                        <p style="margin: 4px 0 0 0; color: #334155; font-size: 13px;">{p.difference_details}</p>
+                        <div style="margin-top: 4px; font-size: 11.5px; color: #64748B;">
+                            <b>Statutory Clause:</b> <i>{p.statutory_clause or 'AICTE Approval Process Handbook Regulations'}</i>
                             {" • <b>Page:</b> " + str(p.page_number) if p.page_number else ""}
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
 
         with res_tab_missing:
-            st.subheader("Missing Claims & Unverified Records")
+            st.subheader("Missing Regulatory Claims & Unverified Checks")
             if not res.missing_info and not res.unverified:
-                st.success("✅ All regulatory fields were extracted and verified against institutional records.")
+                st.success("All statutory requirements extracted and verified against institutional records.")
 
             if res.missing_info:
                 st.markdown("**Required Regulatory Fields Missing from Document:**")
@@ -339,13 +366,14 @@ def render_upload_and_validation_ui(key_prefix: str = "", show_header: bool = Tr
             if res.authority_verification:
                 auth_data = res.authority_verification
                 st.markdown(f"""
-                <div style="background-color: white; border: 1px solid #CBD5E1; border-radius: 8px; padding: 16px; margin-bottom: 12px;">
-                    <h4 style="margin: 0; color: #1E293B;">{auth_data.get('authority_name')}</h4>
-                    <p style="margin: 4px 0 12px 0; color: #64748B; font-size: 12px;">Query ID: <code>{auth_data.get('query_id')}</code> • Network Latency: <b>{auth_data.get('latency_ms')} ms</b></p>
-                    <div style="display: flex; gap: 15px; margin-bottom: 10px;">
-                        <div><b>Authority Verification Status:</b> <code>{auth_data.get('status')}</code></div>
-                        <div><b>Matched:</b> {'✅ Yes' if auth_data.get('matched') else '❌ No'}</div>
-                        <div><b>QR Code Verified:</b> {'✅ Validated' if auth_data.get('qr_verified') else '⚪ Not Present'}</div>
+                <div class="gov-card" style="border-left: 4px solid #0B3C5D; margin-bottom: 12px;">
+                    <div style="font-size: 11px; text-transform: uppercase; color: #64748B; font-weight: 700;">Issuing Authority Record</div>
+                    <h4 style="margin: 2px 0 6px 0; color: #0B2545;">{auth_data.get('authority_name')}</h4>
+                    <p style="margin: 0 0 10px 0; color: #64748B; font-size: 12px;">Query ID: <code>{auth_data.get('query_id')}</code> • Network Latency: <b>{auth_data.get('latency_ms')} ms</b></p>
+                    <div class="responsive-flex" style="gap: 16px;">
+                        <div><b>Authority Status:</b> <code>{auth_data.get('status')}</code></div>
+                        <div><b>Record Match:</b> {'Yes (Verified)' if auth_data.get('matched') else 'Discrepancy Detected'}</div>
+                        <div><b>Cryptographic / QR Token:</b> {'Validated' if auth_data.get('qr_verified') else 'Not Present'}</div>
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
@@ -354,4 +382,5 @@ def render_upload_and_validation_ui(key_prefix: str = "", show_header: bool = Tr
             else:
                 st.info("No external authority query executed.")
 
-            st.caption("⚠️ Note: Issuing authority queries use Sakshya's realistic simulated registries as defined in the SIH26261 problem scope.")
+            st.caption("Administrative Note: Issuing authority queries use Sakshya's realistic simulated registries as defined in the SIH26261 problem scope.")
+

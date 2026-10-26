@@ -49,49 +49,65 @@ with get_db_context() as db:
         runner = PipelineRunner()
         runner.process_all_historical_applications()
 
-# Sidebar: User Role Selection & Portal Info
-st.sidebar.image("https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/All_India_Council_for_Technical_Education_logo.png/220px-All_India_Council_for_Technical_Education_logo.png", width=110)
-st.sidebar.title("🛡️ Sakshya Portal")
-st.sidebar.caption("AICTE SIH 2026 • PS SIH26261")
+# Sidebar: User Role Selection & Official System Identity
+st.sidebar.markdown("""
+<div style="padding: 4px 0 12px 0; border-bottom: 2px solid #CBD5E1; margin-bottom: 12px;">
+    <div style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.8px; color: #64748B; font-weight: 700;">Regulatory Scrutiny System</div>
+    <div style="font-size: 20px; font-weight: 800; color: #0B2545; letter-spacing: -0.2px; margin: 2px 0;">साक्ष्य • SAKSHYA</div>
+    <div style="font-size: 11.5px; color: #334155; line-height: 1.35;">AICTE Institutional Scrutiny & Compliance Verification</div>
+    <div style="display: inline-block; margin-top: 8px; padding: 2px 8px; background: #FFFBEB; color: #92400E; border: 1px solid #FCD34D; font-size: 10.5px; font-weight: 600; border-radius: 3px;">
+        Demonstration Prototype • SIH26261
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
-st.sidebar.markdown("---")
-st.sidebar.subheader("👤 Active User Role")
+st.sidebar.markdown("<div style='font-size: 12px; font-weight: 700; color: #0B2545; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px;'>Portal Role Adjudication</div>", unsafe_allow_html=True)
 selected_role = st.sidebar.selectbox(
     "Switch Portal Role",
     options=["scrutiny_officer", "institution", "admin"],
     format_func=lambda x: {
-        "scrutiny_officer": "🔍 Scrutiny Officer (AICTE Bureau)",
-        "institution": "🏛️ Institution Applicant (College)",
-        "admin": "⚙️ System Administrator (Central AICTE)"
-    }[x]
+        "scrutiny_officer": "Scrutiny Officer (Bureau of Approval)",
+        "institution": "Institutional Applicant (College)",
+        "admin": "System Administrator (Central AICTE)"
+    }[x],
+    label_visibility="collapsed"
 )
 
 current_user = get_current_user(selected_role)
-st.sidebar.info(f"**Logged in as:** {current_user.full_name}\n\n**Role:** `{current_user.role.value}`")
+st.sidebar.markdown(f"""
+<div style="background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 3px; padding: 8px 10px; margin-top: 6px; font-size: 11.5px; color: #334155; line-height: 1.4;">
+    <div><b>Active Officer:</b> {current_user.full_name}</div>
+    <div><b>Role Designation:</b> <code>{current_user.role.value}</code></div>
+</div>
+""", unsafe_allow_html=True)
 
-# Header Banner
-st.markdown(f"""
-<div class="main-header">
-    <h1 style="margin: 0; font-size: 28px;">SAKSHYA: AI Document Authentication & Regulatory Scrutiny</h1>
-    <p style="margin: 6px 0 0 0; opacity: 0.9; font-size: 14px;">
-        All India Council for Technical Education (AICTE) • Automated Multi-Source Cross-Verification System
+# Government Masthead Banner
+st.markdown("""
+<div class="gov-masthead">
+    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #FEF3C7; font-weight: 700; margin-bottom: 4px;">
+        All India Council for Technical Education • Regulatory Scrutiny Division
+    </div>
+    <h1 class="gov-masthead-title">साक्ष्य / SAKSHYA</h1>
+    <p class="gov-masthead-subtitle">
+        Institutional Application Scrutiny & Regulatory Compliance Verification Portal
     </p>
-    <div style="margin-top: 10px; font-size: 12px; color: #FCD34D;">
-        ⚠️ SYNTHETIC DEMONSTRATION DATASET: 30 Fictional Institutional Dossiers for SIH26261 Evaluation
+    <div class="gov-masthead-badge">
+        Administrative Demonstration Staging • Synthetic Dataset of 30 Institutional Dossiers (SIH26261 Evaluation)
     </div>
 </div>
 """, unsafe_allow_html=True)
 
 # =============================================================================
-# Prominent Document Upload & Targeted Validation Section
+# Document Upload & Targeted Regulatory Verification Section
 # =============================================================================
 st.markdown("""
-<div style="background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%); color: white; padding: clamp(16px, 3vw, 22px); border-radius: 12px; margin: 18px 0 15px 0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+<div class="gov-card" style="border-left: 4px solid #0B3C5D; margin-top: 6px; margin-bottom: 12px;">
     <div class="responsive-flex">
         <div style="flex: 1 1 300px;">
-            <h2 style="margin: 0; color: white; font-size: clamp(18px, 3.8vw, 22px);">📤 Upload & Validate Institutional Document</h2>
-            <p style="margin: 6px 0 0 0; color: #E0E7FF; font-size: clamp(13px, 2.5vw, 14.5px); line-height: 1.45;">
-                Upload an institutional document to check it against the college's existing records, identify compliance issues, and verify regulatory norms in real time.
+            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #64748B; font-weight: 700;">Document Scrutiny Workflow</div>
+            <h3 style="margin: 2px 0 6px 0; color: #0B2545;">Institutional Document Ingestion & Regulatory Scrutiny</h3>
+            <p style="margin: 0; color: #475569; font-size: 13px; line-height: 1.45;">
+                Upload an institutional document (PDF) to perform real-time automated verification against reference records, identify statutory defects, and scrutinize regulatory compliance.
             </p>
         </div>
     </div>
@@ -100,16 +116,16 @@ st.markdown("""
 
 col_cta_btn, col_cta_toggle = st.columns([1, 1])
 with col_cta_btn:
-    if st.button("🚀 Open Dedicated Upload & Scrutiny Page", type="primary", use_container_width=True, key="landing_upload_cta_btn"):
+    if st.button("Open Dedicated Application Review Page", type="primary", use_container_width=True, key="landing_upload_cta_btn"):
         st.switch_page("pages/1_Application_Review.py")
 with col_cta_toggle:
-    show_direct_upload = st.toggle("⚡ Direct Verification: Upload & Validate on this Landing Page", value=True, key="landing_upload_toggle")
+    show_direct_upload = st.toggle("Direct Scrutiny: Ingest & Validate on this Landing Page", value=True, key="landing_upload_toggle")
 
 if show_direct_upload:
     with st.container():
         render_upload_and_validation_ui(key_prefix="landing_", show_header=False)
 
-st.markdown("---")
+st.markdown("<hr style='margin: 16px 0; border: none; border-top: 1px solid #E2E8F0;'>", unsafe_allow_html=True)
 
 # Fetch stats from SQLite safely within active session
 with get_db_context() as db:
@@ -157,11 +173,11 @@ st.markdown("---")
 col_chart1, col_chart2 = st.columns([1, 1])
 
 with col_chart1:
-    st.subheader("📊 Application Status Distribution")
+    st.subheader("Application Status Distribution")
     status_df = pd.DataFrame([
-        {"Status": "Auto-Verified (High Confidence)", "Count": clean_count, "Color": "#10B981"},
-        {"Status": "Needs Officer Review", "Count": officer_count, "Color": "#F59E0B"},
-        {"Status": "Flagged Anomaly / Collusion", "Count": anomaly_count, "Color": "#EF4444"},
+        {"Status": "Auto-Verified (High Confidence)", "Count": clean_count},
+        {"Status": "Needs Officer Review", "Count": officer_count},
+        {"Status": "Flagged Anomaly / Collusion", "Count": anomaly_count},
     ])
     fig_donut = px.pie(
         status_df,
@@ -169,22 +185,26 @@ with col_chart1:
         names="Status",
         color="Status",
         color_discrete_map={
-            "Auto-Verified (High Confidence)": "#10B981",
-            "Needs Officer Review": "#F59E0B",
-            "Flagged Anomaly / Collusion": "#EF4444"
+            "Auto-Verified (High Confidence)": "#166534",
+            "Needs Officer Review": "#D97706",
+            "Flagged Anomaly / Collusion": "#B91C1C"
         },
         hole=0.45
     )
     fig_donut.update_layout(
-        margin=dict(t=25, b=25, l=15, r=15),
+        margin=dict(t=35, b=30, l=15, r=15),
         height=320,
         autosize=True,
-        legend=dict(orientation="h", yanchor="bottom", y=-0.35, xanchor="center", x=0.5)
+        paper_bgcolor="#FFFFFF",
+        plot_bgcolor="#FFFFFF",
+        font=dict(family="Segoe UI, sans-serif", color="#1E293B", size=12),
+        title=dict(text="Application Scrutiny Status Breakdown", font=dict(size=14, color="#0B2545"), x=0.02, y=0.96),
+        legend=dict(orientation="h", yanchor="bottom", y=-0.35, xanchor="center", x=0.5, font=dict(size=11))
     )
     st.plotly_chart(fig_donut, use_container_width=True)
 
 with col_chart2:
-    st.subheader("📈 State-wise Intake & Anomaly Rate")
+    st.subheader("State-wise Intake & Anomaly Concentration")
     state_records = [
         {
             "State": a["state"],
@@ -209,10 +229,15 @@ with col_chart2:
         margin=dict(t=50, b=65, l=35, r=20),
         height=340,
         autosize=True,
+        paper_bgcolor="#FFFFFF",
+        plot_bgcolor="#FFFFFF",
         xaxis_title=None,
         yaxis_title="Applied Seats",
-        title=dict(font=dict(size=14), x=0.02, xanchor="left", y=0.96)
+        font=dict(family="Segoe UI, sans-serif", color="#1E293B"),
+        title=dict(font=dict(size=14, color="#0B2545"), x=0.02, xanchor="left", y=0.96)
     )
+    fig_bar.update_xaxes(showgrid=True, gridcolor="#F1F5F9")
+    fig_bar.update_yaxes(showgrid=True, gridcolor="#F1F5F9")
     fig_bar.update_coloraxes(
         colorbar=dict(
             orientation="h",
@@ -222,8 +247,8 @@ with col_chart2:
             xanchor="center",
             len=0.75,
             thickness=12,
-            title=dict(text="Flagged Dossiers", side="top", font=dict(size=11)),
-            tickfont=dict(size=10)
+            title=dict(text="Flagged Dossiers", side="top", font=dict(size=11, color="#1E293B")),
+            tickfont=dict(size=10, color="#1E293B")
         )
     )
     desktop_config = {
@@ -249,11 +274,14 @@ with col_chart2:
         margin=dict(t=48, b=65, l=95, r=20),
         height=390,
         autosize=True,
+        paper_bgcolor="#FFFFFF",
+        plot_bgcolor="#FFFFFF",
         yaxis_title=None,
         xaxis_title="Applied Student Seats",
-        title=dict(font=dict(size=13), x=0.02, xanchor="left", y=0.97),
-        yaxis=dict(tickfont=dict(size=11), automargin=True),
-        xaxis=dict(tickfont=dict(size=10))
+        font=dict(family="Segoe UI, sans-serif", color="#1E293B"),
+        title=dict(font=dict(size=13, color="#0B2545"), x=0.02, xanchor="left", y=0.97),
+        yaxis=dict(tickfont=dict(size=11, color="#1E293B"), automargin=True),
+        xaxis=dict(tickfont=dict(size=10, color="#1E293B"), showgrid=True, gridcolor="#F1F5F9")
     )
     fig_bar_mobile.update_coloraxes(
         colorbar=dict(
@@ -264,8 +292,8 @@ with col_chart2:
             xanchor="center",
             len=0.85,
             thickness=10,
-            title=dict(text="Flagged Dossiers", side="top", font=dict(size=10)),
-            tickfont=dict(size=9)
+            title=dict(text="Flagged Dossiers", side="top", font=dict(size=10, color="#1E293B")),
+            tickfont=dict(size=9, color="#1E293B")
         )
     )
     mobile_config = {
@@ -285,7 +313,8 @@ with col_chart2:
         st.plotly_chart(fig_bar_mobile, use_container_width=True, key="fig_mobile_chart", config=mobile_config)
 
 # Overview Applications Table
-st.subheader("📋 Institutional Applications Queue")
+st.subheader("Institutional Applications Queue")
+st.caption("Central regulatory scrutiny register for evaluating institutional applications, readiness checklists, and collusion indicators.")
 app_rows = [
     {
         "Application ID": a["id"],
@@ -295,7 +324,7 @@ app_rows = [
         "Status": a["status"],
         "Calibrated Confidence": f"{a['overall_confidence']:.1%}",
         "Readiness Checklist": f"{a['readiness_score']:.1f}%",
-        "Collusion Ring": "⚠️ Cluster Member" if a["flagged_ring"] else "Clear"
+        "Collusion Ring": "Cluster Member" if a["flagged_ring"] else "Clear"
     }
     for a in apps_data
 ]
@@ -310,10 +339,11 @@ st.dataframe(
     }
 )
 
-st.markdown("---")
-st.info("""
-**Regulatory Disclaimer & AI Safety:**  
-Sakshya anomaly and ring-detection findings are preliminary indicators designed to assist regulatory scrutiny. 
-They do not constitute automated proof of forgery or statutory rejection. 
-Final regulatory approval or rejection remains strictly with authorized AICTE Scrutiny Officers.
-""")
+st.markdown("""
+<div class="gov-notice">
+    <b>Statutory Regulatory Notice & Administrative Disclaimer:</b><br>
+    Sakshya anomaly indicators, ring detection clusters, and automated compliance findings are diagnostic aids intended to assist AICTE Scrutiny Officers during preliminary document examination. 
+    Automated findings do not constitute conclusive statutory approval, rejection, or legal evidence of forgery. 
+    Statutory authority and final adjudication remain strictly with authorized regulatory officers under AICTE Approval Process Regulations.
+</div>
+""", unsafe_allow_html=True)

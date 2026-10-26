@@ -24,11 +24,21 @@ from sakshya.pipeline.pipeline_runner import PipelineRunner
 from sakshya.data_generator.ground_truth import load_ground_truth
 from sakshya.dashboard.responsive import inject_responsive_css
 
-st.set_page_config(page_title="Claim-Evidence Graph | Sakshya", page_icon="🕸️", layout="wide")
+st.set_page_config(page_title="Claim-Evidence Graph | Sakshya", page_icon="⚖️", layout="wide")
 inject_responsive_css()
 
-st.title("🕸️ Claim-Evidence Provenance & Contradiction Graph")
-st.caption("Visualizes evidentiary linkages between extracted claims, source documents, regulatory rules, and authority checks.")
+# Government Masthead Banner
+st.markdown("""
+<div class="gov-masthead">
+    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #FEF3C7; font-weight: 700; margin-bottom: 4px;">
+        All India Council for Technical Education • Evidence Provenance Engine
+    </div>
+    <h1 class="gov-masthead-title">Claim-Evidence Provenance & Discrepancy Graph</h1>
+    <p class="gov-masthead-subtitle">
+        Visualizes evidentiary relationships linking extracted institutional claims, source documents, regulatory rules, and authority validations
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 gt = load_ground_truth()
 
@@ -38,7 +48,7 @@ contradiction_apps = ["APP-015", "APP-016", "APP-017", "APP-018", "APP-019"]
 col_sel, col_info = st.columns([2, 3])
 with col_sel:
     selected_app_id = st.selectbox(
-        "Select Application for Graph Inspection",
+        "Select Application for Evidentiary Graph Scrutiny",
         options=list(gt.keys()),
         index=list(gt.keys()).index("APP-015"),
         help="Applications APP-015 through APP-019 contain planted cross-document contradictions."
@@ -46,9 +56,18 @@ with col_sel:
 
 with col_info:
     if selected_app_id in contradiction_apps:
-        st.warning(f"⚠️ **Contradiction Case Detected ({selected_app_id}):** Cross-document claim discrepancy will appear as a highlighted red conflict edge in the graph below.")
+        st.markdown(f"""
+        <div class="gov-notice gov-notice-warning" style="margin: 0; padding: 10px 14px;">
+            <b>Cross-Document Discrepancy Identified ({selected_app_id}):</b><br>
+            A conflicting claim exists across submitted documents, shown as a highlighted red edge in the evidentiary graph below.
+        </div>
+        """, unsafe_allow_html=True)
     else:
-        st.info("ℹ️ Standard evidentiary graph showing multi-document claim provenance and authority checks.")
+        st.markdown("""
+        <div class="gov-notice" style="margin: 0; padding: 10px 14px;">
+            <b>Standard Evidentiary Topology:</b> Multi-document claim provenance and authority verification checks.
+        </div>
+        """, unsafe_allow_html=True)
 
 # Build or retrieve graph
 runner = PipelineRunner()

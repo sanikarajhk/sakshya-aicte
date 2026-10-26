@@ -28,8 +28,18 @@ from sakshya.dashboard.responsive import inject_responsive_css
 st.set_page_config(page_title="Officer Console | Sakshya", page_icon="⚖️", layout="wide")
 inject_responsive_css()
 
-st.title("⚖️ AICTE Scrutiny Officer Adjudication Console")
-st.caption("Official regulatory decision portal for reviewing dossiers, confirming findings, or recording justified overrides.")
+# Government Masthead Banner
+st.markdown("""
+<div class="gov-masthead">
+    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #FEF3C7; font-weight: 700; margin-bottom: 4px;">
+        All India Council for Technical Education • Scrutiny & Adjudication Division
+    </div>
+    <h1 class="gov-masthead-title">Scrutiny Officer Adjudication Console</h1>
+    <p class="gov-masthead-subtitle">
+        Official regulatory decision portal for adjudicating dossiers, recording statutory findings, and committing justified determinations to the audit ledger
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 # Role Check
 role_name = st.sidebar.selectbox(
@@ -40,11 +50,15 @@ role_name = st.sidebar.selectbox(
 current_user = get_current_user(role_name)
 
 if not can_override_decision(current_user):
-    st.error("⛔ ACCESS DENIED: Only authorized AICTE Scrutiny Officers and Administrators may access the Adjudication Console.")
+    st.error("ACCESS DENIED: Only authorized AICTE Scrutiny Officers and Administrators may access the Adjudication Console.")
     st.info("Please switch your role to 'Scrutiny Officer' or 'Admin' in the sidebar.")
     st.stop()
 
-st.success(f"**Authenticated Officer:** {current_user.full_name} (`{current_user.user_id}`) • Bureau: Approval Bureau (Headquarters)")
+st.markdown(f"""
+<div style="background-color: #F8FAFC; border: 1px solid #CBD5E1; border-left: 4px solid #0B3C5D; padding: 10px 14px; border-radius: 4px; margin-bottom: 14px; font-size: 13px; color: #1E293B;">
+    <b>Authenticated Scrutiny Officer:</b> {current_user.full_name} (ID: <code>{current_user.user_id}</code>) • <b>Bureau:</b> Approval Bureau (Headquarters, New Delhi)
+</div>
+""", unsafe_allow_html=True)
 
 # Select Application
 gt = load_ground_truth()
@@ -138,7 +152,7 @@ with col_right:
             value=False
         )
 
-        submitted = st.form_submit_button("⚖️ Commit Regulatory Decision to Audit Chain", use_container_width=True)
+        submitted = st.form_submit_button("Commit Regulatory Determination to Audit Ledger", use_container_width=True)
 
         if submitted:
             if not override_confirm:

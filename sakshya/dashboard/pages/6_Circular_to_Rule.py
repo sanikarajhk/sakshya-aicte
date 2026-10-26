@@ -21,17 +21,29 @@ from sakshya.core.security import get_current_user, can_approve_rules
 from sakshya.circular_to_rule.engine import CircularToRuleEngine
 from sakshya.dashboard.responsive import inject_responsive_css
 
-st.set_page_config(page_title="Circular-to-Rule | Sakshya", page_icon="📜", layout="wide")
+st.set_page_config(page_title="Circular-to-Rule | Sakshya", page_icon="⚖️", layout="wide")
 inject_responsive_css()
 
-st.title("📜 AICTE Circular-to-Rule Translation & Replay Sandbox")
-st.caption("Converts unstructured policy circulars into executable YAML rules with historical impact simulation.")
+# Government Masthead Banner
+st.markdown("""
+<div class="gov-masthead">
+    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #FEF3C7; font-weight: 700; margin-bottom: 4px;">
+        All India Council for Technical Education • Policy & Regulations Division
+    </div>
+    <h1 class="gov-masthead-title">Policy Circular Translation & Impact Simulation Sandbox</h1>
+    <p class="gov-masthead-subtitle">
+        Converts unstructured policy circulars into executable YAML regulatory compliance rules with retrospective impact evaluation
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
-st.warning("""
-**Regulatory Transparency Notice:**  
-All circulars presented on this page are **purely illustrative test cases** developed for the Sakshya prototype.  
-They **DO NOT represent official AICTE policy** or statutory amendments.
-""")
+st.markdown("""
+<div class="gov-notice">
+    <b>Regulatory Transparency Notice:</b><br>
+    All policy circulars presented on this page are illustrative test cases developed for the Sakshya regulatory prototype. 
+    They demonstrate automated parsing and retrospective impact assessment capabilities.
+</div>
+""", unsafe_allow_html=True)
 
 # Role Check
 role_name = st.sidebar.selectbox("Active Role", ["admin", "scrutiny_officer", "institution"], index=0)
@@ -48,11 +60,11 @@ selected_circ_title = st.selectbox(
 chosen_circ = next(c for c in samples if c["circular_id"] in selected_circ_title)
 
 # Display Circular Text
-with st.expander("📄 View Illustrative Circular Official Text", expanded=True):
+with st.expander("View Illustrative Circular Official Text", expanded=True):
     st.text(chosen_circ["content"])
 
 # Propose YAML Rule Change
-st.subheader("1. AI / Semantic Extraction of Rule Change")
+st.subheader("1. Semantic Extraction of Regulatory Rule Change")
 proposal = engine.parse_circular_to_rule_proposal(chosen_circ["content"])
 
 col_p1, col_p2 = st.columns([1, 1])
@@ -63,16 +75,16 @@ with col_p2:
     st.markdown("**Proposed YAML Rule Definition:**")
     st.code(yaml.dump(proposal["proposed_yaml"], sort_keys=False), language="yaml")
 
-st.markdown("---")
+st.markdown("<hr style='margin: 16px 0; border: none; border-top: 1px solid #E2E8F0;'>", unsafe_allow_html=True)
 
 # Replay against historical applications
 st.subheader("2. Historical Batch Replay Simulation (30 Applications)")
 st.markdown("""
-*Before any regulatory rule is activated, Sakshya replays the amended thresholds across historical applications 
-to evaluate systemic impact and identify newly qualifying or disqualified colleges.*
+*Prior to administrative rule promulgation, Sakshya evaluates the amended thresholds across historical dossiers 
+to measure systemic impact and identify newly conforming or non-conforming institutions.*
 """)
 
-if st.button("🚀 Execute Historical Batch Replay (30 Applications)", use_container_width=True):
+if st.button("Execute Historical Batch Replay (30 Applications)", use_container_width=True):
     with st.spinner("Replaying amended rule against all historical dossiers..."):
         replay_res = engine.replay_against_historical_applications(proposal["proposed_yaml"])
 
@@ -90,13 +102,16 @@ if st.button("🚀 Execute Historical Batch Replay (30 Applications)", use_conta
         st.info("No applications changed compliance status under this threshold variation.")
 
     # Administrator Approval Block
-    st.markdown("---")
-    st.subheader("3. Administrative Approval & Activation")
+    st.markdown("<hr style='margin: 16px 0; border: none; border-top: 1px solid #E2E8F0;'>", unsafe_allow_html=True)
+    st.subheader("3. Administrative Approval & Promulgation")
     if not can_approve_rules(current_user):
-        st.warning("🔒 RULE ACTIVATION LOCKED: Only AICTE Administrators can approve and activate new regulatory rules.")
+        st.warning("RULE ACTIVATION RESTRICTED: Only AICTE Administrators can approve and commit new regulatory rules.")
     else:
-        st.success(f"Administrator verified: **{current_user.full_name}** (`{current_user.user_id}`).")
-        if st.button("✅ Approve & Activate Amended Rule into Active Production Engine", use_container_width=True):
+        st.markdown(f"""
+        <div style="background-color: #F8FAFC; border: 1px solid #CBD5E1; border-left: 4px solid #0B3C5D; padding: 10px 14px; border-radius: 4px; margin-bottom: 12px; font-size: 13px;">
+            <b>Authorized Administrator:</b> {current_user.full_name} (ID: <code>{current_user.user_id}</code>)
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("Approve & Commit Amended Rule into Active Production Engine", type="primary", use_container_width=True):
             engine.activate_proposed_rule(proposal["proposed_yaml"], current_user.user_id)
             st.success("Rule successfully activated and committed to circular_rules.yaml!")
-            st.balloons()

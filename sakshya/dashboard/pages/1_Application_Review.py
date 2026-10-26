@@ -25,19 +25,29 @@ from sakshya.data_generator.ground_truth import load_ground_truth
 from sakshya.dashboard.responsive import inject_responsive_css
 from sakshya.dashboard.upload_ui import render_upload_and_validation_ui
 
-st.set_page_config(page_title="Application Review | Sakshya", page_icon="📄", layout="wide")
+st.set_page_config(page_title="Application Review | Sakshya", page_icon="⚖️", layout="wide")
 inject_responsive_css()
 
-st.title("📄 AICTE Institutional Application & Document Verification")
-st.caption("AI-powered statutory compliance validation, claim-evidence cross-verification, and dossier scrutiny.")
+# Government Masthead Banner
+st.markdown("""
+<div class="gov-masthead">
+    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #FEF3C7; font-weight: 700; margin-bottom: 4px;">
+        All India Council for Technical Education • Approval Bureau
+    </div>
+    <h1 class="gov-masthead-title">Institutional Application Review & Scrutiny</h1>
+    <p class="gov-masthead-subtitle">
+        Automated regulatory compliance validation, claim-evidence cross-verification, and institutional dossier examination
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 gt = load_ground_truth()
 app_ids = list(gt.keys())
 
 # Top-level tabs: Upload & Validate vs Browse Dossiers
 tab_upload, tab_dossier = st.tabs([
-    "📤 Upload & Validate Institutional Document",
-    "📋 Inspect Registered 30-College Dossiers"
+    "Upload & Validate Institutional Document",
+    "Inspect Registered 30-College Dossiers"
 ])
 
 # =============================================================================
@@ -51,8 +61,8 @@ with tab_upload:
 # TAB 2: Historical Dossier Review of all 30 Registered Institutions
 # =============================================================================
 with tab_dossier:
-    st.subheader("📋 Inspect Registered 30-College Dossiers")
-    st.caption("Review existing applications, documentary evidence claims, planted ground-truth defects, and authority records.")
+    st.subheader("Registered Institution Dossier Scrutiny")
+    st.caption("Inspect submitted dossiers, evidentiary claim linkages, compliance audit logs, and external authority records.")
 
     # Select application
     selected_app_id = st.selectbox("Select Application to Inspect", app_ids, index=0, key="dossier_app_select")
@@ -110,26 +120,35 @@ with tab_dossier:
         ]
 
     # Header status row
-    status_color = {
-        "VERIFIED_AUTO": "#10B981",
-        "NEEDS_OFFICER_REVIEW": "#F59E0B",
-        "FLAGGED_ANOMALY": "#EF4444",
-        "OFFICER_APPROVED": "#3B82F6",
-        "OFFICER_REJECTED": "#6B7280"
-    }.get(app_db["status"], "#6B7280")
+    status_badge_class = {
+        "VERIFIED_AUTO": "gov-badge-verified",
+        "NEEDS_OFFICER_REVIEW": "gov-badge-review",
+        "FLAGGED_ANOMALY": "gov-badge-flagged",
+        "OFFICER_APPROVED": "gov-badge-info",
+        "OFFICER_REJECTED": "gov-badge-neutral"
+    }.get(app_db["status"], "gov-badge-neutral")
+
+    status_border_color = {
+        "VERIFIED_AUTO": "#166534",
+        "NEEDS_OFFICER_REVIEW": "#D97706",
+        "FLAGGED_ANOMALY": "#B91C1C",
+        "OFFICER_APPROVED": "#1E40AF",
+        "OFFICER_REJECTED": "#64748B"
+    }.get(app_db["status"], "#64748B")
 
     st.markdown(f"""
-    <div style="background-color: #F8FAFC; border-left: 6px solid {status_color}; padding: clamp(12px, 3vw, 18px); border-radius: 10px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+    <div class="gov-card" style="border-left: 5px solid {status_border_color}; margin-bottom: 16px;">
         <div class="responsive-flex">
             <div style="flex: 1 1 280px;">
-                <h2 style="margin: 0; color: #1E293B; font-size: clamp(17px, 3.8vw, 22px);">{app_db['institution_name']} ({app_db['id']})</h2>
-                <p style="margin: 6px 0 0 0; color: #64748B; font-size: clamp(12px, 2.5vw, 13.5px); line-height: 1.4;">Category: <b>{app_db['institution_type']}</b> • Location: <b>{app_db['district']}, {app_db['state']}</b> • Applied Intake: <b>{app_db['applied_intake']} Seats</b></p>
+                <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #64748B; font-weight: 700;">Institutional Profile</div>
+                <h2 style="margin: 2px 0 4px 0; color: #0B2545; font-size: clamp(17px, 3.5vw, 21px);">{app_db['institution_name']} ({app_db['id']})</h2>
+                <p style="margin: 0; color: #334155; font-size: 13px; line-height: 1.45;">Category: <b>{app_db['institution_type']}</b> • Location: <b>{app_db['district']}, {app_db['state']}</b> • Applied Intake: <b>{app_db['applied_intake']} Seats</b></p>
             </div>
             <div style="flex: 0 0 auto; text-align: right;">
-                <span style="background-color: {status_color}; color: white; padding: 6px 14px; border-radius: 16px; font-weight: bold; font-size: clamp(12px, 2.5vw, 13.5px); display: inline-block;">
+                <span class="gov-badge {status_badge_class}" style="font-size: 12px; padding: 4px 12px;">
                     {app_db['status']}
                 </span>
-                <div style="margin-top: 6px; font-size: clamp(11.5px, 2.2vw, 13px); color: #475569;">Calibrated Confidence: <b>{app_db['overall_confidence']:.1%}</b></div>
+                <div style="margin-top: 5px; font-size: 12px; color: #475569;">Calibrated Confidence: <b>{app_db['overall_confidence']:.1%}</b></div>
             </div>
         </div>
     </div>
@@ -137,42 +156,42 @@ with tab_dossier:
 
     # Tabs: Findings, Documents & Claims, Pre-Submission Readiness
     tab_findings, tab_docs, tab_claims, tab_mock = st.tabs([
-        "⚠️ Evidence-Linked Findings",
-        "📁 Submitted Documents & Hashes",
-        "📑 Extracted Claims & Ground Truth",
-        "🏛️ Authority Verification Records"
+        "Statutory Findings & Violations",
+        "Submitted Documents & Cryptographic Hashes",
+        "Extracted Claims & Baseline Data",
+        "Issuing Authority Records"
     ])
 
     with tab_findings:
         st.subheader(f"Statutory Findings & Rule Violations ({len(findings_db)})")
         if not findings_db:
-            st.success("✅ No statutory non-compliance or document contradictions detected. Dossier is clean.")
+            st.success("No statutory non-compliance or document discrepancies detected. Institutional dossier is clean.")
         else:
             for f in findings_db:
                 sev_badge = {
-                    "CRITICAL": "background-color: #FEE2E2; color: #991B1B; border: 1px solid #F87171;",
+                    "CRITICAL": "background-color: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5;",
                     "HIGH": "background-color: #FEF3C7; color: #92400E; border: 1px solid #FCD34D;",
-                    "MEDIUM": "background-color: #E0E7FF; color: #3730A3; border: 1px solid #A5B4FC;",
+                    "MEDIUM": "background-color: #E0E7FF; color: #1E40AF; border: 1px solid #93C5FD;",
                     "INFO": "background-color: #F1F5F9; color: #475569; border: 1px solid #CBD5E1;"
                 }.get(f["severity"], "")
 
                 claims_list = f["evidence_claims"]
 
                 st.markdown(f"""
-                <div style="background-color: white; border: 1px solid #E2E8F0; border-radius: 8px; padding: clamp(10px, 2.5vw, 16px); margin-bottom: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); word-break: break-word;">
+                <div class="gov-card" style="border-left: 4px solid #B91C1C; margin-bottom: 12px;">
                     <div class="responsive-flex">
-                        <b style="font-size: clamp(14px, 3vw, 16px); color: #0F172A; flex: 1 1 200px;">{f['title']}</b>
-                        <span style="{sev_badge} padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: bold; white-space: nowrap;">
+                        <b style="font-size: 14.5px; color: #0B2545; flex: 1 1 200px;">{f['title']}</b>
+                        <span style="{sev_badge} padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 700; white-space: nowrap;">
                             {f['severity']}
                         </span>
                     </div>
-                    <p style="margin: 8px 0; color: #334155; font-size: clamp(12.5px, 2.5vw, 14px); line-height: 1.45;">{f['description']}</p>
-                    <div style="font-size: 12px; color: #64748B; line-height: 1.5; word-break: break-word;">
-                        <b>Rule Ref:</b> <code>{f['rule_id'] or 'SYSTEM_CHECK'}</code> • <b>Document:</b> <code>{f['document_id'] or 'Application Master'}</code>
+                    <p style="margin: 8px 0; color: #334155; font-size: 13.5px; line-height: 1.45;">{f['description']}</p>
+                    <div style="font-size: 12px; color: #475569; line-height: 1.5; background: #F8FAFC; padding: 6px 10px; border-radius: 3px; border: 1px solid #E2E8F0;">
+                        <b>Rule Identifier:</b> <code>{f['rule_id'] or 'SYSTEM_CHECK'}</code> • <b>Document Scope:</b> <code>{f['document_id'] or 'Application Master'}</code>
                     </div>
-                    {"<div style='margin-top: 6px; padding: 6px 10px; background-color: #F8FAFC; border-radius: 4px; font-size: 12px; line-height: 1.4; word-break: break-word;'><b>Evidentiary Claims:</b> " + " | ".join(claims_list) + "</div>" if claims_list else ""}
-                    <div style="margin-top: 8px; font-size: 12.5px; color: #0369A1; line-height: 1.4;">
-                        <b>Recommended Action:</b> {f['recommended_action']}
+                    {"<div style='margin-top: 6px; padding: 6px 10px; background-color: #F8FAFC; border-radius: 3px; font-size: 12px; border: 1px solid #E2E8F0;'><b>Evidentiary Claims:</b> " + " | ".join(claims_list) + "</div>" if claims_list else ""}
+                    <div style="margin-top: 8px; font-size: 12.5px; color: #0B3C5D;">
+                        <b>Recommended Scrutiny Action:</b> {f['recommended_action']}
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
