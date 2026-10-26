@@ -314,11 +314,81 @@ iframe[title="streamlit.components.v1.html"], iframe {
 }
 
 /* ==========================================================================
-   10. PLOTLY CHARTS CONTAINER
+   10. PLOTLY CHARTS CONTAINER & RESPONSIVE STATE CHART
    ========================================================================== */
 .js-plotly-plot, .plot-container {
     width: 100% !important;
     max-width: 100% !important;
+}
+
+/* Desktop State Chart (> 768px): Show vertical bar chart, hide mobile horizontal chart */
+@media screen and (min-width: 769px) {
+    .st-key-mobile_state_chart,
+    .st-key-fig_mobile_chart,
+    div[data-testid="stVerticalBlock"]:has(> .st-key-mobile_state_chart),
+    div[data-testid="stElementContainer"]:has(.st-key-fig_mobile_chart) {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+    }
+    .st-key-desktop_state_chart,
+    .st-key-fig_desktop_chart,
+    div[data-testid="stVerticalBlock"]:has(> .st-key-desktop_state_chart),
+    div[data-testid="stElementContainer"]:has(.st-key-fig_desktop_chart) {
+        display: block !important;
+        visibility: visible !important;
+        height: auto !important;
+    }
+}
+
+/* Mobile State Chart (<= 768px): Show horizontal bar chart, hide desktop vertical chart */
+@media screen and (max-width: 768px) {
+    .st-key-desktop_state_chart,
+    .st-key-fig_desktop_chart,
+    div[data-testid="stVerticalBlock"]:has(> .st-key-desktop_state_chart),
+    div[data-testid="stElementContainer"]:has(.st-key-fig_desktop_chart) {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+    }
+    .st-key-mobile_state_chart,
+    .st-key-fig_mobile_chart,
+    div[data-testid="stVerticalBlock"]:has(> .st-key-mobile_state_chart),
+    div[data-testid="stElementContainer"]:has(.st-key-fig_mobile_chart) {
+        display: block !important;
+        visibility: visible !important;
+        height: auto !important;
+        width: 100% !important;
+    }
+
+    /* Prevent Plotly modebar from overlapping chart titles and labels on mobile */
+    .st-key-mobile_state_chart .modebar-container,
+    .st-key-fig_mobile_chart .modebar-container {
+        top: -6px !important;
+        right: 0 !important;
+    }
+    .st-key-mobile_state_chart .modebar-btn,
+    .st-key-fig_mobile_chart .modebar-btn {
+        font-size: 13px !important;
+        padding: 2px 3px !important;
+    }
+
+    /* Ensure chart SVG and container occupy full width on mobile */
+    .st-key-mobile_state_chart .main-svg,
+    .st-key-mobile_state_chart .plot-container,
+    .st-key-fig_mobile_chart .main-svg,
+    .st-key-fig_mobile_chart .plot-container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
 }
 
 /* ==========================================================================

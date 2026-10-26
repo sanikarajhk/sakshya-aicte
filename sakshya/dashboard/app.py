@@ -194,6 +194,8 @@ with col_chart2:
         for a in apps_data
     ]
     state_df = pd.DataFrame(state_records).groupby("State").agg({"Intake": "sum", "Anomaly": "sum"}).reset_index()
+
+    # Desktop Chart (Screens > 768px): Vertical bars with horizontal bottom colorbar & clean top margin
     fig_bar = px.bar(
         state_df,
         x="State",
@@ -204,12 +206,83 @@ with col_chart2:
         title="Approved Intake vs Anomaly Concentration"
     )
     fig_bar.update_layout(
-        margin=dict(t=25, b=25, l=15, r=15),
-        height=320,
+        margin=dict(t=50, b=65, l=35, r=20),
+        height=340,
         autosize=True,
-        legend=dict(orientation="h", yanchor="bottom", y=-0.35, xanchor="center", x=0.5)
+        xaxis_title=None,
+        yaxis_title="Applied Seats",
+        title=dict(font=dict(size=14), x=0.02, xanchor="left", y=0.96)
     )
-    st.plotly_chart(fig_bar, use_container_width=True)
+    fig_bar.update_coloraxes(
+        colorbar=dict(
+            orientation="h",
+            y=-0.28,
+            yanchor="top",
+            x=0.5,
+            xanchor="center",
+            len=0.75,
+            thickness=12,
+            title=dict(text="Flagged Dossiers", side="top", font=dict(size=11)),
+            tickfont=dict(size=10)
+        )
+    )
+    desktop_config = {
+        "displayModeBar": "hover",
+        "displaylogo": False,
+        "modeBarButtonsToRemove": ["lasso2d", "select2d", "pan2d", "zoom2d", "autoScale2d"],
+        "responsive": True,
+    }
+
+    # Mobile Chart (Screens <= 768px): Horizontal bar chart with horizontal state names and bottom colorbar
+    state_df_sorted = state_df.sort_values("Intake", ascending=True)
+    fig_bar_mobile = px.bar(
+        state_df_sorted,
+        y="State",
+        x="Intake",
+        orientation="h",
+        color="Anomaly",
+        color_continuous_scale="Reds",
+        labels={"Intake": "Applied Student Seats", "Anomaly": "Flagged Dossiers", "State": "State"},
+        title="Approved Intake vs Anomaly Concentration"
+    )
+    fig_bar_mobile.update_layout(
+        margin=dict(t=48, b=65, l=95, r=20),
+        height=390,
+        autosize=True,
+        yaxis_title=None,
+        xaxis_title="Applied Student Seats",
+        title=dict(font=dict(size=13), x=0.02, xanchor="left", y=0.97),
+        yaxis=dict(tickfont=dict(size=11), automargin=True),
+        xaxis=dict(tickfont=dict(size=10))
+    )
+    fig_bar_mobile.update_coloraxes(
+        colorbar=dict(
+            orientation="h",
+            y=-0.22,
+            yanchor="top",
+            x=0.5,
+            xanchor="center",
+            len=0.85,
+            thickness=10,
+            title=dict(text="Flagged Dossiers", side="top", font=dict(size=10)),
+            tickfont=dict(size=9)
+        )
+    )
+    mobile_config = {
+        "displayModeBar": "hover",
+        "displaylogo": False,
+        "modeBarButtonsToRemove": [
+            "lasso2d", "select2d", "zoom2d", "pan2d",
+            "zoomIn2d", "zoomOut2d", "autoScale2d"
+        ],
+        "responsive": True,
+    }
+
+    with st.container(key="desktop_state_chart"):
+        st.plotly_chart(fig_bar, use_container_width=True, key="fig_desktop_chart", config=desktop_config)
+
+    with st.container(key="mobile_state_chart"):
+        st.plotly_chart(fig_bar_mobile, use_container_width=True, key="fig_mobile_chart", config=mobile_config)
 
 # Overview Applications Table
 st.subheader("📋 Institutional Applications Queue")
