@@ -107,6 +107,11 @@ class AnomalyDetector:
 
         for doc in documents:
             p = Path(doc.get("file_path", ""))
+            if not p.exists():
+                from sakshya.core.config import DATA_DIR
+                cand = DATA_DIR / "synthetic_applications" / app_id / doc.get("filename", p.name)
+                if cand.exists():
+                    p = cand
             
             # 1. PDF Metadata inspection
             if p.suffix.lower() == ".pdf":

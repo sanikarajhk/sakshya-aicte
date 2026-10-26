@@ -15,7 +15,17 @@ def load_ground_truth() -> Dict[str, Any]:
     if not gt_path.exists():
         raise FileNotFoundError(f"Ground truth not found at {gt_path}. Run generator first.")
     with open(gt_path, "r") as f:
-        return json.load(f)
+        data = json.load(f)
+    
+    # Guarantee file_path resolves to existing file on current machine
+    for app_id, app in data.items():
+        for doc in app.get("documents", []):
+            fn = doc.get("filename")
+            if fn:
+                local_p = DATA_DIR / "synthetic_applications" / app_id / fn
+                if local_p.exists():
+                    doc["file_path"] = str(local_p)
+    return data
 
 
 def load_mock_issuer_db() -> Dict[str, Any]:

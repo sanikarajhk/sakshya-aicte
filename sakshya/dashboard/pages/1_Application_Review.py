@@ -165,6 +165,9 @@ with tab_docs:
         
         # Download / View button
         doc_path = Path(d["file_path"])
+        if not doc_path.exists():
+            from sakshya.core.config import DATA_DIR
+            doc_path = DATA_DIR / "synthetic_applications" / selected_app_id / d["filename"]
         if doc_path.exists():
             with open(doc_path, "rb") as f_bytes:
                 st.download_button(

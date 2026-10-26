@@ -110,11 +110,28 @@ class DocumentReader:
 
         return None
 
+    def _resolve_path(self, path: Path) -> Path:
+        """Resolve path to local filesystem if original path does not exist."""
+        p = Path(path)
+        if p.exists():
+            return p
+        from sakshya.core.config import DATA_DIR
+        parent_name = p.parent.name
+        if parent_name:
+            candidate = DATA_DIR / "synthetic_applications" / parent_name / p.name
+            if candidate.exists():
+                return candidate
+        matches = list((DATA_DIR / "synthetic_applications").glob(f"*/{p.name}"))
+        if matches:
+            return matches[0]
+        return p
+
     def read_pdf(self, pdf_path: Path) -> Dict[str, Any]:
         """
         Extract text, tables, and page metadata from PDF using pdfplumber.
         If pages contain image scans, run OCR.
         """
+        pdf_path = self._resolve_path(pdf_path)
         if not pdf_path.exists():
             raise FileNotFoundError(f"PDF not found: {pdf_path}")
 
@@ -166,6 +183,7 @@ class DocumentReader:
 
     def read_image_ocr(self, image_path: Path) -> Dict[str, Any]:
         """Extract text from scanned images via OpenCV + Tesseract OCR."""
+        image_path = self._resolve_path(image_path)
         if not image_path.exists():
             raise FileNotFoundError(f"Image not found: {image_path}")
 
@@ -201,6 +219,7 @@ class DocumentReader:
 
     def read_document(self, file_path: Path) -> Dict[str, Any]:
         """Dispatch reading based on file format (.pdf or image)."""
+        file_path = self._resolve_path(file_path)
         suffix = file_path.suffix.lower()
         if suffix == ".pdf":
             return self.read_pdf(file_path)

@@ -61,8 +61,14 @@ from sakshya.core.models import DocumentType
 fields_by_doc = {}
 for d in app_data.get("documents", []):
     dt = DocumentType(d["document_type"])
-    text = runner.reader.read_document(Path(d["file_path"]))["full_text"]
-    fields_by_doc[d["filename"]] = runner.extractor.extract_document_fields(dt, text, d["filename"])
+    file_p = Path(d["file_path"])
+    if not file_p.exists():
+        file_p = DATA_DIR / "synthetic_applications" / selected_app_id / d["filename"]
+    if file_p.exists():
+        text = runner.reader.read_document(file_p)["full_text"]
+        fields_by_doc[d["filename"]] = runner.extractor.extract_document_fields(dt, text, d["filename"])
+    else:
+        fields_by_doc[d["filename"]] = []
 
 findings = runner.rules_engine.evaluate_application(
     application_data=app_data,
