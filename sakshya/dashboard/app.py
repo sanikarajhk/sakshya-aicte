@@ -84,13 +84,13 @@ st.sidebar.markdown(f"""
 # Government Masthead Banner
 st.markdown("""
 <div class="gov-masthead">
-    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #FEF3C7; font-weight: 700; margin-bottom: 4px;">
+    <div class="gov-masthead-dept">
         All India Council for Technical Education • Regulatory Scrutiny Division
     </div>
-    <h1 class="gov-masthead-title">साक्ष्य / SAKSHYA</h1>
-    <p class="gov-masthead-subtitle">
+    <div class="gov-masthead-title">साक्ष्य / SAKSHYA</div>
+    <div class="gov-masthead-subtitle">
         Institutional Application Scrutiny & Regulatory Compliance Verification Portal
-    </p>
+    </div>
     <div class="gov-masthead-badge">
         Administrative Demonstration Staging • Synthetic Dataset of 30 Institutional Dossiers (SIH26261 Evaluation)
     </div>
@@ -101,16 +101,14 @@ st.markdown("""
 # Document Upload & Targeted Regulatory Verification Section
 # =============================================================================
 st.markdown("""
-<div class="gov-card" style="border-left: 4px solid #0B3C5D; margin-top: 6px; margin-bottom: 12px;">
-    <div class="responsive-flex">
-        <div style="flex: 1 1 300px;">
-            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #64748B; font-weight: 700;">Document Scrutiny Workflow</div>
-            <h3 style="margin: 2px 0 6px 0; color: #0B2545;">Institutional Document Ingestion & Regulatory Scrutiny</h3>
-            <p style="margin: 0; color: #475569; font-size: 13px; line-height: 1.45;">
-                Upload an institutional document (PDF) to perform real-time automated verification against reference records, identify statutory defects, and scrutinize regulatory compliance.
-            </p>
-        </div>
+<div class="gov-card" style="border-left: 4px solid #0B3C5D; margin-top: 4px; margin-bottom: 10px;">
+    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #64748B; font-weight: 700;">Document Scrutiny Workflow</div>
+    <div style="font-size: clamp(15px, 3.2vw, 17px); font-weight: 700; color: #0B2545; margin: 3px 0 6px 0; line-height: 1.35;">
+        Institutional Document Ingestion & Regulatory Scrutiny
     </div>
+    <p style="margin: 0; color: #475569; font-size: clamp(12px, 2.6vw, 13px); line-height: 1.45;">
+        Upload an institutional document (PDF) to perform real-time automated verification against reference records, identify statutory defects, and scrutinize regulatory compliance.
+    </p>
 </div>
 """, unsafe_allow_html=True)
 

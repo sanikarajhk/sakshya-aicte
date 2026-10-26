@@ -34,12 +34,21 @@ html, body {
 
 /* Fluid App Container Padding with restrained administrative width */
 .block-container {
-    padding-top: clamp(1rem, 2.5vw, 2rem) !important;
+    padding-top: clamp(3.75rem, 5vw, 4.5rem) !important;
     padding-bottom: clamp(1.5rem, 3.5vw, 3rem) !important;
     padding-left: clamp(0.75rem, 2vw, 2.5rem) !important;
     padding-right: clamp(0.75rem, 2vw, 2.5rem) !important;
     max-width: 1600px !important;
     margin: 0 auto !important;
+}
+
+@media screen and (max-width: 768px) {
+    .block-container {
+        padding-top: 3.85rem !important;
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+        padding-bottom: 1.5rem !important;
+    }
 }
 
 /* ==========================================================================
@@ -100,46 +109,132 @@ strong, b {
     background-color: #0B2545 !important;
     border-top: 4px solid #D97706 !important;
     border-bottom: 2px solid #081B33 !important;
-    padding: clamp(14px, 2.5vw, 20px) clamp(16px, 3vw, 24px) !important;
+    padding: clamp(12px, 2.2vw, 18px) clamp(14px, 2.8vw, 22px) !important;
     border-radius: 4px !important;
     color: #FFFFFF !important;
-    margin-bottom: 18px !important;
+    margin-bottom: 12px !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    height: auto !important;
+    min-height: 0 !important;
 }
 
-.gov-masthead h1, .gov-masthead h2 {
+.gov-masthead,
+.gov-masthead *,
+.gov-masthead h1,
+.gov-masthead h2,
+.gov-masthead h3,
+.gov-masthead a,
+.gov-masthead div,
+.gov-masthead span,
+.gov-masthead p,
+.gov-masthead .gov-masthead-title {
     color: #FFFFFF !important;
-    margin: 0 !important;
+}
+
+.gov-masthead a:hover {
+    color: #FEF3C7 !important;
+}
+
+.gov-masthead-dept {
+    font-size: clamp(10px, 2.2vw, 11px) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    color: #FEF3C7 !important;
+    font-weight: 700 !important;
+    margin-bottom: 3px !important;
+    line-height: 1.35 !important;
+    word-break: break-word !important;
+}
+
+.gov-masthead-title {
+    font-size: clamp(20px, 4.2vw, 26px) !important;
+    font-weight: 800 !important;
+    color: #FFFFFF !important;
+    letter-spacing: -0.2px !important;
+    margin: 2px 0 4px 0 !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
+}
+
+.gov-masthead-subtitle {
+    font-size: clamp(12px, 2.4vw, 13.5px) !important;
+    color: #E2E8F0 !important;
+    margin: 0 0 6px 0 !important;
+    line-height: 1.4 !important;
+    word-break: break-word !important;
 }
 
 .gov-masthead p {
     color: #E2E8F0 !important;
-    margin: 6px 0 0 0 !important;
+    margin: 3px 0 6px 0 !important;
     font-size: clamp(12px, 2.4vw, 13.5px) !important;
-    line-height: 1.45 !important;
+    line-height: 1.4 !important;
 }
 
 .gov-masthead-badge {
     display: inline-block !important;
-    margin-top: 8px !important;
-    font-size: 11px !important;
+    margin-top: 4px !important;
+    font-size: clamp(10px, 2.2vw, 11px) !important;
     color: #FEF3C7 !important;
-    background: rgba(217, 119, 6, 0.2) !important;
+    background: rgba(217, 119, 6, 0.25) !important;
     border: 1px solid #D97706 !important;
-    padding: 3px 10px !important;
+    padding: 3px 9px !important;
     border-radius: 3px !important;
     font-weight: 600 !important;
     letter-spacing: 0.3px !important;
+    line-height: 1.35 !important;
+    word-break: break-word !important;
+}
+
+@media screen and (max-width: 768px) {
+    .gov-masthead {
+        padding: 11px 13px !important;
+        margin-bottom: 10px !important;
+    }
+    .gov-masthead-dept {
+        font-size: 10px !important;
+        letter-spacing: 0.6px !important;
+        margin-bottom: 2px !important;
+    }
+    .gov-masthead-title {
+        font-size: 20px !important;
+        margin: 2px 0 3px 0 !important;
+    }
+    .gov-masthead-subtitle {
+        font-size: 11.5px !important;
+        margin: 0 0 5px 0 !important;
+        line-height: 1.35 !important;
+    }
+    .gov-masthead-badge {
+        font-size: 10px !important;
+        padding: 2px 7px !important;
+        margin-top: 2px !important;
+    }
 }
 
 /* Administrative Box / Fieldset Container */
 .gov-card {
     background-color: #FFFFFF !important;
-    border: 1px solid #CBD5E1 !important;
+    border: 1px solid #CBD5E1;
     border-radius: 4px !important;
-    padding: clamp(12px, 2vw, 18px) !important;
-    margin-bottom: 14px !important;
+    padding: clamp(12px, 2vw, 16px) !important;
+    margin-bottom: 12px !important;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+    box-sizing: border-box !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+}
+
+@media screen and (max-width: 768px) {
+    .gov-card {
+        padding: 10px 12px !important;
+        margin-bottom: 10px !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
 }
 
 .gov-card-header {
@@ -465,7 +560,7 @@ section[data-testid="stSidebar"] .block-container {
         flex-direction: column !important;
         flex-wrap: wrap !important;
         width: 100% !important;
-        gap: 10px !important;
+        gap: 8px !important;
     }
     div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {
         width: 100% !important;
@@ -473,10 +568,13 @@ section[data-testid="stSidebar"] .block-container {
         flex: 1 1 100% !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
-        margin-bottom: 6px !important;
+        margin-bottom: 4px !important;
+        min-height: 0 !important;
+        height: auto !important;
     }
     .stButton > button, .stDownloadButton > button {
         width: 100% !important;
+        min-height: 42px !important;
     }
 }
 
@@ -505,11 +603,13 @@ section[data-testid="stSidebar"] .block-container {
     .responsive-flex {
         flex-direction: column !important;
         align-items: flex-start !important;
-        gap: 8px !important;
+        gap: 6px !important;
     }
     .responsive-flex > div {
         width: 100% !important;
         text-align: left !important;
+        flex: none !important;
+        min-height: 0 !important;
     }
 }
 
