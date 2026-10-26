@@ -3,6 +3,17 @@ Sakshya Dashboard - Cryptographic Audit Trail
 Inspects immutable hash-chained event logs and verifies SHA-256 chain continuity.
 """
 
+import sys
+from pathlib import Path
+
+# Automatically add repository root to sys.path for Streamlit Cloud
+CURRENT_DIR = Path(__file__).resolve()
+for parent in [CURRENT_DIR] + list(CURRENT_DIR.parents):
+    if (parent / "sakshya").is_dir() and (parent / "sakshya" / "core").is_dir():
+        if str(parent) not in sys.path:
+            sys.path.insert(0, str(parent))
+        break
+
 import streamlit as st
 import pandas as pd
 import json

@@ -4,6 +4,17 @@ Enables authorized AICTE Scrutiny Officers to review evidence, confirm or overri
 automated system findings, record regulatory justifications, and commit to the audit trail.
 """
 
+import sys
+from pathlib import Path
+
+# Automatically add repository root to sys.path for Streamlit Cloud
+CURRENT_DIR = Path(__file__).resolve()
+for parent in [CURRENT_DIR] + list(CURRENT_DIR.parents):
+    if (parent / "sakshya").is_dir() and (parent / "sakshya" / "core").is_dir():
+        if str(parent) not in sys.path:
+            sys.path.insert(0, str(parent))
+        break
+
 import streamlit as st
 import json
 from sakshya.core.models import UserRole, ApplicationStatus

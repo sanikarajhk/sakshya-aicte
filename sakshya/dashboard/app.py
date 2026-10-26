@@ -4,6 +4,17 @@ AICTE AI-Powered Application Validation, Document Authentication & Compliance Ve
 (SIH 2026 Problem Statement SIH26261)
 """
 
+import sys
+from pathlib import Path
+
+# Automatically add repository root to sys.path for Streamlit Cloud
+CURRENT_DIR = Path(__file__).resolve()
+for parent in [CURRENT_DIR] + list(CURRENT_DIR.parents):
+    if (parent / "sakshya").is_dir() and (parent / "sakshya" / "core").is_dir():
+        if str(parent) not in sys.path:
+            sys.path.insert(0, str(parent))
+        break
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -12,18 +23,26 @@ from datetime import datetime
 
 from sakshya.core.config import settings
 from sakshya.core.models import UserRole
-from sakshya.core.database import get_db_context
+from sakshya.core.database import get_db_context, init_db
 from sakshya.core.models import ApplicationDB, FindingDB, AuditLogDB
 from sakshya.core.security import DEMO_USERS, get_current_user
 from sakshya.core.audit import verify_audit_chain
 
-# Page setup
+# Page setup - MUST be first Streamlit command
 st.set_page_config(
     page_title="Sakshya | AICTE Verification Portal",
     page_icon="🛡️",
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# Self-healing database check for cloud environments
+with get_db_context() as db:
+    init_db()
+    if db.query(ApplicationDB).count() == 0:
+        from sakshya.pipeline.pipeline_runner import PipelineRunner
+        runner = PipelineRunner()
+        runner.process_all_historical_applications()
 
 # Custom CSS for polished government portal aesthetic
 st.markdown("""

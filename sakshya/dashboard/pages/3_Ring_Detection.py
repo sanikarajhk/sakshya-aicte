@@ -4,10 +4,20 @@ Visualizes interconnected institution networks, flags suspicious shared document
 fingerprints, and explains high-risk collusion vs benign commonalities.
 """
 
+import sys
+from pathlib import Path
+
+# Automatically add repository root to sys.path for Streamlit Cloud
+CURRENT_DIR = Path(__file__).resolve()
+for parent in [CURRENT_DIR] + list(CURRENT_DIR.parents):
+    if (parent / "sakshya").is_dir() and (parent / "sakshya" / "core").is_dir():
+        if str(parent) not in sys.path:
+            sys.path.insert(0, str(parent))
+        break
+
 import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
-from pathlib import Path
 
 from sakshya.core.config import DATA_DIR
 from sakshya.pipeline.ring_detector import RingDetector
