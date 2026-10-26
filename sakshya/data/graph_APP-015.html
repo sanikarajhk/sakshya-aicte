@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 650px;
+                 background-color: #1A202C;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#2B6CB0", "font": {"color": "#E2E8F0"}, "id": "APP:APP-015", "label": "Application APP-015", "shape": "dot", "size": 28, "title": "\u003cb\u003eApplication APP-015\u003c/b\u003e\u003cbr/\u003eCategory: APPLICATION"}, {"color": "#4A5568", "font": {"color": "#E2E8F0"}, "id": "DOC:land_title_APP-015.pdf", "label": "land_title_APP-015.pdf", "shape": "dot", "size": 20, "title": "\u003cb\u003eland_title_APP-015.pdf\u003c/b\u003e\u003cbr/\u003eCategory: DOCUMENT"}, {"color": "#4A5568", "font": {"color": "#E2E8F0"}, "id": "DOC:building_plan_APP-015.pdf", "label": "building_plan_APP-015.pdf", "shape": "dot", "size": 20, "title": "\u003cb\u003ebuilding_plan_APP-015.pdf\u003c/b\u003e\u003cbr/\u003eCategory: DOCUMENT"}, {"color": "#4A5568", "font": {"color": "#E2E8F0"}, "id": "DOC:fire_noc_APP-015.pdf", "label": "fire_noc_APP-015.pdf", "shape": "dot", "size": 20, "title": "\u003cb\u003efire_noc_APP-015.pdf\u003c/b\u003e\u003cbr/\u003eCategory: DOCUMENT"}, {"color": "#4A5568", "font": {"color": "#E2E8F0"}, "id": "DOC:mandatory_disclosure_APP-015.pdf", "label": "mandatory_disclosure_APP-015.pdf", "shape": "dot", "size": 20, "title": "\u003cb\u003emandatory_disclosure_APP-015.pdf\u003c/b\u003e\u003cbr/\u003eCategory: DOCUMENT"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:land_title_APP-015.pdf:registration_number", "label": "registration_number: REG-DEED-2035-DL", "shape": "dot", "size": 16, "title": "\u003cb\u003eregistration_number: REG-DEED-2035-DL\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:land_title_APP-015.pdf:survey_number", "label": "survey_number: SY-205/1-A", "shape": "dot", "size": 16, "title": "\u003cb\u003esurvey_number: SY-205/1-A\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:land_title_APP-015.pdf:land_area_acres", "label": "land_area_acres: 4.5", "shape": "dot", "size": 16, "title": "\u003cb\u003eland_area_acres: 4.5\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:land_title_APP-015.pdf:issue_date", "label": "issue_date: 2020-03-15", "shape": "dot", "size": 16, "title": "\u003cb\u003eissue_date: 2020-03-15\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:land_title_APP-015.pdf:institution_name", "label": "institution_name: Nilgiri College of Applied Engineering", "shape": "dot", "size": 16, "title": "\u003cb\u003einstitution_name: Nilgiri College of Applied Engineering\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:building_plan_APP-015.pdf:approval_number", "label": "approval_number: BP-SANCT-2036/MUN", "shape": "dot", "size": 16, "title": "\u003cb\u003eapproval_number: BP-SANCT-2036/MUN\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:building_plan_APP-015.pdf:institution_name", "label": "institution_name: Nilgiri College of Applied Engineering", "shape": "dot", "size": 16, "title": "\u003cb\u003einstitution_name: Nilgiri College of Applied Engineering\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:building_plan_APP-015.pdf:survey_number", "label": "survey_number: SY-205/1-A", "shape": "dot", "size": 16, "title": "\u003cb\u003esurvey_number: SY-205/1-A\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:building_plan_APP-015.pdf:built_up_area_sqm", "label": "built_up_area_sqm: 16250.0", "shape": "dot", "size": 16, "title": "\u003cb\u003ebuilt_up_area_sqm: 16250.0\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:building_plan_APP-015.pdf:architect_license", "label": "architect_license: Ar. S. K. Gupta, CA/2012/40015", "shape": "dot", "size": 16, "title": "\u003cb\u003earchitect_license: Ar. S. K. Gupta, CA/2012/40015\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:building_plan_APP-015.pdf:approval_date", "label": "approval_date: 2021-06-20", "shape": "dot", "size": 16, "title": "\u003cb\u003eapproval_date: 2021-06-20\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:building_plan_APP-015.pdf:expiry_date", "label": "expiry_date: 2027-06-19", "shape": "dot", "size": 16, "title": "\u003cb\u003eexpiry_date: 2027-06-19\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:fire_noc_APP-015.pdf:noc_number", "label": "noc_number: NOC-FIRE-2023-8015", "shape": "dot", "size": 16, "title": "\u003cb\u003enoc_number: NOC-FIRE-2023-8015\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:fire_noc_APP-015.pdf:institution_name", "label": "institution_name: Nilgiri College of Applied Engineering", "shape": "dot", "size": 16, "title": "\u003cb\u003einstitution_name: Nilgiri College of Applied Engineering\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:fire_noc_APP-015.pdf:issue_date", "label": "issue_date: 2024-08-10", "shape": "dot", "size": 16, "title": "\u003cb\u003eissue_date: 2024-08-10\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:fire_noc_APP-015.pdf:expiry_date", "label": "expiry_date: 2027-08-09", "shape": "dot", "size": 16, "title": "\u003cb\u003eexpiry_date: 2027-08-09\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:mandatory_disclosure_APP-015.pdf:institution_name", "label": "institution_name: Nilgiri College of Applied Engineering", "shape": "dot", "size": 16, "title": "\u003cb\u003einstitution_name: Nilgiri College of Applied Engineering\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:mandatory_disclosure_APP-015.pdf:society_trust_name", "label": "society_trust_name: Nilgiri Educational Trust", "shape": "dot", "size": 16, "title": "\u003cb\u003esociety_trust_name: Nilgiri Educational Trust\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:mandatory_disclosure_APP-015.pdf:land_area_acres", "label": "land_area_acres: 7.5", "shape": "dot", "size": 16, "title": "\u003cb\u003eland_area_acres: 7.5\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:mandatory_disclosure_APP-015.pdf:survey_number", "label": "survey_number: SY-205/1-A", "shape": "dot", "size": 16, "title": "\u003cb\u003esurvey_number: SY-205/1-A\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:mandatory_disclosure_APP-015.pdf:fire_noc_number", "label": "fire_noc_number: NOC-FIRE-2023-8015", "shape": "dot", "size": 16, "title": "\u003cb\u003efire_noc_number: NOC-FIRE-2023-8015\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#3182CE", "font": {"color": "#E2E8F0"}, "id": "CLAIM:mandatory_disclosure_APP-015.pdf:applied_intake", "label": "applied_intake: 270", "shape": "dot", "size": 16, "title": "\u003cb\u003eapplied_intake: 270\u003c/b\u003e\u003cbr/\u003eCategory: CLAIM"}, {"color": "#E53E3E", "font": {"color": "#E2E8F0"}, "id": "FINDING:ERR_CONTRADICTION_LAND_AREA:0", "label": "CRITICAL: Cross-Document Contradiction: ...", "shape": "dot", "size": 22, "title": "\u003cb\u003eCRITICAL: Cross-Document Contradiction: ...\u003c/b\u003e\u003cbr/\u003eCategory: FINDING\u003cbr/\u003eDiscrepancy detected between land_title_APP-015.pdf (4.50 Acres) and mandatory_disclosure_APP-015.pdf (7.50 Acres). [AICTE APH Clause 2.3.4 - Cross-Verification of Infrastructure Claims Placeholder]"}, {"color": "#805AD5", "font": {"color": "#E2E8F0"}, "id": "RULE:RULE_CROSS_DOC_LAND_AREA", "label": "RULE_CROSS_DOC_LAND_AREA", "shape": "dot", "size": 18, "title": "\u003cb\u003eRULE_CROSS_DOC_LAND_AREA\u003c/b\u003e\u003cbr/\u003eCategory: RULE"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "#A0AEC0", "from": "APP:APP-015", "label": "SUBMITTED_WITH", "title": "SUBMITTED_WITH", "to": "DOC:land_title_APP-015.pdf", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "APP:APP-015", "label": "SUBMITTED_WITH", "title": "SUBMITTED_WITH", "to": "DOC:building_plan_APP-015.pdf", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "APP:APP-015", "label": "SUBMITTED_WITH", "title": "SUBMITTED_WITH", "to": "DOC:fire_noc_APP-015.pdf", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "APP:APP-015", "label": "SUBMITTED_WITH", "title": "SUBMITTED_WITH", "to": "DOC:mandatory_disclosure_APP-015.pdf", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:land_title_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:land_title_APP-015.pdf:registration_number", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:land_title_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:land_title_APP-015.pdf:survey_number", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:land_title_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:land_title_APP-015.pdf:land_area_acres", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:land_title_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:land_title_APP-015.pdf:issue_date", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:land_title_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:land_title_APP-015.pdf:institution_name", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:building_plan_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:building_plan_APP-015.pdf:approval_number", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:building_plan_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:building_plan_APP-015.pdf:institution_name", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:building_plan_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:building_plan_APP-015.pdf:survey_number", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:building_plan_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:building_plan_APP-015.pdf:built_up_area_sqm", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:building_plan_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:building_plan_APP-015.pdf:architect_license", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:building_plan_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:building_plan_APP-015.pdf:approval_date", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:building_plan_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:building_plan_APP-015.pdf:expiry_date", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:fire_noc_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:fire_noc_APP-015.pdf:noc_number", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:fire_noc_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:fire_noc_APP-015.pdf:institution_name", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:fire_noc_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:fire_noc_APP-015.pdf:issue_date", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:fire_noc_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:fire_noc_APP-015.pdf:expiry_date", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:mandatory_disclosure_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:institution_name", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:mandatory_disclosure_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:society_trust_name", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:mandatory_disclosure_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:land_area_acres", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:mandatory_disclosure_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:survey_number", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:mandatory_disclosure_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:fire_noc_number", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "DOC:mandatory_disclosure_APP-015.pdf", "label": "ASSERTS", "title": "ASSERTS", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:applied_intake", "width": 1}, {"arrows": "to", "color": "#E53E3E", "from": "CLAIM:land_title_APP-015.pdf:survey_number", "label": "CONTRADICTS", "title": "CONTRADICTS", "to": "CLAIM:building_plan_APP-015.pdf:survey_number", "width": 3}, {"arrows": "to", "color": "#E53E3E", "from": "CLAIM:land_title_APP-015.pdf:survey_number", "label": "CONTRADICTS", "title": "CONTRADICTS", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:survey_number", "width": 3}, {"arrows": "to", "color": "#E53E3E", "from": "CLAIM:land_title_APP-015.pdf:land_area_acres", "label": "CONTRADICTS", "title": "CONTRADICTS", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:land_area_acres", "width": 3}, {"arrows": "to", "color": "#E53E3E", "from": "CLAIM:land_title_APP-015.pdf:institution_name", "label": "CONTRADICTS", "title": "CONTRADICTS", "to": "CLAIM:building_plan_APP-015.pdf:institution_name", "width": 3}, {"arrows": "to", "color": "#E53E3E", "from": "CLAIM:land_title_APP-015.pdf:institution_name", "label": "CONTRADICTS", "title": "CONTRADICTS", "to": "CLAIM:fire_noc_APP-015.pdf:institution_name", "width": 3}, {"arrows": "to", "color": "#E53E3E", "from": "CLAIM:land_title_APP-015.pdf:institution_name", "label": "CONTRADICTS", "title": "CONTRADICTS", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:institution_name", "width": 3}, {"arrows": "to", "color": "#E53E3E", "from": "CLAIM:building_plan_APP-015.pdf:institution_name", "label": "CONTRADICTS", "title": "CONTRADICTS", "to": "CLAIM:fire_noc_APP-015.pdf:institution_name", "width": 3}, {"arrows": "to", "color": "#E53E3E", "from": "CLAIM:building_plan_APP-015.pdf:institution_name", "label": "CONTRADICTS", "title": "CONTRADICTS", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:institution_name", "width": 3}, {"arrows": "to", "color": "#E53E3E", "from": "CLAIM:building_plan_APP-015.pdf:survey_number", "label": "CONTRADICTS", "title": "CONTRADICTS", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:survey_number", "width": 3}, {"arrows": "to", "color": "#E53E3E", "from": "CLAIM:fire_noc_APP-015.pdf:institution_name", "label": "CONTRADICTS", "title": "CONTRADICTS", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:institution_name", "width": 3}, {"arrows": "to", "color": "#A0AEC0", "from": "FINDING:ERR_CONTRADICTION_LAND_AREA:0", "label": "FLAGS_DOCUMENT", "title": "FLAGS_DOCUMENT", "to": "DOC:land_title_APP-015.pdf", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "FINDING:ERR_CONTRADICTION_LAND_AREA:0", "label": "FLAGS_CLAIM", "title": "FLAGS_CLAIM", "to": "CLAIM:land_title_APP-015.pdf:land_area_acres", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "FINDING:ERR_CONTRADICTION_LAND_AREA:0", "label": "FLAGS_CLAIM", "title": "FLAGS_CLAIM", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:land_area_acres", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "FINDING:ERR_CONTRADICTION_LAND_AREA:0", "label": "FLAGS_CLAIM", "title": "FLAGS_CLAIM", "to": "CLAIM:land_title_APP-015.pdf:survey_number", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "FINDING:ERR_CONTRADICTION_LAND_AREA:0", "label": "FLAGS_CLAIM", "title": "FLAGS_CLAIM", "to": "CLAIM:building_plan_APP-015.pdf:survey_number", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "FINDING:ERR_CONTRADICTION_LAND_AREA:0", "label": "FLAGS_CLAIM", "title": "FLAGS_CLAIM", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:survey_number", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "FINDING:ERR_CONTRADICTION_LAND_AREA:0", "label": "FLAGS_CLAIM", "title": "FLAGS_CLAIM", "to": "CLAIM:land_title_APP-015.pdf:institution_name", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "FINDING:ERR_CONTRADICTION_LAND_AREA:0", "label": "FLAGS_CLAIM", "title": "FLAGS_CLAIM", "to": "CLAIM:building_plan_APP-015.pdf:institution_name", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "FINDING:ERR_CONTRADICTION_LAND_AREA:0", "label": "FLAGS_CLAIM", "title": "FLAGS_CLAIM", "to": "CLAIM:fire_noc_APP-015.pdf:institution_name", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "FINDING:ERR_CONTRADICTION_LAND_AREA:0", "label": "FLAGS_CLAIM", "title": "FLAGS_CLAIM", "to": "CLAIM:mandatory_disclosure_APP-015.pdf:institution_name", "width": 1}, {"arrows": "to", "color": "#A0AEC0", "from": "RULE:RULE_CROSS_DOC_LAND_AREA", "label": "GENERATED", "title": "GENERATED", "to": "FINDING:ERR_CONTRADICTION_LAND_AREA:0", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.3,
+            "damping": 0.09,
+            "gravitationalConstant": -3000,
+            "springConstant": 0.001,
+            "springLength": 95
+        },
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

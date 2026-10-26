@@ -1,0 +1,51 @@
+# Sakshya - AI-Powered Application Validation & Document Authentication for AICTE
+# Problem Statement: SIH26261 (Smart India Hackathon 2026)
+
+# Language & Core Frameworks
+python-dotenv>=1.0.0
+pydantic>=2.9.0
+pydantic-settings>=2.0.0
+
+# Dashboard & Visualization
+streamlit>=1.35.0
+pandas>=2.2.0
+plotly>=5.22.0
+pyvis>=0.3.2
+
+# API & Server
+fastapi>=0.111.0
+uvicorn>=0.30.0
+httpx>=0.27.0
+
+# PDF & Document Processing
+pdfplumber>=0.11.0
+pypdf>=4.2.0
+reportlab>=4.2.0
+
+# OCR & Computer Vision
+pytesseract>=0.3.10
+opencv-python>=4.9.0
+pillow>=10.3.0
+pyzbar>=0.1.9
+
+# Data Generation & Text Extraction
+faker>=25.0.0
+rapidfuzz>=3.9.0
+pyyaml>=6.0.1
+
+# Anomaly Detection & Hashing
+imagehash>=4.3.1
+
+# Graph & Network Analysis
+networkx>=3.3
+
+# Machine Learning & Confidence Calibration
+scikit-learn>=1.4.0
+scipy>=1.13.0
+numpy>=1.26.0
+
+# Database & Audit
+sqlalchemy>=2.0.30
+
+# Testing & Quality Assurance
+pytest>=8.2.0

@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  sakshya:
+    build: .
+    container_name: sakshya-app
+    restart: unless-stopped
+    ports:
+      - "8501:8501"   # Streamlit Dashboard
+      - "8000:8000"   # FastAPI REST API
+    environment:
+      - PORT=8501
+      - API_PORT=8000
+    volumes:
+      - ./sakshya/data:/app/sakshya/data

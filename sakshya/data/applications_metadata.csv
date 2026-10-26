@@ -1,0 +1,31 @@
+application_id,institution_name,state,district,is_clean,expected_status,defects_count,defects,is_ring_member,documents_count
+APP-001,Vidyapeeth Institute of Technology,Maharashtra,Pune,True,VERIFIED_AUTO,0,,False,4
+APP-002,Saraswati College of Engineering,Karnataka,Bengaluru,True,VERIFIED_AUTO,0,,False,4
+APP-003,Kaveri Academy of Management Studies,Tamil Nadu,Coimbatore,True,VERIFIED_AUTO,0,,False,4
+APP-004,Godavari Polytechnic Institute,Uttar Pradesh,Kanpur,True,VERIFIED_AUTO,0,,False,4
+APP-005,Brahmaputra Engineering Academy,Gujarat,Ahmedabad,True,VERIFIED_AUTO,0,,False,4
+APP-006,Narmada Institute of Pharmaceutical Education,Haryana,Gurugram,True,VERIFIED_AUTO,0,,False,4
+APP-007,Himalayan Institute of Higher Technology,Delhi,New Delhi,True,VERIFIED_AUTO,0,,False,4
+APP-008,Deccan College of Applied Sciences,Telangana,Hyderabad,True,VERIFIED_AUTO,0,,False,4
+APP-009,Malabar Technical Campus,Rajasthan,Jaipur,True,VERIFIED_AUTO,0,,False,4
+APP-010,Konkan Institute of Technology,West Bengal,Kolkata,True,VERIFIED_AUTO,0,,False,4
+APP-011,Shivalik Institute of Engineering,Maharashtra,Pune,False,NEEDS_OFFICER_REVIEW,1,MISSING_FIRE_NOC,False,3
+APP-012,Satpura Institute of Management,Karnataka,Bengaluru,False,NEEDS_OFFICER_REVIEW,1,MISSING_BUILDING_PLAN,False,3
+APP-013,Vindhya College of Technology,Tamil Nadu,Coimbatore,False,NEEDS_OFFICER_REVIEW,1,EXPIRED_FIRE_NOC,False,4
+APP-014,Aravalli Institute of Technical Studies,Uttar Pradesh,Kanpur,False,NEEDS_OFFICER_REVIEW,1,EXPIRED_BUILDING_PLAN,False,4
+APP-015,Nilgiri College of Applied Engineering,Gujarat,Ahmedabad,False,FLAGGED_ANOMALY,1,CONTRADICTION_LAND_AREA,False,4
+APP-016,Apex Institute of Management & Engineering,Haryana,Gurugram,False,FLAGGED_ANOMALY,1,CONTRADICTION_INSTITUTION_NAME,False,4
+APP-017,Utkal Technical Institute,Delhi,New Delhi,False,FLAGGED_ANOMALY,1,CONTRADICTION_SURVEY_NUMBER,False,4
+APP-018,Magadh Institute of Science & Technology,Telangana,Hyderabad,False,FLAGGED_ANOMALY,1,CONTRADICTION_TEMPORAL_SEQUENCE,False,4
+APP-019,Gandhara Institute of Technology,Rajasthan,Jaipur,False,FLAGGED_ANOMALY,1,CONTRADICTION_CERTIFICATE_NUMBER,False,4
+APP-020,Takshashila Institute of Advanced Research,West Bengal,Kolkata,False,NEEDS_OFFICER_REVIEW,1,DEGRADED_SCAN_LOW_CONFIDENCE,False,4
+APP-021,Nalanda College of Engineering & Technology,Maharashtra,Pune,False,FLAGGED_ANOMALY,1,SUSPICIOUS_METADATA_DATE_ALTERATION,False,4
+APP-022,Pataliputra Technical Campus,Karnataka,Bengaluru,False,FLAGGED_ANOMALY,1,SUSPICIOUS_FONT_LAND_ALTERATION,False,4
+APP-023,Indus Valley Institute of Management,Tamil Nadu,Coimbatore,False,NEEDS_OFFICER_REVIEW,1,ISSUER_SOURCE_UNAVAILABLE,False,4
+APP-024,Chanakya Institute of Technical Studies,Uttar Pradesh,Kanpur,False,NEEDS_OFFICER_REVIEW,1,ISSUER_MANUAL_REVIEW_REQUIRED,False,4
+APP-025,Vanguard Institute of Engineering & Technology,Gujarat,Ahmedabad,False,FLAGGED_ANOMALY,1,COLLUSION_RING_SHARED_NOTARY_AND_SURVEY,True,4
+APP-026,Drona Academy of Applied Technology,Haryana,Gurugram,False,FLAGGED_ANOMALY,1,COLLUSION_RING_SHARED_NOTARY_AND_SURVEY,True,4
+APP-027,Horizon Institute of Polytechnic Studies,Delhi,New Delhi,False,FLAGGED_ANOMALY,1,COLLUSION_RING_SHARED_NOTARY_AND_SURVEY,True,4
+APP-028,Zenith College of Management & Computer Applications,Telangana,Hyderabad,False,FLAGGED_ANOMALY,1,COLLUSION_RING_SHARED_NOTARY_AND_SURVEY,True,4
+APP-029,Shivalik Global Institute of Technical Education,Rajasthan,Jaipur,False,FLAGGED_ANOMALY,1,COLLUSION_RING_SHARED_NOTARY_AND_SURVEY,True,4
+APP-030,Aryavart Institute of Pharmaceutical Sciences,West Bengal,Kolkata,False,FLAGGED_ANOMALY,1,COLLUSION_RING_SHARED_NOTARY_AND_SURVEY,True,4

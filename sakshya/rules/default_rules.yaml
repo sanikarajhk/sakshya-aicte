@@ -1,0 +1,89 @@
+# Sakshya Demonstration AICTE Regulatory Rules Configuration
+# NOTE: Statutory clauses are clearly marked illustrative placeholders for testing.
+# Final regulatory evaluation must be conducted by authorized AICTE Scrutiny Officers.
+
+rules_version: "2026.1"
+last_updated: "2026-10-26"
+regulatory_framework: "AICTE Approval Process Handbook (Illustrative Demonstration Rules)"
+
+rules:
+  - id: "RULE_MANDATORY_DOCUMENTS"
+    name: "Mandatory Document Completeness Check"
+    description: "Verifies that all required institutional documents have been uploaded."
+    statutory_clause: "[AICTE APH Clause 2.1.2 - Mandatory Document Submission Checklist Placeholder]"
+    category: "Completeness"
+    severity: "CRITICAL"
+    required_document_types:
+      - "LAND_TITLE"
+      - "BUILDING_PLAN"
+      - "FIRE_NOC"
+      - "MANDATORY_DISCLOSURE"
+    recommended_action: "Halt automated approval; request immediate submission of missing statutory documents."
+
+  - id: "RULE_DOCUMENT_VALIDITY"
+    name: "Document Expiry & Temporal Validity Check"
+    description: "Verifies that certificates (Fire NOC, Building occupancy) have not lapsed."
+    statutory_clause: "[AICTE APH Clause 2.4.6 - Safety and Municipal Validity Norms Placeholder]"
+    category: "Validity"
+    severity: "HIGH"
+    cutoff_date: "2026-10-26"
+    checked_documents:
+      - "FIRE_NOC"
+      - "BUILDING_PLAN"
+    recommended_action: "Route to Scrutiny Officer; applicant must upload renewed certificate or renewal receipt."
+
+  - id: "RULE_MINIMUM_LAND_REQUIREMENT"
+    name: "Minimum Institutional Land Norm"
+    description: "Ensures total campus land area meets prescribed statutory threshold."
+    statutory_clause: "[AICTE APH Clause 4.1.1 - Norms for Land Requirement Placeholder]"
+    category: "Compliance"
+    severity: "HIGH"
+    thresholds:
+      Engineering: 4.0
+      Management: 2.5
+      Pharmacy: 2.0
+      Polytechnic: 3.5
+    unit: "Acres"
+    recommended_action: "Flag deficiency in physical campus infrastructure."
+
+  - id: "RULE_CROSS_DOC_LAND_AREA"
+    name: "Cross-Document Land Area Consistency"
+    description: "Cross-checks land acreage across Land Deed, Application Form, and Mandatory Disclosure."
+    statutory_clause: "[AICTE APH Clause 2.3.4 - Cross-Verification of Infrastructure Claims Placeholder]"
+    category: "Consistency"
+    severity: "CRITICAL"
+    tolerance_acres: 0.10
+    recommended_action: "Flag cross-document contradiction; require officer adjudication of registered sale deed."
+
+  - id: "RULE_CROSS_DOC_INSTITUTION_NAME"
+    name: "Cross-Document Institution Name Alignment"
+    description: "Ensures applicant institution title is consistent across statutory approvals via fuzzy string distance."
+    statutory_clause: "[AICTE APH Clause 2.2.1 - Institutional Entity Consistency Placeholder]"
+    category: "Consistency"
+    severity: "HIGH"
+    minimum_similarity: 0.85
+    recommended_action: "Investigate whether applicant is using approvals issued to an unaffiliated third party."
+
+  - id: "RULE_CROSS_DOC_SURVEY_NUMBER"
+    name: "Cross-Document Survey / Khasra Number Concordance"
+    description: "Verifies that Land Title Deed and Municipal Building Sanction refer to identical physical plot parcel."
+    statutory_clause: "[AICTE APH Clause 4.2.3 - Site Identity and Parcel Integrity Placeholder]"
+    category: "Consistency"
+    severity: "CRITICAL"
+    recommended_action: "Flag site identity conflict; potential application on unapproved or surrogate land parcel."
+
+  - id: "RULE_CROSS_DOC_FIRE_NOC_REF"
+    name: "Fire Safety Certificate Citation Verification"
+    description: "Validates that the certificate number in the disclosure matches the certificate on record."
+    statutory_clause: "[AICTE APH Clause 2.5.2 - Statutory Clearance Citation Placeholder]"
+    category: "Consistency"
+    severity: "HIGH"
+    recommended_action: "Flag citation discrepancy for officer verification."
+
+  - id: "RULE_CHRONOLOGICAL_SEQUENCE"
+    name: "Chronological Legal Sequence Integrity"
+    description: "Validates that sponsoring society formation legally precedes or matches institutional property acquisition."
+    statutory_clause: "[AICTE APH Clause 1.4.1 - Legal Incorporation Sequence Placeholder]"
+    category: "Legal"
+    severity: "HIGH"
+    recommended_action: "Demand registered trust deed deed chain of title."

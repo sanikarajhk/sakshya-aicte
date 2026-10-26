@@ -1,15 +1,17 @@
-# Dependencies
-node_modules/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
 
-# Environment variables
+# Environment & Local Secrets
 .env
+.env.local
 
-# Logs
-logs
-*.log
-npm-debug.log*
-
-# OS files
+# Operating System
 .DS_Store
 Thumbs.db
 
@@ -19,5 +21,5 @@ Thumbs.db
 *.swp
 *.swo
 
-# Uploads
-uploads/
+# Database & logs
+*.log

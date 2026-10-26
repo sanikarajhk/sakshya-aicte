@@ -1,0 +1,2000 @@
+{
+  "APP-001": {
+    "application_id": "APP-001",
+    "institution_id": "INST-001",
+    "institution_name": "Vidyapeeth Institute of Technology",
+    "institution_type": "Management",
+    "state": "Maharashtra",
+    "district": "Pune",
+    "applied_intake": 210,
+    "land_area_acres": 5.5,
+    "survey_number": "SY-107/2-A",
+    "society_trust_name": "Vidyapeeth Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40001",
+    "notary_registration": "NOT/2019/ST/5001",
+    "bank_name": "Bank of Baroda, Pune Main Branch",
+    "is_clean": true,
+    "injected_defects": [],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "VERIFIED_AUTO",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-001.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-001/land_title_APP-001.pdf",
+        "file_hash": "5fa9a226b449e43fa5cb1c7aaa1be612a1a808cd50ee5eedd2bc48028b504db7",
+        "perceptual_hash": "7aa892ee11a2ca2c",
+        "file_size": 48138,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-001.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-001/building_plan_APP-001.pdf",
+        "file_hash": "fbc8617b5cdf285eb18e1917fcaa23c8f99dc29190467524f9975075d9fccca0",
+        "perceptual_hash": "e09884ed3a3ef53b",
+        "file_size": 5509,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-001.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-001/fire_noc_APP-001.pdf",
+        "file_hash": "f8f4acb59b8a751864c676249511d8ef390b6d95edcffffba8c0a40ec0003f63",
+        "perceptual_hash": "84f9ac77b8658c3a",
+        "file_size": 5349,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-001.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-001/mandatory_disclosure_APP-001.pdf",
+        "file_hash": "4577b108aa1f941011664739e4bd3dceaade61193358d10d0d2cdcedde0ef4b7",
+        "perceptual_hash": "0269cb40a62a39c0",
+        "file_size": 2650,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-002": {
+    "application_id": "APP-002",
+    "institution_id": "INST-002",
+    "institution_name": "Saraswati College of Engineering",
+    "institution_type": "Pharmacy",
+    "state": "Karnataka",
+    "district": "Bengaluru",
+    "applied_intake": 240,
+    "land_area_acres": 6.0,
+    "survey_number": "SY-114/3-A",
+    "society_trust_name": "Saraswati Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40002",
+    "notary_registration": "NOT/2019/ST/5002",
+    "bank_name": "Bank of Baroda, Bengaluru Main Branch",
+    "is_clean": true,
+    "injected_defects": [],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "VERIFIED_AUTO",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-002.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-002/land_title_APP-002.pdf",
+        "file_hash": "69335ecd504802a567d7e1a4c4c0a933d9cf87899aca908dfe9893b19e3a3498",
+        "perceptual_hash": "3f6807d67ec6944c",
+        "file_size": 48139,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-002.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-002/building_plan_APP-002.pdf",
+        "file_hash": "f0901a1c5d2731f79743b8c1bd2f675ac6307bf37137706d1e77dfa1073e2468",
+        "perceptual_hash": "c5a26d0cf8eece57",
+        "file_size": 5466,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-002.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-002/fire_noc_APP-002.pdf",
+        "file_hash": "2c9338d60a52c1104922f9e452508080e9c23423adcd27bfd78dceea4ddd0715",
+        "perceptual_hash": "daa03e595aabb831",
+        "file_size": 5397,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-002.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-002/mandatory_disclosure_APP-002.pdf",
+        "file_hash": "e20e866041be77b9649e2988cd6ec9b508859b08af287de56e029388ca014357",
+        "perceptual_hash": "bbc07853f63ee4f3",
+        "file_size": 2647,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-003": {
+    "application_id": "APP-003",
+    "institution_id": "INST-003",
+    "institution_name": "Kaveri Academy of Management Studies",
+    "institution_type": "Polytechnic",
+    "state": "Tamil Nadu",
+    "district": "Coimbatore",
+    "applied_intake": 270,
+    "land_area_acres": 6.5,
+    "survey_number": "SY-121/4-A",
+    "society_trust_name": "Kaveri Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40003",
+    "notary_registration": "NOT/2019/ST/5003",
+    "bank_name": "Bank of Baroda, Coimbatore Main Branch",
+    "is_clean": true,
+    "injected_defects": [],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "VERIFIED_AUTO",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-003.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-003/land_title_APP-003.pdf",
+        "file_hash": "27cca1e6d6959d08fa46d30f62d6d138fa49024dff7bf4a49ef91ea20a588f50",
+        "perceptual_hash": "bffb7482d6e741da",
+        "file_size": 48215,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-003.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-003/building_plan_APP-003.pdf",
+        "file_hash": "3a5692a8c70b3770ac9a2d1b684043c1441f3643dbec4a9fef65eaa1452eeddc",
+        "perceptual_hash": "d440ab25ca151396",
+        "file_size": 5282,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-003.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-003/fire_noc_APP-003.pdf",
+        "file_hash": "4d66c02669c9f1bf7c26ee583e62126fc65a4ac936d464411ebfc5c467d962c3",
+        "perceptual_hash": "83209a489ec191b3",
+        "file_size": 5542,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-003.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-003/mandatory_disclosure_APP-003.pdf",
+        "file_hash": "6093fb576d52b360dcc30978c477a45e02f0f8098229e11c44c776ef22415b05",
+        "perceptual_hash": "5c6037e26cd5fa5a",
+        "file_size": 2655,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-004": {
+    "application_id": "APP-004",
+    "institution_id": "INST-004",
+    "institution_name": "Godavari Polytechnic Institute",
+    "institution_type": "Engineering",
+    "state": "Uttar Pradesh",
+    "district": "Kanpur",
+    "applied_intake": 300,
+    "land_area_acres": 7.0,
+    "survey_number": "SY-128/5-A",
+    "society_trust_name": "Godavari Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40004",
+    "notary_registration": "NOT/2019/ST/5004",
+    "bank_name": "Bank of Baroda, Kanpur Main Branch",
+    "is_clean": true,
+    "injected_defects": [],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "VERIFIED_AUTO",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-004.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-004/land_title_APP-004.pdf",
+        "file_hash": "368591c69b1566fb8f90fc51d082d4d327f52cd2d4025b147d4a8043b14237fd",
+        "perceptual_hash": "6dbc74432770235e",
+        "file_size": 48114,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-004.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-004/building_plan_APP-004.pdf",
+        "file_hash": "a24d7f29702e79e3be80732251f76fb6e73fafff5959962cf90716a3dddc988d",
+        "perceptual_hash": "f67db1a8878d2992",
+        "file_size": 5673,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-004.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-004/fire_noc_APP-004.pdf",
+        "file_hash": "e91771923fa94a98dd314ce8bb17f5337cdbd0db5aa47266c5a81e42ddcc5dea",
+        "perceptual_hash": "27471655b834a3c7",
+        "file_size": 5490,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-004.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-004/mandatory_disclosure_APP-004.pdf",
+        "file_hash": "93cea8dd16bece1a865f0b054687c39e892caf4c95159714bc6d4e4c9c41836a",
+        "perceptual_hash": "12424020d2150136",
+        "file_size": 2647,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-005": {
+    "application_id": "APP-005",
+    "institution_id": "INST-005",
+    "institution_name": "Brahmaputra Engineering Academy",
+    "institution_type": "Management",
+    "state": "Gujarat",
+    "district": "Ahmedabad",
+    "applied_intake": 330,
+    "land_area_acres": 7.5,
+    "survey_number": "SY-135/1-A",
+    "society_trust_name": "Brahmaputra Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40005",
+    "notary_registration": "NOT/2019/ST/5005",
+    "bank_name": "Bank of Baroda, Ahmedabad Main Branch",
+    "is_clean": true,
+    "injected_defects": [],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "VERIFIED_AUTO",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-005.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-005/land_title_APP-005.pdf",
+        "file_hash": "0a1957bd21a2ac885ebd3c67ed5841355d6ef8efe74de2b9ca0383d6fc9b4aeb",
+        "perceptual_hash": "07c2747b082b0aaa",
+        "file_size": 48127,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-005.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-005/building_plan_APP-005.pdf",
+        "file_hash": "d5c53ed7697fd1fe7ee683062bd16d9da1791ef6affda54ba40b23c7d6f0e350",
+        "perceptual_hash": "9c5eaf991a572e94",
+        "file_size": 5512,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-005.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-005/fire_noc_APP-005.pdf",
+        "file_hash": "30123182cc74de599cc0a44b47789d694ccbd054859aea4b8d42000339b0e29c",
+        "perceptual_hash": "965317464a791851",
+        "file_size": 5506,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-005.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-005/mandatory_disclosure_APP-005.pdf",
+        "file_hash": "a5eeb390a7cb7dbf47d72f20d6c7c7bc7fbea6c904f4dab2d6982ad69f7e7655",
+        "perceptual_hash": "9372e8e6e416aa92",
+        "file_size": 2652,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-006": {
+    "application_id": "APP-006",
+    "institution_id": "INST-006",
+    "institution_name": "Narmada Institute of Pharmaceutical Education",
+    "institution_type": "Pharmacy",
+    "state": "Haryana",
+    "district": "Gurugram",
+    "applied_intake": 360,
+    "land_area_acres": 8.0,
+    "survey_number": "SY-142/2-A",
+    "society_trust_name": "Narmada Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40006",
+    "notary_registration": "NOT/2019/ST/5006",
+    "bank_name": "Bank of Baroda, Gurugram Main Branch",
+    "is_clean": true,
+    "injected_defects": [],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "VERIFIED_AUTO",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-006.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-006/land_title_APP-006.pdf",
+        "file_hash": "41ebde776e1d70a9557cd565709f6dd6503c6465c4927f779961ffe19da71bdb",
+        "perceptual_hash": "c699337db62a3392",
+        "file_size": 48072,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-006.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-006/building_plan_APP-006.pdf",
+        "file_hash": "93860364c94b64d22867e9fa049e8d1353faaebb5f4eb0b18b72668c0f4b2e0e",
+        "perceptual_hash": "9faf211734b90bdd",
+        "file_size": 5503,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-006.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-006/fire_noc_APP-006.pdf",
+        "file_hash": "69e16718ad6add1557233fff7cf27f5632078e510f998d9efafdc27b0b35ce7c",
+        "perceptual_hash": "de130b0da5e28565",
+        "file_size": 5576,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-006.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-006/mandatory_disclosure_APP-006.pdf",
+        "file_hash": "67fcebf29baca6a7a3a9839f30ac4638a9d68de5c2cd653f7cde3ed18a702965",
+        "perceptual_hash": "7cb623127a7db0c9",
+        "file_size": 2640,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-007": {
+    "application_id": "APP-007",
+    "institution_id": "INST-007",
+    "institution_name": "Himalayan Institute of Higher Technology",
+    "institution_type": "Polytechnic",
+    "state": "Delhi",
+    "district": "New Delhi",
+    "applied_intake": 390,
+    "land_area_acres": 8.5,
+    "survey_number": "SY-149/3-A",
+    "society_trust_name": "Himalayan Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40007",
+    "notary_registration": "NOT/2019/ST/5007",
+    "bank_name": "Bank of Baroda, New Delhi Main Branch",
+    "is_clean": true,
+    "injected_defects": [],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "VERIFIED_AUTO",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-007.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-007/land_title_APP-007.pdf",
+        "file_hash": "a5fe0899f2dc1445ca835094cee172de82c2726fd021b4e4edfe1feb9bf90d54",
+        "perceptual_hash": "96ddbced16e948d4",
+        "file_size": 48080,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-007.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-007/building_plan_APP-007.pdf",
+        "file_hash": "50ba4d6ad0e834a20a80e14b598e8e82f426e48908c9bae280ac31db9db3b32a",
+        "perceptual_hash": "d02d3c3f44a25daa",
+        "file_size": 5420,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-007.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-007/fire_noc_APP-007.pdf",
+        "file_hash": "d8713af026dec52c12c093e106f30821d6a14caaeb2822b1568e3cd50c8798ed",
+        "perceptual_hash": "f525f35ba4f4b656",
+        "file_size": 5487,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-007.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-007/mandatory_disclosure_APP-007.pdf",
+        "file_hash": "13f6f24755d913d9117fd9a90a4adf066387521890c410e1671e8fe7ce60cc3d",
+        "perceptual_hash": "278868c2d6d03e41",
+        "file_size": 2654,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-008": {
+    "application_id": "APP-008",
+    "institution_id": "INST-008",
+    "institution_name": "Deccan College of Applied Sciences",
+    "institution_type": "Engineering",
+    "state": "Telangana",
+    "district": "Hyderabad",
+    "applied_intake": 420,
+    "land_area_acres": 9.0,
+    "survey_number": "SY-156/4-A",
+    "society_trust_name": "Deccan Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40008",
+    "notary_registration": "NOT/2019/ST/5008",
+    "bank_name": "Bank of Baroda, Hyderabad Main Branch",
+    "is_clean": true,
+    "injected_defects": [],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "VERIFIED_AUTO",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-008.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-008/land_title_APP-008.pdf",
+        "file_hash": "1e7278c855ace5b0c5891dd7d6e4b98a9ddd6c47b96a4ca96d316fa002bbff40",
+        "perceptual_hash": "33e04fa0ef74df2b",
+        "file_size": 47926,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-008.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-008/building_plan_APP-008.pdf",
+        "file_hash": "c969f24ffbaf7128328664a0d3427d7e19ee75b32701385253a36641d4392c08",
+        "perceptual_hash": "2ac48af329056f11",
+        "file_size": 5625,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-008.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-008/fire_noc_APP-008.pdf",
+        "file_hash": "0227df6bb1b786d993550a749b4ccc11664d1b8644ad16ae3450960d803c1591",
+        "perceptual_hash": "7786fcb7f0fd8468",
+        "file_size": 5318,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-008.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-008/mandatory_disclosure_APP-008.pdf",
+        "file_hash": "b5c4b998d5e136564ed5a379b2210853ecf33c11efe1a2c8a97532d140923df8",
+        "perceptual_hash": "23eba157d86a373b",
+        "file_size": 2650,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-009": {
+    "application_id": "APP-009",
+    "institution_id": "INST-009",
+    "institution_name": "Malabar Technical Campus",
+    "institution_type": "Management",
+    "state": "Rajasthan",
+    "district": "Jaipur",
+    "applied_intake": 450,
+    "land_area_acres": 9.5,
+    "survey_number": "SY-163/5-A",
+    "society_trust_name": "Malabar Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40009",
+    "notary_registration": "NOT/2019/ST/5009",
+    "bank_name": "Bank of Baroda, Jaipur Main Branch",
+    "is_clean": true,
+    "injected_defects": [],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "VERIFIED_AUTO",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-009.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-009/land_title_APP-009.pdf",
+        "file_hash": "cd74de207ff47e1e7a16f964748545b828c2ea041b3b4a2d27c46c34eb2c6a19",
+        "perceptual_hash": "933cb04f538ded65",
+        "file_size": 48152,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-009.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-009/building_plan_APP-009.pdf",
+        "file_hash": "545896c81dc92ff613a19a97a0aaaa1e79ce58d1146a5d6885e85305d3044786",
+        "perceptual_hash": "b4c689eba6d90ded",
+        "file_size": 5559,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-009.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-009/fire_noc_APP-009.pdf",
+        "file_hash": "3adc8d9c65dfa0085e6d2e5e25ebdfcd821cf9bf67fc18192c6e4909953696f8",
+        "perceptual_hash": "d6fd6151d10a78b9",
+        "file_size": 5543,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-009.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-009/mandatory_disclosure_APP-009.pdf",
+        "file_hash": "36b5bbbe3962b7f3001926e0fee1002865da0c5f8451614b08b8df90058cad59",
+        "perceptual_hash": "470bddbf2a64cd7a",
+        "file_size": 2643,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-010": {
+    "application_id": "APP-010",
+    "institution_id": "INST-010",
+    "institution_name": "Konkan Institute of Technology",
+    "institution_type": "Pharmacy",
+    "state": "West Bengal",
+    "district": "Kolkata",
+    "applied_intake": 480,
+    "land_area_acres": 10.0,
+    "survey_number": "SY-170/1-A",
+    "society_trust_name": "Konkan Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40010",
+    "notary_registration": "NOT/2019/ST/5010",
+    "bank_name": "Bank of Baroda, Kolkata Main Branch",
+    "is_clean": true,
+    "injected_defects": [],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "VERIFIED_AUTO",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-010.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-010/land_title_APP-010.pdf",
+        "file_hash": "d39930c444b8779d415ddc8ebd697d2253ac93101db1c6213b3f238d8fffa7a8",
+        "perceptual_hash": "49fa67c98f12964c",
+        "file_size": 48193,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-010.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-010/building_plan_APP-010.pdf",
+        "file_hash": "1c8425089fbf6ca6ef73a131c5c4af1bb0d076206f32438d130a97b99a17d646",
+        "perceptual_hash": "4cd6816e9e928022",
+        "file_size": 5582,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-010.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-010/fire_noc_APP-010.pdf",
+        "file_hash": "08b46a9403fc10129ebb67bbc71146dfcd2f5128186ceb041f0ef0324859abba",
+        "perceptual_hash": "87f321920a323f12",
+        "file_size": 5380,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-010.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-010/mandatory_disclosure_APP-010.pdf",
+        "file_hash": "32263467b3e63fc1abf652c5a8d7ad539bf3778205669cf2c320ee028ef90c2d",
+        "perceptual_hash": "b32e014f2ce9e691",
+        "file_size": 2642,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-011": {
+    "application_id": "APP-011",
+    "institution_id": "INST-011",
+    "institution_name": "Shivalik Institute of Engineering",
+    "institution_type": "Polytechnic",
+    "state": "Maharashtra",
+    "district": "Pune",
+    "applied_intake": 510,
+    "land_area_acres": 10.5,
+    "survey_number": "SY-177/2-A",
+    "society_trust_name": "Shivalik Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40011",
+    "notary_registration": "NOT/2019/ST/5011",
+    "bank_name": "Bank of Baroda, Pune Main Branch",
+    "is_clean": false,
+    "injected_defects": [
+      "MISSING_FIRE_NOC"
+    ],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "NEEDS_OFFICER_REVIEW",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-011.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-011/land_title_APP-011.pdf",
+        "file_hash": "9e7fb9c18262c37023bdf79660a9b506e8ce537563d12b1988992e0649890f98",
+        "perceptual_hash": "87827c9931924ec4",
+        "file_size": 47930,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-011.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-011/building_plan_APP-011.pdf",
+        "file_hash": "5efe8f7b235a55e7e0342e947a2dea9f2c52e3d8fd882c0d64c1d21e4b12608a",
+        "perceptual_hash": "ad1c5dbb32e61ebb",
+        "file_size": 5623,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-011.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-011/mandatory_disclosure_APP-011.pdf",
+        "file_hash": "31381da1a9f23d9154f72977a0b74f82315c52b0bae28793241abdf10deb058a",
+        "perceptual_hash": "b0a9bc4e244b6169",
+        "file_size": 2649,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-012": {
+    "application_id": "APP-012",
+    "institution_id": "INST-012",
+    "institution_name": "Satpura Institute of Management",
+    "institution_type": "Engineering",
+    "state": "Karnataka",
+    "district": "Bengaluru",
+    "applied_intake": 180,
+    "land_area_acres": 11.0,
+    "survey_number": "SY-184/3-A",
+    "society_trust_name": "Satpura Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40012",
+    "notary_registration": "NOT/2019/ST/5012",
+    "bank_name": "Bank of Baroda, Bengaluru Main Branch",
+    "is_clean": false,
+    "injected_defects": [
+      "MISSING_BUILDING_PLAN"
+    ],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "NEEDS_OFFICER_REVIEW",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-012.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-012/land_title_APP-012.pdf",
+        "file_hash": "f68d4deca52842be0ff8dd4916fdd5e1d294af79de96e4956432c51210ac7a4b",
+        "perceptual_hash": "544eea11879b4ac7",
+        "file_size": 47997,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-012.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-012/fire_noc_APP-012.pdf",
+        "file_hash": "276d2abc2a8c291eda133bdc23ffa453be63d07832a7e9e8d31858a28eaac02f",
+        "perceptual_hash": "70118d23487c5999",
+        "file_size": 5625,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-012.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-012/mandatory_disclosure_APP-012.pdf",
+        "file_hash": "6da98aa68eeb60fd7128246f36e38007436cb0ffe1015dd16c9b9be931ba6d2f",
+        "perceptual_hash": "6a93387d8871a20c",
+        "file_size": 2647,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-013": {
+    "application_id": "APP-013",
+    "institution_id": "INST-013",
+    "institution_name": "Vindhya College of Technology",
+    "institution_type": "Management",
+    "state": "Tamil Nadu",
+    "district": "Coimbatore",
+    "applied_intake": 210,
+    "land_area_acres": 11.5,
+    "survey_number": "SY-191/4-A",
+    "society_trust_name": "Vindhya Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40013",
+    "notary_registration": "NOT/2019/ST/5013",
+    "bank_name": "Bank of Baroda, Coimbatore Main Branch",
+    "is_clean": false,
+    "injected_defects": [
+      "EXPIRED_FIRE_NOC"
+    ],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "NEEDS_OFFICER_REVIEW",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-013.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-013/land_title_APP-013.pdf",
+        "file_hash": "1639d413f7c250ef50ed002cddc5818a831c223a7b9dcc6e81f865e1696f5917",
+        "perceptual_hash": "73a8afe8cccc7ad7",
+        "file_size": 48191,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-013.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-013/building_plan_APP-013.pdf",
+        "file_hash": "59eaa5644550f12d11e9beb0183b20cff8bb346e33e5625f3ac6109652cbe2b1",
+        "perceptual_hash": "ec8a28fac79f3b79",
+        "file_size": 5624,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-013.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-013/fire_noc_APP-013.pdf",
+        "file_hash": "8bfd9e85dfa3b826220ca206a118d8dd445151acef5af7fdd7d6498e6dff5d71",
+        "perceptual_hash": "05033e205353e300",
+        "file_size": 5206,
+        "issuer_status": "expired",
+        "is_expired": true,
+        "expiry_date": "2022-01-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-013.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-013/mandatory_disclosure_APP-013.pdf",
+        "file_hash": "3f23c2aab54a7cc33c96768b1e26b27e9651286c277e175c47afe8f5448da6b4",
+        "perceptual_hash": "1639d5b28bef408d",
+        "file_size": 2652,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-014": {
+    "application_id": "APP-014",
+    "institution_id": "INST-014",
+    "institution_name": "Aravalli Institute of Technical Studies",
+    "institution_type": "Pharmacy",
+    "state": "Uttar Pradesh",
+    "district": "Kanpur",
+    "applied_intake": 240,
+    "land_area_acres": 12.0,
+    "survey_number": "SY-198/5-A",
+    "society_trust_name": "Aravalli Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40014",
+    "notary_registration": "NOT/2019/ST/5014",
+    "bank_name": "Bank of Baroda, Kanpur Main Branch",
+    "is_clean": false,
+    "injected_defects": [
+      "EXPIRED_BUILDING_PLAN"
+    ],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "NEEDS_OFFICER_REVIEW",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-014.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-014/land_title_APP-014.pdf",
+        "file_hash": "04d49c8c56a064699f5237b39d02b2ca988fa4cf5a48e7c683ab2b68900dbe3e",
+        "perceptual_hash": "530dce267293d6cb",
+        "file_size": 48104,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-014.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-014/building_plan_APP-014.pdf",
+        "file_hash": "95638b7aa3a96189a6e482b6b08ba80d13b00296693d8fe50080c13765e27d9c",
+        "perceptual_hash": "bc90860de90b2957",
+        "file_size": 5649,
+        "issuer_status": "expired",
+        "is_expired": true,
+        "expiry_date": "2022-05-09"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-014.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-014/fire_noc_APP-014.pdf",
+        "file_hash": "e727c83733c3e0f556185cbeaa28100a5d6f3e7cca55814ae4675414eabee362",
+        "perceptual_hash": "9cb35922beed640f",
+        "file_size": 5556,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-014.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-014/mandatory_disclosure_APP-014.pdf",
+        "file_hash": "c6b3c9294284374a42f0249195c626820d32db86f0f628f8090f61a43d54aac2",
+        "perceptual_hash": "0202ee05fb78f328",
+        "file_size": 2650,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-015": {
+    "application_id": "APP-015",
+    "institution_id": "INST-015",
+    "institution_name": "Nilgiri College of Applied Engineering",
+    "institution_type": "Polytechnic",
+    "state": "Gujarat",
+    "district": "Ahmedabad",
+    "applied_intake": 270,
+    "land_area_acres": 12.5,
+    "survey_number": "SY-205/1-A",
+    "society_trust_name": "Nilgiri Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40015",
+    "notary_registration": "NOT/2019/ST/5015",
+    "bank_name": "Bank of Baroda, Ahmedabad Main Branch",
+    "is_clean": false,
+    "injected_defects": [
+      "CONTRADICTION_LAND_AREA"
+    ],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "FLAGGED_ANOMALY",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-015.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-015/land_title_APP-015.pdf",
+        "file_hash": "42dcebeef88ae2fb5fa961267e1a43d01ddcd3e3b004bae7ced081737d4e7c39",
+        "perceptual_hash": "b10c4d69acf08dbb",
+        "file_size": 48190,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-015.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-015/building_plan_APP-015.pdf",
+        "file_hash": "bf31d65403b5e7f4bbda67c8976cc3bfc568d241f1137cf63a985eb36d879d2e",
+        "perceptual_hash": "3479f9767f3b7036",
+        "file_size": 5462,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-015.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-015/fire_noc_APP-015.pdf",
+        "file_hash": "6ccbfa7c0a2f4e6350c64152be4695a8c300e67b7818f291d9299bf89630fa10",
+        "perceptual_hash": "43505652e5b6d3f1",
+        "file_size": 5428,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-015.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-015/mandatory_disclosure_APP-015.pdf",
+        "file_hash": "cd921e383e9b90f03fd90173596a7a7b1f52bfc0e61cd11fd14fea956b13d60b",
+        "perceptual_hash": "7ec6aaa6b2a91fba",
+        "file_size": 2657,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-016": {
+    "application_id": "APP-016",
+    "institution_id": "INST-016",
+    "institution_name": "Apex Institute of Management & Engineering",
+    "institution_type": "Engineering",
+    "state": "Haryana",
+    "district": "Gurugram",
+    "applied_intake": 300,
+    "land_area_acres": 13.0,
+    "survey_number": "SY-212/2-A",
+    "society_trust_name": "Apex Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40016",
+    "notary_registration": "NOT/2019/ST/5016",
+    "bank_name": "Bank of Baroda, Gurugram Main Branch",
+    "is_clean": false,
+    "injected_defects": [
+      "CONTRADICTION_INSTITUTION_NAME"
+    ],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "FLAGGED_ANOMALY",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-016.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-016/land_title_APP-016.pdf",
+        "file_hash": "7a5542e7bd5190a8b0ec903041c41902b0cb4fb58ca3248ae714277d78be2ecd",
+        "perceptual_hash": "32c1453ae2475c25",
+        "file_size": 48019,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-016.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-016/building_plan_APP-016.pdf",
+        "file_hash": "a28defbfafc36f62b3280072a05a438348a3460ff1872f423ca22dbd58104505",
+        "perceptual_hash": "2f70be387c4d479c",
+        "file_size": 5588,
+        "issuer_status": "mismatch_detected",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-016.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-016/fire_noc_APP-016.pdf",
+        "file_hash": "5a33369427addba178e9b6750466450bf979c3e8160a1cf96815ffa35b64ae30",
+        "perceptual_hash": "01e71e1fc815ac5d",
+        "file_size": 5410,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-016.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-016/mandatory_disclosure_APP-016.pdf",
+        "file_hash": "5b7599ad02ad2b28bc995ae117b78027d39289cb91e58bff6d1f1e864c8b5b3b",
+        "perceptual_hash": "0907bb3b4b23318f",
+        "file_size": 2658,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-017": {
+    "application_id": "APP-017",
+    "institution_id": "INST-017",
+    "institution_name": "Utkal Technical Institute",
+    "institution_type": "Management",
+    "state": "Delhi",
+    "district": "New Delhi",
+    "applied_intake": 330,
+    "land_area_acres": 13.5,
+    "survey_number": "SY-219/3-A",
+    "society_trust_name": "Utkal Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40017",
+    "notary_registration": "NOT/2019/ST/5017",
+    "bank_name": "Bank of Baroda, New Delhi Main Branch",
+    "is_clean": false,
+    "injected_defects": [
+      "CONTRADICTION_SURVEY_NUMBER"
+    ],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "FLAGGED_ANOMALY",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-017.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-017/land_title_APP-017.pdf",
+        "file_hash": "4c6a02dd35a21485a3fde3d46b626062a2e065aa97349e4de9e356a545548b3a",
+        "perceptual_hash": "a3aba30c812a8824",
+        "file_size": 48153,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-017.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-017/building_plan_APP-017.pdf",
+        "file_hash": "6326be54f9122e3b78d048fefdac01a4a4c0ed0fb7a3e6a0fdaf0aabc9c59065",
+        "perceptual_hash": "137405bda9a51440",
+        "file_size": 5529,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-017.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-017/fire_noc_APP-017.pdf",
+        "file_hash": "52f76226b5e0d57376a9047cf8efe5e18a277d083ac805e3b19adfcae955ffe6",
+        "perceptual_hash": "6c81db1d8e0a301e",
+        "file_size": 5433,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-017.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-017/mandatory_disclosure_APP-017.pdf",
+        "file_hash": "e80716d0ce4f2a2e9cb78a1a02ae01816956209a6b0e5f4d493e0b421d8a80ba",
+        "perceptual_hash": "e19668a636aeca51",
+        "file_size": 2645,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-018": {
+    "application_id": "APP-018",
+    "institution_id": "INST-018",
+    "institution_name": "Magadh Institute of Science & Technology",
+    "institution_type": "Pharmacy",
+    "state": "Telangana",
+    "district": "Hyderabad",
+    "applied_intake": 360,
+    "land_area_acres": 14.0,
+    "survey_number": "SY-226/4-A",
+    "society_trust_name": "Magadh Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40018",
+    "notary_registration": "NOT/2019/ST/5018",
+    "bank_name": "Bank of Baroda, Hyderabad Main Branch",
+    "is_clean": false,
+    "injected_defects": [
+      "CONTRADICTION_TEMPORAL_SEQUENCE"
+    ],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "FLAGGED_ANOMALY",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-018.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-018/land_title_APP-018.pdf",
+        "file_hash": "d06111da41e6152699e2d1484bf6fa5ce5cbba7751676eea81bbe81e5a9d50b5",
+        "perceptual_hash": "d1dc8c3a577295cf",
+        "file_size": 48106,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-018.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-018/building_plan_APP-018.pdf",
+        "file_hash": "5d5bfffecb0eb82783819e585b06854166914094a992fffeaf3288f9018d855f",
+        "perceptual_hash": "21c43b44b6fdb37c",
+        "file_size": 5400,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-018.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-018/fire_noc_APP-018.pdf",
+        "file_hash": "43748db6d1aeb098b6b7d1aaa27aea294af6e5433a6d7893bdc4701b38d05e27",
+        "perceptual_hash": "0908e7b3377f39f5",
+        "file_size": 5434,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-018.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-018/mandatory_disclosure_APP-018.pdf",
+        "file_hash": "445a57e2c682d8b57a82fb42ee52e94569b9448b0c5e9bb5a85f97cf84348e48",
+        "perceptual_hash": "b0a39391e24f5dee",
+        "file_size": 2663,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-019": {
+    "application_id": "APP-019",
+    "institution_id": "INST-019",
+    "institution_name": "Gandhara Institute of Technology",
+    "institution_type": "Polytechnic",
+    "state": "Rajasthan",
+    "district": "Jaipur",
+    "applied_intake": 390,
+    "land_area_acres": 14.5,
+    "survey_number": "SY-233/5-A",
+    "society_trust_name": "Gandhara Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40019",
+    "notary_registration": "NOT/2019/ST/5019",
+    "bank_name": "Bank of Baroda, Jaipur Main Branch",
+    "is_clean": false,
+    "injected_defects": [
+      "CONTRADICTION_CERTIFICATE_NUMBER"
+    ],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "FLAGGED_ANOMALY",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-019.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-019/land_title_APP-019.pdf",
+        "file_hash": "22cd5349120e7b0b1f9af987f2f5d856339dc1075b0a4d20c2517ba511be9dd3",
+        "perceptual_hash": "4d28de85b06cc07b",
+        "file_size": 48156,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-019.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-019/building_plan_APP-019.pdf",
+        "file_hash": "80a2e9afc94406baa589263285535a7f6f816374d9dcd1a0b50ee99b9ab76ed5",
+        "perceptual_hash": "c3bbf1bb8addb2ab",
+        "file_size": 5543,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-019.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-019/fire_noc_APP-019.pdf",
+        "file_hash": "84bc7d0b5611248a79977e4590b668a851d0304d5e11048402617364050d1976",
+        "perceptual_hash": "97309ce82bed5a13",
+        "file_size": 5224,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-019.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-019/mandatory_disclosure_APP-019.pdf",
+        "file_hash": "e0f73131e6ff44e987f095e83a6f5576ff4bf82f6c9aa7c4df5a1f94e9ba3d5c",
+        "perceptual_hash": "4fbebeffc0a1f1cd",
+        "file_size": 2649,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-020": {
+    "application_id": "APP-020",
+    "institution_id": "INST-020",
+    "institution_name": "Takshashila Institute of Advanced Research",
+    "institution_type": "Engineering",
+    "state": "West Bengal",
+    "district": "Kolkata",
+    "applied_intake": 420,
+    "land_area_acres": 5.0,
+    "survey_number": "SY-240/1-A",
+    "society_trust_name": "Takshashila Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40020",
+    "notary_registration": "NOT/2019/ST/5020",
+    "bank_name": "Bank of Baroda, Kolkata Main Branch",
+    "is_clean": false,
+    "injected_defects": [
+      "DEGRADED_SCAN_LOW_CONFIDENCE"
+    ],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "NEEDS_OFFICER_REVIEW",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-020.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-020/land_title_APP-020.pdf",
+        "file_hash": "5916bd4278e6eb2dc5615d94792fd9303ab9e6ec99ca3af6ab74738a4555630f",
+        "perceptual_hash": "bf3c025164e02eb8",
+        "file_size": 48089,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-020.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-020/building_plan_APP-020.pdf",
+        "file_hash": "8ee9067e3cc61142e699d090c8e42062721ab98ecfdd5c22a7d03b2077db5cc0",
+        "perceptual_hash": "6df23a670d8c5978",
+        "file_size": 5570,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-020.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-020/fire_noc_APP-020.pdf",
+        "file_hash": "80cbcbb73630423c2d9730543c7d85e2c84f72e8a338829fce64e214732dd44d",
+        "perceptual_hash": "dbe4a8ff39871c35",
+        "file_size": 5400,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-020.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-020/mandatory_disclosure_APP-020.pdf",
+        "file_hash": "8a6af60b15d51b6664a53e78d36a15d60ac2e0c0b39064f35024bd273d98cc0f",
+        "perceptual_hash": "b6f3058adb4da34b",
+        "file_size": 2653,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-021": {
+    "application_id": "APP-021",
+    "institution_id": "INST-021",
+    "institution_name": "Nalanda College of Engineering & Technology",
+    "institution_type": "Management",
+    "state": "Maharashtra",
+    "district": "Pune",
+    "applied_intake": 450,
+    "land_area_acres": 5.5,
+    "survey_number": "SY-247/2-A",
+    "society_trust_name": "Nalanda Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40021",
+    "notary_registration": "NOT/2019/ST/5021",
+    "bank_name": "Bank of Baroda, Pune Main Branch",
+    "is_clean": false,
+    "injected_defects": [
+      "SUSPICIOUS_METADATA_DATE_ALTERATION"
+    ],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "FLAGGED_ANOMALY",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-021.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-021/land_title_APP-021.pdf",
+        "file_hash": "7de4f76b53db7f27b4e7eb9c0e21799894059dc9e989507f50e937422efa590a",
+        "perceptual_hash": "ba4ef9b81f27f255",
+        "file_size": 48069,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-021.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-021/building_plan_APP-021.pdf",
+        "file_hash": "17fa337909e9f607f45b8e0828537641f83f8ffa8a8c4371477dbf19e98b1d5f",
+        "perceptual_hash": "0f90a6516a88e8a1",
+        "file_size": 5507,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-021.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-021/fire_noc_APP-021.pdf",
+        "file_hash": "6eb1c5449014c3d3dd8c88448560f5f5cc5c2affe86ac38379697b5ed12ba342",
+        "perceptual_hash": "aed0c7a98338e5e2",
+        "file_size": 5465,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-021.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-021/mandatory_disclosure_APP-021.pdf",
+        "file_hash": "4bf540d761e24ebffd1755e9f916169cd43dc7ef8161a4f58b1366e03bed7168",
+        "perceptual_hash": "6eb9129ee408b08e",
+        "file_size": 2672,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-022": {
+    "application_id": "APP-022",
+    "institution_id": "INST-022",
+    "institution_name": "Pataliputra Technical Campus",
+    "institution_type": "Pharmacy",
+    "state": "Karnataka",
+    "district": "Bengaluru",
+    "applied_intake": 480,
+    "land_area_acres": 6.0,
+    "survey_number": "SY-254/3-A",
+    "society_trust_name": "Pataliputra Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40022",
+    "notary_registration": "NOT/2019/ST/5022",
+    "bank_name": "Bank of Baroda, Bengaluru Main Branch",
+    "is_clean": false,
+    "injected_defects": [
+      "SUSPICIOUS_FONT_LAND_ALTERATION"
+    ],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "FLAGGED_ANOMALY",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-022.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-022/land_title_APP-022.pdf",
+        "file_hash": "0d275abfdeafa0a41beddb2df3abee054577296f8a00a0261d4a39d6eedd49d9",
+        "perceptual_hash": "39adc036e0a08e10",
+        "file_size": 48339,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-022.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-022/building_plan_APP-022.pdf",
+        "file_hash": "e2646b905f0f391e8922c3edf0784bdc25b612ec6257e133f4ee1a70cebc7a86",
+        "perceptual_hash": "e9e9367cfe691804",
+        "file_size": 5623,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-022.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-022/fire_noc_APP-022.pdf",
+        "file_hash": "30a586a9a95a34c7cb6b1b7414d1abb9481dd48eb7b1c9d35fad28be6001aa28",
+        "perceptual_hash": "e9b73bcf8a1e2505",
+        "file_size": 5174,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-022.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-022/mandatory_disclosure_APP-022.pdf",
+        "file_hash": "a93e3507d74c86abfdcb8b06acfb839a48e0de917fba1b54eb0997f6196fec89",
+        "perceptual_hash": "018077859665a249",
+        "file_size": 2643,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-023": {
+    "application_id": "APP-023",
+    "institution_id": "INST-023",
+    "institution_name": "Indus Valley Institute of Management",
+    "institution_type": "Polytechnic",
+    "state": "Tamil Nadu",
+    "district": "Coimbatore",
+    "applied_intake": 510,
+    "land_area_acres": 6.5,
+    "survey_number": "SY-261/4-A",
+    "society_trust_name": "Indus Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40023",
+    "notary_registration": "NOT/2019/ST/5023",
+    "bank_name": "Bank of Baroda, Coimbatore Main Branch",
+    "is_clean": false,
+    "injected_defects": [
+      "ISSUER_SOURCE_UNAVAILABLE"
+    ],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "NEEDS_OFFICER_REVIEW",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-023.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-023/land_title_APP-023.pdf",
+        "file_hash": "4de7dd40213cf199291a365c7895cfd19cfce54e9b15a9ff0c70c5f44e62bd7b",
+        "perceptual_hash": "cd881a22b96e0273",
+        "file_size": 48166,
+        "issuer_status": "source_unavailable",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-023.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-023/building_plan_APP-023.pdf",
+        "file_hash": "d21c09e7cb7fd32dec442e0797f0eabb81e84eea14a491303e3c3c2c20074cd1",
+        "perceptual_hash": "f116683054e9d59e",
+        "file_size": 5410,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-023.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-023/fire_noc_APP-023.pdf",
+        "file_hash": "aa8afd6d8f10a00585b5b0bad4f55936c912d41eafd730769b3f906da2d7fdea",
+        "perceptual_hash": "95d3b03d48a3e812",
+        "file_size": 5267,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-023.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-023/mandatory_disclosure_APP-023.pdf",
+        "file_hash": "717f01086fbc6d666b6659c88a334d7de9559fe18d79b348b82038b2eb6d9330",
+        "perceptual_hash": "d997fae7a2b80608",
+        "file_size": 2652,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-024": {
+    "application_id": "APP-024",
+    "institution_id": "INST-024",
+    "institution_name": "Chanakya Institute of Technical Studies",
+    "institution_type": "Engineering",
+    "state": "Uttar Pradesh",
+    "district": "Kanpur",
+    "applied_intake": 180,
+    "land_area_acres": 7.0,
+    "survey_number": "SY-268/5-A",
+    "society_trust_name": "Chanakya Educational Trust",
+    "architect_license": "Ar. S. K. Gupta, CA/2012/40024",
+    "notary_registration": "NOT/2019/ST/5024",
+    "bank_name": "Bank of Baroda, Kanpur Main Branch",
+    "is_clean": false,
+    "injected_defects": [
+      "ISSUER_MANUAL_REVIEW_REQUIRED"
+    ],
+    "flagged_ring": false,
+    "ring_cluster_id": null,
+    "expected_status": "NEEDS_OFFICER_REVIEW",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-024.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-024/land_title_APP-024.pdf",
+        "file_hash": "5133d3b42880a0b8a543fa1adefae2b7fafc5db873b47a071e57d840887fbf2a",
+        "perceptual_hash": "4b8bbec550868e3b",
+        "file_size": 48078,
+        "issuer_status": "manual_review_required",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-024.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-024/building_plan_APP-024.pdf",
+        "file_hash": "fc1bb76b37f1ab9dde556eecd3898856522d35fb0aa5f745a464c5062a985de2",
+        "perceptual_hash": "ad0c8661b2eba889",
+        "file_size": 5381,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-024.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-024/fire_noc_APP-024.pdf",
+        "file_hash": "db20a332b44e951daa4f257b8c4d7c70c5ea1e696835e88bdf269b3e411dd756",
+        "perceptual_hash": "671b62469ad8a334",
+        "file_size": 5520,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-024.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-024/mandatory_disclosure_APP-024.pdf",
+        "file_hash": "73e24975b979fd2b454dcb2dfe65265f676e0654aa2c3d8c69e88a981b0f2b7e",
+        "perceptual_hash": "c0a1761a67d0b41e",
+        "file_size": 2650,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-025": {
+    "application_id": "APP-025",
+    "institution_id": "INST-025",
+    "institution_name": "Vanguard Institute of Engineering & Technology",
+    "institution_type": "Management",
+    "state": "Gujarat",
+    "district": "Ahmedabad",
+    "applied_intake": 210,
+    "land_area_acres": 7.5,
+    "survey_number": "Plot 44-B/Institutional Corridor",
+    "society_trust_name": "Vanguard Educational Trust",
+    "architect_license": "Ar. Vikramaditya Joshi, CA/2014/66542",
+    "notary_registration": "NOT/2021/DEL/8821",
+    "bank_name": "State Bank of India, Connaught Place Main Branch, New Delhi",
+    "is_clean": false,
+    "injected_defects": [
+      "COLLUSION_RING_SHARED_NOTARY_AND_SURVEY"
+    ],
+    "flagged_ring": true,
+    "ring_cluster_id": "COLLUSION_RING_NCR_01",
+    "expected_status": "FLAGGED_ANOMALY",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-025.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-025/land_title_APP-025.pdf",
+        "file_hash": "5a4d9a7e9cfd98a6b1bb2e7ca1e0f02240bddb2edddc826975faf00bb559752e",
+        "perceptual_hash": "c3e3f723901b4667",
+        "file_size": 45023,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-025.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-025/building_plan_APP-025.pdf",
+        "file_hash": "13705c3c6ff0468e1195575bab7ab6ef1cdec3ef313badb69dff775e1a8f7d1d",
+        "perceptual_hash": "cf006715a44bafd6",
+        "file_size": 5580,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-025.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-025/fire_noc_APP-025.pdf",
+        "file_hash": "057c29aba862610672ec1d52aef8311133587ff18260e8becfef77bf519e7c14",
+        "perceptual_hash": "5335d128db79f097",
+        "file_size": 5477,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-025.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-025/mandatory_disclosure_APP-025.pdf",
+        "file_hash": "d5e12218cf06c8762ac20940bbadfbfc88dc01c9de76f0cf6c9b7bbebda45f92",
+        "perceptual_hash": "de6915c5840badbc",
+        "file_size": 2680,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-026": {
+    "application_id": "APP-026",
+    "institution_id": "INST-026",
+    "institution_name": "Drona Academy of Applied Technology",
+    "institution_type": "Pharmacy",
+    "state": "Haryana",
+    "district": "Gurugram",
+    "applied_intake": 240,
+    "land_area_acres": 8.0,
+    "survey_number": "Plot 44-B/Institutional Corridor",
+    "society_trust_name": "Drona Educational Trust",
+    "architect_license": "Ar. Vikramaditya Joshi, CA/2014/66542",
+    "notary_registration": "NOT/2021/DEL/8821",
+    "bank_name": "State Bank of India, Connaught Place Main Branch, New Delhi",
+    "is_clean": false,
+    "injected_defects": [
+      "COLLUSION_RING_SHARED_NOTARY_AND_SURVEY"
+    ],
+    "flagged_ring": true,
+    "ring_cluster_id": "COLLUSION_RING_NCR_01",
+    "expected_status": "FLAGGED_ANOMALY",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-026.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-026/land_title_APP-026.pdf",
+        "file_hash": "083b167e842b6ca339f7367e68cfcbae1b12963dbfa516811f4da6f5b703e96b",
+        "perceptual_hash": "e72101e077d31d9c",
+        "file_size": 45305,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-026.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-026/building_plan_APP-026.pdf",
+        "file_hash": "d65f181d9bb3aa3127669ffde654b156e9f024cfc259a11371e67e16d48f3668",
+        "perceptual_hash": "920e3a628e7e5a58",
+        "file_size": 5668,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-026.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-026/fire_noc_APP-026.pdf",
+        "file_hash": "b8589c8136238be10400039b818607dd1702def24d37bb70d6946accf1a0407f",
+        "perceptual_hash": "7cc628c981b4c4dd",
+        "file_size": 5465,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-026.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-026/mandatory_disclosure_APP-026.pdf",
+        "file_hash": "721dfd9b224312fc59ce0a147ca7da7faae09db2431dccb037a51a756d8d483c",
+        "perceptual_hash": "f711ef86ebc4ec4f",
+        "file_size": 2663,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-027": {
+    "application_id": "APP-027",
+    "institution_id": "INST-027",
+    "institution_name": "Horizon Institute of Polytechnic Studies",
+    "institution_type": "Polytechnic",
+    "state": "Delhi",
+    "district": "New Delhi",
+    "applied_intake": 270,
+    "land_area_acres": 8.5,
+    "survey_number": "Plot 44-B/Institutional Corridor",
+    "society_trust_name": "Horizon Educational Trust",
+    "architect_license": "Ar. Vikramaditya Joshi, CA/2014/66542",
+    "notary_registration": "NOT/2021/DEL/8821",
+    "bank_name": "State Bank of India, Connaught Place Main Branch, New Delhi",
+    "is_clean": false,
+    "injected_defects": [
+      "COLLUSION_RING_SHARED_NOTARY_AND_SURVEY"
+    ],
+    "flagged_ring": true,
+    "ring_cluster_id": "COLLUSION_RING_NCR_01",
+    "expected_status": "FLAGGED_ANOMALY",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-027.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-027/land_title_APP-027.pdf",
+        "file_hash": "69b0e5ccb7b1885e21723c6e83798c06d8011904363cadc8431ed25bfa73cedd",
+        "perceptual_hash": "5218cfe0923d1a65",
+        "file_size": 45275,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-027.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-027/building_plan_APP-027.pdf",
+        "file_hash": "99f201ae84c23289d969cb2b0425fc78f93c84ac16b5858dc8a8ad9416beb2fe",
+        "perceptual_hash": "e20181ba40f9acf8",
+        "file_size": 5497,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-027.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-027/fire_noc_APP-027.pdf",
+        "file_hash": "043d6a3e752c8e72999d4415a6d0c782a28caf5017a763c6b7df457dc8fbcf6d",
+        "perceptual_hash": "8b4c42657659106a",
+        "file_size": 5340,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-027.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-027/mandatory_disclosure_APP-027.pdf",
+        "file_hash": "f8ad38b328e3e80d833adfb480ea06f2ef500c3a661d28b52bd5fb0fa1b356b5",
+        "perceptual_hash": "23fc73d9f5364027",
+        "file_size": 2658,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-028": {
+    "application_id": "APP-028",
+    "institution_id": "INST-028",
+    "institution_name": "Zenith College of Management & Computer Applications",
+    "institution_type": "Engineering",
+    "state": "Telangana",
+    "district": "Hyderabad",
+    "applied_intake": 300,
+    "land_area_acres": 9.0,
+    "survey_number": "Plot 44-B/Institutional Corridor",
+    "society_trust_name": "Zenith Educational Trust",
+    "architect_license": "Ar. Vikramaditya Joshi, CA/2014/66542",
+    "notary_registration": "NOT/2021/DEL/8821",
+    "bank_name": "State Bank of India, Connaught Place Main Branch, New Delhi",
+    "is_clean": false,
+    "injected_defects": [
+      "COLLUSION_RING_SHARED_NOTARY_AND_SURVEY"
+    ],
+    "flagged_ring": true,
+    "ring_cluster_id": "COLLUSION_RING_NCR_01",
+    "expected_status": "FLAGGED_ANOMALY",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-028.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-028/land_title_APP-028.pdf",
+        "file_hash": "c11eb2939e945cbf6db6ab94105485cb441c3351660a8213a1d4c9788e189b26",
+        "perceptual_hash": "043f6488d2cfa6c2",
+        "file_size": 45314,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-028.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-028/building_plan_APP-028.pdf",
+        "file_hash": "3fbc83c5dad97e8cbc1a10071a9edae3ffe98b089738e74f4611a6c5d713ca84",
+        "perceptual_hash": "5d6a43ba8c82c424",
+        "file_size": 5601,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-028.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-028/fire_noc_APP-028.pdf",
+        "file_hash": "138224d61bb0575e4753aa4318d51911d3f160fa2cff802e959bb915eb5b32ef",
+        "perceptual_hash": "c33612259c7f29df",
+        "file_size": 5497,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-028.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-028/mandatory_disclosure_APP-028.pdf",
+        "file_hash": "edb93f52182cd0f58a45b51c980b6105f9a75e2473b1a06990d8a757b78ef815",
+        "perceptual_hash": "4785e539e4a88e5d",
+        "file_size": 2689,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-029": {
+    "application_id": "APP-029",
+    "institution_id": "INST-029",
+    "institution_name": "Shivalik Global Institute of Technical Education",
+    "institution_type": "Management",
+    "state": "Rajasthan",
+    "district": "Jaipur",
+    "applied_intake": 330,
+    "land_area_acres": 9.5,
+    "survey_number": "Plot 44-B/Institutional Corridor",
+    "society_trust_name": "Shivalik Educational Trust",
+    "architect_license": "Ar. Vikramaditya Joshi, CA/2014/66542",
+    "notary_registration": "NOT/2021/DEL/8821",
+    "bank_name": "State Bank of India, Connaught Place Main Branch, New Delhi",
+    "is_clean": false,
+    "injected_defects": [
+      "COLLUSION_RING_SHARED_NOTARY_AND_SURVEY"
+    ],
+    "flagged_ring": true,
+    "ring_cluster_id": "COLLUSION_RING_NCR_01",
+    "expected_status": "FLAGGED_ANOMALY",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-029.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-029/land_title_APP-029.pdf",
+        "file_hash": "f63f144a93d114698253ee4d2895f347060b9b7d3225fed93d97b574a36e449b",
+        "perceptual_hash": "ea4a609ebe8ad8b2",
+        "file_size": 45060,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-029.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-029/building_plan_APP-029.pdf",
+        "file_hash": "458de1221770d746d9773f752a199dc2c9cc774196b2ab79950e70dcded8764d",
+        "perceptual_hash": "9f794e51cb47b97f",
+        "file_size": 5674,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-029.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-029/fire_noc_APP-029.pdf",
+        "file_hash": "49a4cc8b6f97391e76c27d751ef0383997a7860dd34b6c7459c804d19f2d53ac",
+        "perceptual_hash": "edf7eb082469aac6",
+        "file_size": 5599,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-029.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-029/mandatory_disclosure_APP-029.pdf",
+        "file_hash": "a3ab5d7d3889cabac1aa358800a1ac0f3f0774977a2499be5611f4a05f9db872",
+        "perceptual_hash": "9a156afbeb948171",
+        "file_size": 2668,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  },
+  "APP-030": {
+    "application_id": "APP-030",
+    "institution_id": "INST-030",
+    "institution_name": "Aryavart Institute of Pharmaceutical Sciences",
+    "institution_type": "Pharmacy",
+    "state": "West Bengal",
+    "district": "Kolkata",
+    "applied_intake": 360,
+    "land_area_acres": 10.0,
+    "survey_number": "Plot 44-B/Institutional Corridor",
+    "society_trust_name": "Aryavart Educational Trust",
+    "architect_license": "Ar. Vikramaditya Joshi, CA/2014/66542",
+    "notary_registration": "NOT/2021/DEL/8821",
+    "bank_name": "State Bank of India, Connaught Place Main Branch, New Delhi",
+    "is_clean": false,
+    "injected_defects": [
+      "COLLUSION_RING_SHARED_NOTARY_AND_SURVEY"
+    ],
+    "flagged_ring": true,
+    "ring_cluster_id": "COLLUSION_RING_NCR_01",
+    "expected_status": "FLAGGED_ANOMALY",
+    "documents": [
+      {
+        "document_type": "LAND_TITLE",
+        "filename": "land_title_APP-030.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-030/land_title_APP-030.pdf",
+        "file_hash": "0d3769ddcb7955292dcd38f4ab503c31f7a9ccaed7348ccb0dc131790c6cabb3",
+        "perceptual_hash": "77b9197e32ae33b1",
+        "file_size": 45440,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      },
+      {
+        "document_type": "BUILDING_PLAN",
+        "filename": "building_plan_APP-030.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-030/building_plan_APP-030.pdf",
+        "file_hash": "ae2b64d4b0a37ba7105daf33873ecd2c1486e486f5708d8e73848b7d95c64db0",
+        "perceptual_hash": "52ad5e618b3325db",
+        "file_size": 5603,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-06-19"
+      },
+      {
+        "document_type": "FIRE_NOC",
+        "filename": "fire_noc_APP-030.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-030/fire_noc_APP-030.pdf",
+        "file_hash": "644b565854c51822d95355b0768ed2bbfe96cc127479a08b56ff16ce7c51c926",
+        "perceptual_hash": "f6a5186b4cecb691",
+        "file_size": 5432,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": "2027-08-09"
+      },
+      {
+        "document_type": "MANDATORY_DISCLOSURE",
+        "filename": "mandatory_disclosure_APP-030.pdf",
+        "file_path": "/Users/sanikarajhk/Downloads/AntiGravityWorkshop-step-0-starter/sakshya/data/synthetic_applications/APP-030/mandatory_disclosure_APP-030.pdf",
+        "file_hash": "dd67093e616ff5eeb1910be06c74b490756952f04f75bb07feee61d9d8c58ee4",
+        "perceptual_hash": "5c01e4e7ac8fb71b",
+        "file_size": 2663,
+        "issuer_status": "verified",
+        "is_expired": false,
+        "expiry_date": null
+      }
+    ]
+  }
+}

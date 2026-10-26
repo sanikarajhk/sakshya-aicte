@@ -1,0 +1,39 @@
+{
+  "timestamp": "2026-10-26 01:24:25",
+  "total_applications": 30,
+  "total_time_seconds": 1.42,
+  "mean_latency_ms": 47.41,
+  "accuracy": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1_score": 1.0,
+  "defects_evaluated": {
+    "MISSING_DOC": {
+      "expected": 2,
+      "detected": 2
+    },
+    "EXPIRED_DOC": {
+      "expected": 2,
+      "detected": 2
+    },
+    "CONTRADICTION": {
+      "expected": 5,
+      "detected": 5
+    },
+    "SUSPICIOUS_ALTERATION": {
+      "expected": 2,
+      "detected": 2
+    },
+    "DEGRADED_SCAN": {
+      "expected": 1,
+      "detected": 1
+    },
+    "AUTHORITY_MISMATCH_UNAVAILABLE": {
+      "expected": 2,
+      "detected": 2
+    }
+  },
+  "ring_cluster_detected": true,
+  "audit_chain_valid": true,
+  "audit_total_blocks": 204
+}
